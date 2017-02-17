@@ -1,0 +1,40 @@
+# A list of techniques, subjects, etc I haven't yet covered
+
+- Why Live Coding? (Covered in an earlier text)
+- Why SuperCollider?
+- Proxyspace as the fundamental foundation for literally all live coding i do ever, and why it is so cool.
+- Recommended (read: essential) addons
+   - ddwSnippets
+   - BatLib
+   - BenoitLib
+   - Bjorklund
+   - sc3-plugins
+   - JITLibExtensions
+   - Feedback (sometimes)
+- Boilerplate code, loading samples, setting initial parameters
+    - Copyleft samples i'm using and who I need to attribute
+- StageLimiter, and StageLimiter abuse
+- Pbinds
+    - How I use Pbinds
+        - The SynthDefs I use inside of Pbinds (bplay, henon etc)
+	- Good SynthDef writing practice for co34pt_livecode
+	- Pbinds on Pbinds, Why I find Pdefs a bit bulky, Also Tdefs
+    - Pbinds straight onto proxyspace
+    - Pbinds alongside static synths
+    - A set of my favourite pattern classes
+    - Pkr and synchronising values outside of patterns
+    - Pbinds for Percussion/Melody
+- Static synths
+    - Chaning static synths
+    - Feedback
+    - SuperCollider as a live-codable modular synth that doesn't cost £££
+- Euclidean Rhythms and the Bjorklund quark
+    - Euclidean 3 vs straight 4/4 kick
+    - Footworking with offsets
+    - Constrained randomness and euclidean rhythms
+    - Easy Convergence/Divergence using a common value set
+    - Euclidean rhythms for percussion
+    - Euclidean rhythms for Melody
+- Chaos synths
+    - I have _no_ idea how they work but they sound good
+    - My use of Henon and constrained randomness
