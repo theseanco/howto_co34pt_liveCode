@@ -1,6 +1,6 @@
 # A list of techniques, subjects, etc I haven't yet covered
 
-- Why Live Coding? (Covered in an earlier text)
+- Why Live Coding? (Covered in an earlier text I haven't published yet)
 - Why SuperCollider?
 - Proxyspace as the fundamental foundation for literally all live coding i do ever, and why it is so cool.
 - Recommended (read: essential) addons
@@ -23,7 +23,11 @@
     - Pbinds alongside static synths
     - A set of my favourite pattern classes
     - Pkr and synchronising values outside of patterns
-    - Pbinds for Percussion/Melody
+    - Pbinds and melodic/pitch arrangement
+        - Simple scales
+	- Not so simple scales (53 note ET as a way to smear pitch)
+	- Harmonic series and modulating harmonic series
+	- Operating between pitch and noise (henon, sinoscFB)
 - Static synths
     - Chaning static synths
     - Feedback
