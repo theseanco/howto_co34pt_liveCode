@@ -42,3 +42,5 @@
 - Chaos synths
     - I have _no_ idea how they work but they sound good
     - My use of Henon and constrained randomness
+- Visuals
+    - Dropping the scope behind the IDE on linux = instant visuals. Don't know how to do it on any other platform ¯\_(ツ)_/¯
