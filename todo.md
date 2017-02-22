@@ -1,16 +1,14 @@
 # A list of techniques, subjects, etc I haven't yet covered
 
-- Why Live Coding? (Covered in an earlier text I haven't published yet)
-- Why SuperCollider?
-- Proxyspace as the fundamental foundation for literally all live coding i do ever, and why it is so cool.
-- Recommended (read: essential) addons
+- Why Live Coding? (Covered in an earlier text I haven't published yet) x
+- Why SuperCollider? x
+- Proxyspace as the fundamental foundation for literally all live coding i do ever, and why it is so cool. 
+- Recommended (read: essential) addons x
    - ddwSnippets
    - BatLib
    - BenoitLib
    - Bjorklund
    - sc3-plugins
-   - JITLibExtensions
-   - Feedback (sometimes)
 - Boilerplate code, loading samples, setting initial parameters
     - Copyleft samples i'm using and who I need to attribute
 - StageLimiter, and StageLimiter abuse
