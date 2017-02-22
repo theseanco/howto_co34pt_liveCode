@@ -2,7 +2,7 @@
 
 - Why Live Coding? (Covered in an earlier text I haven't published yet) x
 - Why SuperCollider? x
-- Proxyspace as the fundamental foundation for literally all live coding i do ever, and why it is so cool. 
+- Proxyspace as the fundamental foundation for literally all live coding i do ever, and why it is so cool. x
 - Recommended (read: essential) addons x
    - ddwSnippets
    - BatLib
@@ -26,6 +26,8 @@
 	- Not so simple scales (53 note ET as a way to smear pitch)
 	- Harmonic series and modulating harmonic series
 	- Operating between pitch and noise (henon, sinoscFB)
+- Rhythm
+    - How to do rhythm, and why I found it so hard
 - Static synths
     - Chaning static synths
     - Feedback
