@@ -1,7 +1,14 @@
-//Using Patterns in ProxySpace
-//Note, you don't have to be super well versed in patterns to follow this. This will be explained further on in the repo
+/*
 
-//NOTE: If you have come here from ProxySpace i, please quit the server and recompile
+Using Patterns in ProxySpace
+
+You don't have to be super well versed in patterns to follow this. This will be explained further on in the repo
+
+If you haven't looked at the 'recommended addons' section, please do so now, as you will need some of the Quarks listed to play these examples.
+
+NOTE: If you have come here from ProxySpace i, please quit the server and recompile
+
+*/
 
 //To start, either execute the setup file or run this
 ("../../Setup/Setup.scd").loadRelative
@@ -33,14 +40,14 @@ p.clock.tempo = 135/60
 
 //with the number being divided by 60 being the tempo
 
-//the proxyspace clock can be pushed very hard, with super low clock speeds resulting in silence (if only patterns are running)
+//the proxyspace clock can be pushed very hard, with super low clock speeds resulting in silence as patterns run too slowly (if only patterns are running)
 p.clock.tempo = 0.00001
 
 //Extremely high clock speeds will result in extratone-like drums
 p.clock.tempo = 20
 
 //Absurd clock speeds will result in hideous crashing and you having to recompile
-p.clock.tempo = 400000
+p.clock.tempo = 999999
 //(go on, I dare you)
 
 //anyway...

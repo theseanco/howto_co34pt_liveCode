@@ -10,7 +10,7 @@
    - Bjorklund
    - sc3-plugins
 - Boilerplate code, loading samples, setting initial parameters
-    - Copyleft samples i'm using and who I need to attribute
+    - Copyleft samples i'm using and who I need to attribute 
 - StageLimiter, and StageLimiter abuse
 - Pbinds
     - How I use Pbinds
