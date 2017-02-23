@@ -11,3 +11,4 @@ This repository is in heavy development (as of February 2017), and will be chang
 2. Basics
     1. My Recommeded Addons
     2. Proxyspace - My foundation for live coding in SuperCollider
+    3. Setup code - Making Performance Easier
