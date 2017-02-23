@@ -28,7 +28,7 @@ Task({
 	//loads synthdefs from setup folder
 	("SynthDefs.scd").loadRelative;
 	//loads snippets from setup folder
-	("snippets.scd").loadRelative;
+	("Snippets.scd").loadRelative;
 	//wait, because otherwise it won't work for some reason
 	3.wait;
 	//activate StageLimiter - Part of the BatLib quark

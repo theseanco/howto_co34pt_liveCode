@@ -19,26 +19,24 @@ NOTE: If you have come here from ProxySpace i, please quit the server and recomp
 p.clock.tempo = 1
 
 //start a basic kick drum pattern
-~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,1)
-~k.play
+~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,1);
+~k.play;
 
 //start a basic snare pattern
-~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,2,\amp,1)
-~sn.play
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,2,\amp,1);
+~sn.play;
 
 //start a basic hi-hat pattern
-~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,1))
-~h.play
+~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,1));
+~h.play;
 
 //double the clock speed.
 p.clock.tempo = 2
 
 //with p.clock.tempo at 2, one full cyle in the 'dur' argument of patterns happens twice a second, making the BPM 120
 //You can get the BPM value of p.clock.tempo by multiplying it by 60
-//You can also do this
+//You can also do this to set the tempo clock by BPM
 p.clock.tempo = 135/60
-
-//with the number being divided by 60 being the tempo
 
 //the proxyspace clock can be pushed very hard, with super low clock speeds resulting in silence as patterns run too slowly (if only patterns are running)
 p.clock.tempo = 0.00001
@@ -101,7 +99,6 @@ p.fadeTime = 4;
 //As you can probably imagine, things can get pretty complicated, but let's keep going.
 
 //So far we're running all patterns, but the beauty of ProxySpace means we can run function proxies alongside pattern proxies
-
 ~sines = {SinOscFB.ar([36.midicps,48.midicps+1],SinOsc.kr(0.1).range(0.1,1),0.8)}
 ~sines.play
 
@@ -117,7 +114,7 @@ p.fadeTime = 4;
 
 //And you can chain pattern proxies too
 
-//let's add reverb
+//let's add reverb to ~ring
 ~verb = {FreeVerb.ar(~ring1,1)}
 ~verb.play
 
@@ -173,7 +170,7 @@ Tdef(\task).play;
 ~sn.play;
 )
 
-//raise the tempo because people had time to go to the bar during the ambient section and now fancy a dance
+//raise the tempo because people had time to go to the bar during the ambient section and now people want to dance
 p.clock.tempo = 135/60
 
 //and so on, and so on...
@@ -183,7 +180,7 @@ p.clock.tempo = 135/60
 //I don't do this much myself during sets but it's worth knowing about
 ProxyMixer.new(p)
 
-//note that you can also do this for individual proxies by specifying
+//note that you can also do this for individual proxies by specifying this argument. It defaults to 1
 ~sn.vol = 0.1;
 
 ~k.vol = 3;
@@ -195,6 +192,19 @@ ProxyMixer.new(p)
 //start, stop and modify proxies to your heart's content, change the volumes on the ProxyMixer as you wish, and don't forget to free your proxies when done with them!
 
 //when you're finished
+(
+~k.clear;
+~sn.clear;
+~h.clear;
+~sines.clear;
+~ring1.clear;
+~p.clear;
+~sinfb.clear;
+~sinfb2.clear;
+Tdef(\task).stop;
+)
+
+//or
 (
 p.clear;
 Server.hardFreeAll;
