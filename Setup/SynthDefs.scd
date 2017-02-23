@@ -1,25 +1,6 @@
 /*
-CONTENTS
 
-1. Enveloped Buffer Player
-
-2. Wavetable synth using Buffers
-
-3. Basic buffer player
-
-4. Eli Fieldsteel's instrument
-
-5. Thor Magnusson's Portamento Bass
-
-6. Harpsichord synth
-
-7. Henon Chaos Generator - UNFINISHED
-
-8. Warp1 Synth
-
-9. GrainBuf Synth
-
-10. Eli Fieldsteel's band-passed buffer player
+TODO: Document this 
 
 */
 
