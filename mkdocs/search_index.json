@@ -1,17 +1,17 @@
 {
     "docs": [
         {
-            "location": "/0/", 
+            "location": "/", 
             "text": "howto_co34pt_liveCode\n\n\nA repository of readmes, techniques, notes and other materials about how i live code in SuperCollider. A (sorta) companion repository to co34pt_livecode \n\n\nThis repository is in heavy development (as of February 2017), and will be changing a lot in the coming weeks/months\n\n\nCONTENTS\n\n\n\n\nIntroduction\n\n\nWhat this repo is\n\n\nWhy I Live code\n\n\nWhy I use SuperCollider \n\n\n\n\n\n\nBasics\n\n\nMy Recommeded Addons\n\n\nProxyspace - My foundation for live coding in SuperCollider\n\n\nSetup code - Making Performance Easier", 
             "title": "Readme"
         }, 
         {
-            "location": "/0/#howto_co34pt_livecode", 
+            "location": "/#howto_co34pt_livecode", 
             "text": "A repository of readmes, techniques, notes and other materials about how i live code in SuperCollider. A (sorta) companion repository to co34pt_livecode   This repository is in heavy development (as of February 2017), and will be changing a lot in the coming weeks/months", 
             "title": "howto_co34pt_liveCode"
         }, 
         {
-            "location": "/0/#contents", 
+            "location": "/#contents", 
             "text": "Introduction  What this repo is  Why I Live code  Why I use SuperCollider     Basics  My Recommeded Addons  Proxyspace - My foundation for live coding in SuperCollider  Setup code - Making Performance Easier", 
             "title": "CONTENTS"
         }, 
