@@ -1,18 +1,7 @@
 # A list of techniques, subjects, etc I haven't yet covered
 
-- Why Live Coding? (Covered in an earlier text I haven't published yet) x
-- Why SuperCollider? x
-- Proxyspace as the fundamental foundation for literally all live coding i do ever, and why it is so cool. x
-- Recommended (read: essential) addons x
-   - ddwSnippets
-   - BatLib
-   - BenoitLib
-   - Bjorklund
-   - sc3-plugins
-- Boilerplate code, loading samples, setting initial parameters
-    - Copyleft samples i'm using and who I need to attribute 
-- StageLimiter, and StageLimiter abuse
-- Pbinds
+
+- Rhythm
     - How I use Pbinds
         - The SynthDefs I use inside of Pbinds (bplay, henon etc)
 	- Good SynthDef writing practice for co34pt_livecode
@@ -21,26 +10,30 @@
     - Pbinds alongside static synths
     - A set of my favourite pattern classes
     - Pkr and synchronising values outside of patterns
+    - Euclidean Rhythms and the Bjorklund quark
+        - Euclidean 3 vs straight 4/4 kick
+        - Footworking with offsets
+        - Constrained randomness and euclidean rhythms
+        - Easy Convergence/Divergence using a common value set
+        - Euclidean rhythms for percussion
+        - Euclidean rhythms for Melody
+
+- Pitch/Melody
     - Pbinds and melodic/pitch arrangement
-        - Simple scales
+    - Simple scales
 	- Not so simple scales (53 note ET as a way to smear pitch)
 	- Harmonic series and modulating harmonic series
 	- Operating between pitch and noise (henon, sinoscFB)
-- Rhythm
-    - How to do rhythm, and why I found it so hard
-- Static synths
-    - Chaning static synths
-    - Feedback
-    - SuperCollider as a live-codable modular synth that doesn't cost £££
-- Euclidean Rhythms and the Bjorklund quark
-    - Euclidean 3 vs straight 4/4 kick
-    - Footworking with offsets
-    - Constrained randomness and euclidean rhythms
-    - Easy Convergence/Divergence using a common value set
-    - Euclidean rhythms for percussion
-    - Euclidean rhythms for Melody
-- Chaos synths
-    - I have _no_ idea how they work but they sound good
-    - My use of Henon and constrained randomness
-- Visuals
+    - Chaos synths
+            - I have _no_ idea how they work but they sound good
+            - My use of Henon and constrained randomness
+
+- Things that don't have a place yet...
+    - Static synths
+        - Chaning static synths
+        - Feedback
+        - SuperCollider as a live-codable modular synth that doesn't cost £££
+    -  StageLimiter, and StageLimiter abuse
+
+-  Visuals
     - Dropping the scope behind the IDE on linux = instant visuals. Don't know how to do it on any other platform ¯\_(ツ)_/¯

@@ -12,3 +12,6 @@ This repository is in heavy development (as of February 2017), and will be chang
     1. My Recommeded Addons
     2. Proxyspace - My foundation for live coding in SuperCollider
     3. Setup code - Making Performance Easier
+    4. Pbinds and Patterns - The basics
+
+If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.04 only thus far.
