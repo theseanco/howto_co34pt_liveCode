@@ -1,0 +1,17 @@
+site_name: Howto_co34pt_LiveCode
+
+pages:
+    - home: 
+        - 'Readme': 'index.md'
+        - 'To-Do list': '0-1.md'
+    - \1. Introduction:
+        - 'What this Repo Is': '1-1.md'
+        - 'Why SuperCollider?': '1-3.md'
+    - \2. Basics:
+        - 'Recommended Addons': '2-1.md'
+        - 'ProxySpace - Live Coding in SuperCollider': '2-2-1.md'
+        - 'Setup Code: Making Performance Easier': '2-3.md'
+    - About:
+        - 'License': 'license.md'
+
+theme: cinder
