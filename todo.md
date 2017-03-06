@@ -1,15 +1,13 @@
 # A list of techniques, subjects, etc I haven't yet covered
 
+I'll be listing these by musical content, as i approached live coding as a musician
 
 - Rhythm
-    - How I use Pbinds
-        - The SynthDefs I use inside of Pbinds (bplay, henon etc)
-	- Good SynthDef writing practice for co34pt_livecode
+    - Rhythmic Construction
 	- Pbinds on Pbinds, Why I find Pdefs a bit bulky, Also Tdefs
     - Pbinds straight onto proxyspace
     - Pbinds alongside static synths
     - A set of my favourite pattern classes
-    - Pkr and synchronising values outside of patterns
     - Euclidean Rhythms and the Bjorklund quark
         - Euclidean 3 vs straight 4/4 kick
         - Footworking with offsets
@@ -20,9 +18,11 @@
 
 - Pitch/Melody
     - Pbinds and melodic/pitch arrangement
+    - Good SynthDef writing practice for co34pt_livecode
     - Simple scales
 	- Not so simple scales (53 note ET as a way to smear pitch)
 	- Harmonic series and modulating harmonic series
+    - Also abuse of pitch/pitch-glitches
 	- Operating between pitch and noise (henon, sinoscFB)
     - Chaos synths
             - I have _no_ idea how they work but they sound good

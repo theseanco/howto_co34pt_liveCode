@@ -11,6 +11,7 @@ pages:
         - 'Recommended Addons': '2-1.md'
         - 'ProxySpace - Live Coding in SuperCollider': '2-2-1.md'
         - 'Setup Code: Making Performance Easier': '2-3.md'
+        - 'Pbinds and Patterns: The Basics': '2-4.md'
     - About:
         - 'License': 'license.md'
 

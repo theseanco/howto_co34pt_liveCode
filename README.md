@@ -1,7 +1,7 @@
 # howto_co34pt_liveCode
 A repository of readmes, techniques, notes and other materials about how i live code in SuperCollider. A (sorta) companion repository to co34pt_livecode 
 
-This repository is in heavy development (as of February 2017), and will be changing a lot in the coming weeks/months
+This repository is in heavy development (as of March 2017), and will be changing a lot in the coming weeks/months
 
 ## CONTENTS
 1. Introduction

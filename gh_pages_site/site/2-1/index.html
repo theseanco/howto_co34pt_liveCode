@@ -86,7 +86,7 @@
                 
                 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Section 1 <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\1. Introduction <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
@@ -107,7 +107,7 @@
                 
                 
                     <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Section 2 <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\2. Basics <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
@@ -125,6 +125,12 @@
                             
 <li >
     <a href="../2-3/">Setup Code: Making Performance Easier</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../2-4/">Pbinds and Patterns: The Basics</a>
 </li>
 
                         
@@ -197,9 +203,6 @@
                 <li class="third-level"><a href="#ddwsnippets-quark">ddwSnippets Quark</a></li>
             
         
-            <li class="second-level"><a href="#how-to-install">How to Install</a></li>
-            
-        
     
     </ul>
 </div></div>
@@ -207,7 +210,7 @@
 
 <h1 id="supercollider-addons-id-recommend">SuperCollider Addons I'd recommend</h1>
 <p>TODO: Add link to harmonic series patterns and Pkr when done</p>
-<hr />
+<p>==============</p>
 <p>Here is a list of Extensions and Quarks that are crucial to my live performances. If you want to be able to use all of the resources in this repo, you should install them.</p>
 <h2 id="extensions">Extensions</h2>
 <p>Extensions have to be inserted into SuperCollider manually. See <a href="http://doc.sccode.org/Guides/UsingExtensions.html">this</a> document for more information. Note sc3-plugins have to be compiled on Linux. See the sc3-plugins readme on GitHub for more information.</p>
@@ -253,8 +256,7 @@ An effect for dropping sections of waveforms in either a deterministic or random
 <p>BatLib contains StageLimiter, a class that puts a basic <a href="https://music.tutsplus.com/tutorials/a-beginners-introduction-to-limiters--audio-1071">limiter</a> across all sounds in the SuperCollider server. StageLimiter doesn't really have any effect on the sound the server makes unless you exceed an amplitude of +/- 1 (the top and bottom of the default SuperCollider scope), and when you do push harder than that, you can use it creatively to get 'side-chaining' type effects. I'd recommend always running StageLimiter unless you have a specific reason not to anyway, as an amplitude value that is accidentally out by a factor of ten can be <em>really</em> painful.</p>
 <h3 id="ddwsnippets-quark"><a href="https://github.com/jamshark70/ddwSnippets">ddwSnippets Quark</a></h3>
 <p>ddwSnippets is a 'Rudimentary snippets facility for ScIDE, implemented in sclang'. I've found <a href="https://en.wikipedia.org/wiki/Snippet_(programming)">snippets</a> are very useful for any piece of text that will be typed multiple times during a performance, or to lay the groundwork for 'basic' musical patterns without having to write them from scratch (see my comments in 0-2 about SuperCollider's verbosity). I use ddwSnippets to realise musical ideas more quickly when performing, especially using Ugens or patterns that have a lot of arguments, without having to copy-paste from a 'template' file containing the snippets.</p>
-<hr />
-<h2 id="how-to-install">How to Install</h2>
+<p>==================</p>
 <p>sc3-plugins and BenoitLib have to be installed manually.
 a note for compiling sc3-plugins on Linux is that my /path/to/scsource is /usr/local/include/SuperCollider, and I would assume that would be a typical path for most users
 To install all quarks listed in this document, execute the following in SuperCollider:</p>

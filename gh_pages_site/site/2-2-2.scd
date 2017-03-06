@@ -16,6 +16,24 @@ Server.hardFreeAll
 p = ProxySpace.push(s);
 
 //make the basic sine wave again, but with a named proxy
+/*
+A few notes:
+
+Proxies work on a couple of naming conventions, one is:
+
+~foo123 (has to start with a lowercase letter)
+
+or:
+
+p[\name]
+
+single letter variables can't hold a proxy, I generally use them to hold other things such as lists if I need them during performances.
+
+I don't know why single letter variables don't work. They just don't.
+
+You also can ONLY store proxies in those two naming conventions. If you need to store lots of variables elsewhere, i'd suggest making a dictionary on a single letter variable to refer to later.
+
+*/
 ~sine1 = {SinOsc.ar([400,500],0,0.1)};
 
 //play those sine waves
