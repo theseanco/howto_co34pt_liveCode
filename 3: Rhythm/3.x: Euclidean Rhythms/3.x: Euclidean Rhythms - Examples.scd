@@ -2,6 +2,8 @@
 
 These examples are extracted from section 3.x - Euclidean Rhythms
 
+Individual examples are separated by a blank line
+
 I'd advise hard-stopping (Ctrl+.) between examples
 
 */
@@ -22,7 +24,6 @@ p.clock.tempo = 2.2;
 ~t.play;
 )
 
-
 //four randomised euclidean rhythms with four different samples.
 //sounds better, producing a much greater variety of rhythmic forms.
 (
@@ -36,8 +37,83 @@ p.clock.tempo = 2.2;
 ~h.play;
 ~t.play;
 )
-//sounds even better with a banging donk on it
+
+
+//Complex rhythm that obfuscates the central rhythmic centre
 (
-~sk = Pbind(\instrument,\bplay,\buf,d["sk"][0],\dur,1,\amp,4);
+p.clock.tempo = 1.5;
+~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,Pbjorklund2(Pwhite(10,35),41,inf,Pwhite(0,10).asStream)/8,\amp,Pexprand(0.1,1),\pan,-1);
+~h2 = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,Pbjorklund2(Pwhite(10,35),40,inf,Pwhite(0,10).asStream)/8,\amp,Pexprand(0.1,1),\pan,1);
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,Pbjorklund2(Pwhite(1,5),Pwhite(1,32))/4,\amp,1,\rate,Pwrand([1,-1],[0.8,0.2],inf),\pos,Pkey(\rate).linlin(1,-1,0,0.999));
+~ding = Pbind(\instrument,\bplay,\buf,d["ding"][0],\dur,Pbjorklund2(Pwhite(1,3),25)/4,\amp,0.6,\rate,0.6,\pan,-1);
+~ding2 = Pbind(\instrument,\bplay,\buf,d["ding"][0],\dur,Pbjorklund2(Pwhite(1,3),20)/4,\amp,0.6,\rate,0.7,\pan,1);
+~t1 = Pbind(\instrument,\bplay,\buf,d["mt"][0],\dur,Pbjorklund2(Pseq([1,1,1,Pwhite(10,15,1).asStream],inf),36,inf,Pwhite(0,2).asStream)/8,\amp,1);
+~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(Pseq([1,1,1,Pwhite(10,15,1).asStream],inf),40,inf,Pwhite(0,2).asStream)/8,\amp,1,\rate,2);
+~t1.play;~t2.play;~h.play;~h2.play;~sn.play;~ding.play;~ding2.play;
+)
+//a slightly more rhythmic element, tracing the rhythm out a bit more
+(
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Pwrand([0,4],[0.8,0.2],inf),\octave,Pwrand([2,3],[0.8,0.2],inf),\dur,0.125,\d,0.25,\a,Pexprand(0.0001,200),\pan,0,\amp,1);
+~ring1.play
+)
+//Add unce unce unce and simmer gently to unify flavours.
+(
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Pwrand([0,4],[0.8,0.2],inf),\octave,Pwrand([2,3,4],[0.6,0.2,0.2],inf),\dur,0.125,\d,0.2,\a,Pexprand(0.02,900),\pan,0,\amp,1);
+~k = Pbind(\instrument,\bplay,\buf,d["k"][1],\dur,0.5,\amp,2);
+~k.play;
+)
+//offbeat hat because cheesy rhythms are good fun
+(
+~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf)/2,\amp,1)
+~oh.play
+)
+
+//working with offsets - doing a lot with a little
+//basic kick
+(
+p.clock.tempo = 2.13;
+~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,1);
+~k.play;
+)
+//Basic 5-8 euclidean rhythm
+(
+~c = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16)/4,\amp,0.7);
+~c.play;
+)
+//add another layer at a different pitch
+//NOTE: These two might not sound at the same time even though they are the same rhythm, as the rhythmic cycle is longer than 1 beat
+(
+~c2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16)/4,\amp,0.7,\rate,1.1);
+~c2.play;
+)
+//if you want them to sound together, trigger them together
+(
+~c2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16)/4,\amp,0.7,\rate,1.1);
+~c = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16)/4,\amp,0.7);
+)
+//offset both
+(
+~c = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(1,10).asStream)/4,\amp,0.7);
+~c2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(1,15).asStream)/4,\amp,0.7,\rate,1.1);
+~c.play;
+~c2.play;
+)
+//and another, slightly different sample
+(
+~c3 = Pbind(\instrument,\bplay,\buf,d["t"][1],\dur,Pbjorklund2(5,16,inf,Pwhite(0,8).asStream)/4,\amp,0.7,\rate,0.9);
+~c3.play
+)
+//now the kick
+(
+~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1,1.2],inf));
+)
+//another kick, slightly different rhythm
+(
+~k2 = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,16,inf,Pwhite(1,10).asStream)/4,\amp,1,\rate,Pseq([1.1,1.4],inf));
+~k2.play;
+)
+//add sub kick on 1
+(
+~sk = Pbind(\instrument,\bplay,\buf,d["sk"][0],\dur,1,\amp,2);
 ~sk.play;
 )
