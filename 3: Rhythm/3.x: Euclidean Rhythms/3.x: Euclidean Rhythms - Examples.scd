@@ -41,7 +41,7 @@ p.clock.tempo = 2.2;
 
 //Complex rhythm that obfuscates the central rhythmic centre
 (
-p.clock.tempo = 1.5;
+p.clock.tempo = 1.45;
 ~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,Pbjorklund2(Pwhite(10,35),41,inf,Pwhite(0,10).asStream)/8,\amp,Pexprand(0.1,1),\pan,-1);
 ~h2 = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,Pbjorklund2(Pwhite(10,35),40,inf,Pwhite(0,10).asStream)/8,\amp,Pexprand(0.1,1),\pan,1);
 ~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,Pbjorklund2(Pwhite(1,5),Pwhite(1,32))/4,\amp,1,\rate,Pwrand([1,-1],[0.8,0.2],inf),\pos,Pkey(\rate).linlin(1,-1,0,0.999));
@@ -64,7 +64,7 @@ p.clock.tempo = 1.5;
 )
 //offbeat hat because cheesy rhythms are good fun
 (
-~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf)/2,\amp,1)
+~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf)/2,\amp,1);
 ~oh.play
 )
 
@@ -75,7 +75,7 @@ p.clock.tempo = 2.13;
 ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,1);
 ~k.play;
 )
-//Basic 5-8 euclidean rhythm
+//Basic 5-16 euclidean rhythm
 (
 ~c = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16)/4,\amp,0.7);
 ~c.play;
@@ -103,7 +103,7 @@ p.clock.tempo = 2.13;
 ~c3 = Pbind(\instrument,\bplay,\buf,d["t"][1],\dur,Pbjorklund2(5,16,inf,Pwhite(0,8).asStream)/4,\amp,0.7,\rate,0.9);
 ~c3.play
 )
-//now the kick
+//now do the same to the kick
 (
 ~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1,1.2],inf));
 )
@@ -112,7 +112,7 @@ p.clock.tempo = 2.13;
 ~k2 = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,16,inf,Pwhite(1,10).asStream)/4,\amp,1,\rate,Pseq([1.1,1.4],inf));
 ~k2.play;
 )
-//add sub kick on 1
+//add sub kick on 1, and you have minimal techno.
 (
 ~sk = Pbind(\instrument,\bplay,\buf,d["sk"][0],\dur,1,\amp,2);
 ~sk.play;
