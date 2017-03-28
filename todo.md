@@ -1,20 +1,9 @@
 # A list of techniques, subjects, etc I haven't yet covered
 
-I'll be listing these by musical content, as i approached live coding as a musician
-
 - Rhythm
-    - Rhythmic Construction
-	- Pbinds on Pbinds, Why I find Pdefs a bit bulky, Also Tdefs
     - Pbinds straight onto proxyspace
     - Pbinds alongside static synths
     - A set of my favourite pattern classes
-    - Euclidean Rhythms and the Bjorklund quark
-        - Euclidean 3 vs straight 4/4 kick
-        - Footworking with offsets
-        - Constrained randomness and euclidean rhythms
-        - Easy Convergence/Divergence using a common value set
-        - Euclidean rhythms for percussion
-        - Euclidean rhythms for Melody
 
 - Pitch/Melody
     - Pbinds and melodic/pitch arrangement
@@ -37,3 +26,7 @@ I'll be listing these by musical content, as i approached live coding as a music
 
 -  Visuals
     - Dropping the scope behind the IDE on linux = instant visuals. Don't know how to do it on any other platform ¯\_(ツ)_/¯
+
+## Other miscellaneous things I need to do:
+
+- Document or guide or something to explain the format of the repository, both to those who clone is via github and those who visit the gh-pages site.

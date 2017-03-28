@@ -6,6 +6,7 @@ pages:
         - 'To-Do list': '0-1.md'
     - \1. Introduction:
         - 'What this Repo Is': '1-1.md'
+        - 'Why I live Code': '1-2.md'
         - 'Why SuperCollider?': '1-3.md'
     - \2. Basics:
         - 'Recommended Addons': '2-1.md'

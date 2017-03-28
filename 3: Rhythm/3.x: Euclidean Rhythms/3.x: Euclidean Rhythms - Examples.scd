@@ -117,3 +117,62 @@ p.clock.tempo = 2.13;
 ~sk = Pbind(\instrument,\bplay,\buf,d["sk"][0],\dur,1,\amp,2);
 ~sk.play;
 )
+
+
+//give a central rhythm to be used by other patterns
+l = Pbjorklund2(Pseq([3,3,3,4,3,3,3,5],inf),8)/4;
+//block-execute (Ctrl/Cmd+Enter) between these brackets
+(
+p.clock.tempo = 2.1;
+~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1,\rate,0.9);
+~c3 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1,\rate,1.1);
+~c2 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1);
+~c.play;
+~c2.play;
+~c3.play;
+)
+//now individually execute (Shift+Enter) some of these lines to refresh the 'dur'. Listen for variations in rhythm.
+~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1,\rate,0.9);
+~c3 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1,\rate,1.1);
+~c2 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1);
+//if you want to reset, execute the block again
+
+
+//A more fleshed-out example
+//Start with a random central rhythm, to keep all of the individual parts
+//also using a scale as a one-letter variable for quickness
+(
+p.clock.tempo = 2.32;
+l = Pbjorklund2(Pwhite(3,10),16)/4;
+e = Scale.chromatic(\et53);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-2,2),\octave,Pwrand([3,4],[0.8,0.2],inf),\dur,l,\d,0.4,\a,Pexprand(0.5,30),\amp,0.5,\pan,1);
+~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-2,2),\octave,Pwrand([3,4],[0.8,0.2],inf),\dur,l,\d,0.4,\a,Pexprand(0.5,30),\amp,0.5,\pan,-1);
+~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-5,5),\octave,Pwrand([4,5],[0.8,0.2],inf),\dur,l,\d,0.5,\a,Pexprand(0.5,30),\amp,0.5,\pan,0);
+~ring4 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-5,5),\octave,Pwrand([2,3],[0.8,0.2],inf),\dur,l,\d,0.2,\a,Pexprand(0.5,200),\amp,0.9,\pan,0);
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,l,\amp,1);
+~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1);
+~h = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,l,\amp,Pwhite(0.2,1));
+~ring1.play;~ring2.play;~ring3.play;~ring4.play;~sn.play;~c.play;~h.play;
+)
+//unify all of these rhythms
+//sounds very different
+//execute individual lines to make them diverge from this pattern
+(
+p.clock.tempo = 2.32;
+l = Pbjorklund2(Pseq([3,8,2,5,9,10,14,3,5,5,4,9,14],inf),16)/4;
+e = Scale.chromatic(\et53);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-2,2),\octave,Pwrand([3,4],[0.8,0.2],inf),\dur,l,\d,0.4,\a,Pexprand(0.5,90),\amp,0.5,\pan,1);
+~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-2,2),\octave,Pwrand([3,4],[0.8,0.2],inf),\dur,l,\d,0.4,\a,Pexprand(0.5,90),\amp,0.5,\pan,-1);
+~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-5,5),\octave,Pwrand([4,5],[0.8,0.2],inf),\dur,l,\d,0.5,\a,Pexprand(0.5,90),\amp,0.5,\pan,0);
+~ring4 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,e,\root,0,\degree,Pwhite(-5,5),\octave,Pwrand([2,3],[0.8,0.2],inf),\dur,l,\d,Pexprand(0.2,0.6),\a,Pexprand(1,200),\amp,0.9,\pan,0);
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,l,\amp,1);
+~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1);
+~h = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,l,\amp,Pwhite(0.2,1))
+)
+//throw some straight rhythms in to show where the beat lies
+(
+~k = Pbind(\instrument,\bplay,\buf,d["k"][1],\dur,1,\rate,1,\amp,3);
+~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,Pwhite(0.5,1),\rate,0.8);
+~k.play;
+~oh.play;
+)
