@@ -9,7 +9,7 @@ This repository is in heavy development (as of March 2017), and will be changing
     2. Why I Live code
     3. Why I use SuperCollider 
 2. Basics
-    1. My Recommeded Addons
+    1. My Recommended Addons
     2. Proxyspace - My foundation for live coding in SuperCollider
     3. Setup code - Making Performance Easier
     4. Pbinds and Patterns - The basics
