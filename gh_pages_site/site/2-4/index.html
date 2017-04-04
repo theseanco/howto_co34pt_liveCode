@@ -97,6 +97,12 @@
                         
                             
 <li >
+    <a href="../1-2/">Why I live Code</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../1-3/">Why SuperCollider?</a>
 </li>
 
@@ -140,6 +146,51 @@
                 
                 
                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\3. Rhythm <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../3-1/">Rhythmic Construction for Algorave Sets</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-2/">Basic Rhythms</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-3/">Techniques for Modifying Rhythm</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-5/">Euclidean Rhythms</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-6/">StageLimiter Abuse</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-7/">L-Systems for Rhythm</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -169,7 +220,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../license/">
+                        <a rel="prev" href="../3-1/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -211,7 +262,6 @@
         <div class="col-md-9" role="main">
 
 <h1 id="pbinds-and-patterns">Pbinds and Patterns</h1>
-<p>TODO: Proofread, put examples in separate .scd file</p>
 <hr />
 <h3 id="introduction">Introduction</h3>
 <p>According to SuperCollider's <a href="http://doc.sccode.org/Tutorials/A-Practical-Guide/PG_01_Introduction.html">Practical Guide to Patterns</a></p>
@@ -220,8 +270,8 @@
 </blockquote>
 <p>A large part of my live coding performances involve using patterns, specifically <a href="http://doc.sccode.org/Classes/Pbind.html">Pbinds</a> as Proxies inside of ProxySpace (see section 2.2.1) to create rhythmic elements that are synchronised to ProxySpace's <a href="http://doc.sccode.org/Classes/TempoClock.html">TempoClock</a>. In this case, 'rhythmic elements' can mean percussion, melody, bass, pads, or generally anything that is played 'in tempo'.</p>
 <h3 id="synthdefs-arguments-and-pbinds">SynthDefs, Arguments and Pbinds</h3>
-<p>The Pbinds I perform with work in conjunction with a set of <a href="http://doc.sccode.org/Classes/SynthDef.html">SynthDefs</a> (these can be found in the <a href="TODO:LINK">SynthDefs.scd</a> file of the Setup folder) which serve various musical purposes, and plays them with specifies arguments at a given duration. This isn't a particularly intuitive concept to explain, but an example can help illustrate how this works. Take the synthdef I use the most, <code>bplay</code>:</p>
-<pre><code>SynthDef(\bplay,
+<p>The Pbinds I perform with work in conjunction with a set of <a href="http://doc.sccode.org/Classes/SynthDef.html">SynthDefs</a> (these can be found in the <a href="TODO:LINK">SynthDefs.scd</a> file of the Setup folder) which serve various musical purposes, and plays them with specifies arguments at a given duration. This isn't a particularly intuitive concept to explain, but an example can help illustrate how this works. Take the SynthDef I use the most, <code>bplay</code>:</p>
+<pre><code class="supercollider">SynthDef(\bplay,
     {arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, pos = 0, rel=15;
         var sig,env ;
         sig = Pan2.ar(PlayBuf.ar(2,buf,BufRateScale.ir(buf) * rate,1,BufDur.kr(buf)*pos*44100,doneAction:2),pan);
@@ -249,23 +299,23 @@
 Note: the default <code>dur</code> value of a Pbind is 1, and the default <code>instrument</code> value is SuperCollider's built in Piano synth, but specifying both anyway (especially <code>instrument</code>) is good practice.</li>
 </ul>
 <p>So, if I wanted to have a kick drum playing once each beat in time with the ProxySpace timer, after I had run my setup file I would do the following:</p>
-<pre><code>(
+<pre><code class="supercollider">(
 ~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][0],\dur,1);
 ~k.play;
 )
 </code></pre>
 
 <p>This Pbind <code>~k</code>, spefifies that the instrument it will be using is <code>bplay</code>, the buffer <code>bplay</code> reads from will be the first index of the <code>k</code> entry in the dictionary (which contains kick drums), and that the <code>dur</code>/duration is <code>1</code>, once per cycle. If any arguments that the SynthDef takes are not specified as part of the Pbind, the SynthDef's default values will be used. Pbind arguments have to be given as key-value pairs, anything else will result in a syntax error, eg:</p>
-<pre><code>~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][0],\dur,1,\rate);
+<pre><code class="supercollider">~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][0],\dur,1,\rate);
 </code></pre>
 
 <p>As part of these key-value pairs, Pbinds can take Pattern classes as inputs. <a href="http://doc.sccode.org/Classes/Pwhite.html"><code>Pwhite</code></a> gives random values between a minimum and maximum. If I wanted to specify a random pitch of the kick drum, I could add this to the pattern:</p>
-<pre><code>~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][0],\dur,1,\rate,Pwhite(1,1.2));
+<pre><code class="supercollider">~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][0],\dur,1,\rate,Pwhite(1,1.2));
 </code></pre>
 
 <h3 id="nesting-pattern-classes">Nesting pattern classes</h3>
 <p>Pattern classes can also be <a href="https://en.wikipedia.org/wiki/Nesting_(computing)">nested</a>. Here are a few examples of some more complex percussive patterns. Once you start nesting pattern classes, things can get complicated quite quickly.</p>
-<pre><code>//to play with these examples, make sure the Setup File has been run
+<pre><code class="supercollider">//to play with these examples, make sure the Setup File has been run
 
 //footwork kickdrums
 (
@@ -303,7 +353,7 @@ p.clock.tempo = 150/60;
 <h3 id="extra-arguments-for-melodypitch">Extra arguments for melody/pitch</h3>
 <p>Pbinds also have some additional trickery for anything involving pitch.</p>
 <p>Let's look at the <code>sinfb</code> SynthDef (the arguments are listed in the code block for simplicity)</p>
-<pre><code>//SinFB Bass
+<pre><code class="supercollider">//SinFB Bass
 (
 SynthDef(\sinfb, {
     arg freq = 440, atk = 0.01, sus = 0, rel = 1, fb = 0, amp = 0.3, out = 0, pan=0;
@@ -327,7 +377,7 @@ pan: stereo panning
 </code></pre>
 
 <p>Here, the <code>freq</code> argument is the pitch of the oscillator. Pitch can be specified manually, like so:</p>
-<pre><code>~sinfb = Pbind(\instrument,\sinfb,\dur,0.25,\freq,Pwhite(100,900));
+<pre><code class="supercollider">~sinfb = Pbind(\instrument,\sinfb,\dur,0.25,\freq,Pwhite(100,900));
 </code></pre>
 
 <p>However, if a variable in a SynthDef is given the name <code>freq</code>, Pbind allows the specification of the following in place of <code>freq</code> to activate a 'scale mode':</p>
@@ -337,12 +387,12 @@ pan: stereo panning
 <li><code>octave</code>: the octave of the scale to be played (default <code>5</code>)</li>
 </ul>
 <p>Only one of these arguments needs to be specified to be in 'scale mode', for example:</p>
-<pre><code>//run up the major scale
+<pre><code class="supercollider">//run up the major scale
 ~sinfb = Pbind(\instrument,\sinfb,\dur,0.25,\degree,Pseq((0..7),inf));
 </code></pre>
 
 <p>But using all three gives full control over the parameters of the pitch used inside of a musical scale</p>
-<pre><code>//run up and down chromatic scale one degree at a time
+<pre><code class="supercollider">//run up and down chromatic scale one degree at a time
 ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.chromatic(\et12),\degree,Pseq((0..12).pyramid.mirror,inf),\octave,6,\dur,0.125/2,\amp,0.3,\fb,0.8,\rel,0.1)
 </code></pre>
 

@@ -13,6 +13,13 @@ pages:
         - 'ProxySpace - Live Coding in SuperCollider': '2-2-1.md'
         - 'Setup Code: Making Performance Easier': '2-3.md'
         - 'Pbinds and Patterns: The Basics': '2-4.md'
+    - \3. Rhythm:
+        - 'Rhythmic Construction for Algorave Sets': '3-1.md'
+        - 'Basic Rhythms': '3-2.md'
+        - 'Techniques for Modifying Rhythm': '3-3.md'
+        - 'Euclidean Rhythms': '3-5.md'
+        - 'StageLimiter Abuse': '3-6.md'
+        - 'L-Systems for Rhythm': '3-7.md'
     - About:
         - 'License': 'license.md'
 
