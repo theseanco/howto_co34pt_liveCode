@@ -2,6 +2,9 @@
 
 - Rhythm
     - A set of my favourite pattern classes ++ I've decided I'm not going to do this so instead I need to grep all of the files I've written to check that i'm not going to allude to the fact that I have written this at any point
+    - switch around 3.3 and 3.4, one should lead into another.
+
+- Field recordings!
 
 ## Other miscellaneous things I need to do:
 
