@@ -86,12 +86,18 @@
                 
                 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Section 1 <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\1. Introduction <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
     <a href="../1-1/">What this Repo Is</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../1-2/">Why I live Code</a>
 </li>
 
                         
@@ -107,7 +113,7 @@
                 
                 
                     <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Section 2 <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\2. Basics <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
@@ -125,6 +131,57 @@
                             
 <li class="active">
     <a href="./">Setup Code: Making Performance Easier</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../2-4/">Pbinds and Patterns: The Basics</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">\3. Rhythm <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../3-1/">Rhythmic Construction for Algorave Sets</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-2/">Basic Rhythms</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-3/">Techniques for Modifying Rhythm</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-5/">Euclidean Rhythms</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-6/">StageLimiter Abuse</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../3-7/">L-Systems for Rhythm</a>
 </li>
 
                         
@@ -163,7 +220,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../license/">
+                        <a rel="prev" href="../2-4/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -187,30 +244,23 @@
         <div class="col-md-9" role="main">
 
 <h1 id="setup-code-making-performance-easier">Setup Code - Making Performance Easier</h1>
-<p>TODO: Proofread This</p>
-<hr />
+<p>TODO: Proofread this</p>
 <p>In the root directory of this repo, there is a <a href="../../Setup">Setup</a> folder, which contains some files, including <a href="../../Setup/Setup.scd"><code>Setup.scd</code></a>, <a href="../../Setup/SynthDefs.scd"><code>SynthDefs.scd</code></a> and <a href="../../Setup/Snippets.scd"><code>Snippets.scd</code></a>. </p>
 <p>As I mentioned in 'Why SuperCollider', one of my big gripes with SuperCollider and performing with it is the amount of pre-building that needs to be done in order to incorporate any higher level structures, such as playing samples, triggering instruments, and suchlike. This setup folder addresses that problem, and contains my personal SuperCollider performance setup, and can be loaded entirely by either running the <code>Setup.scd</code> file, or calling it from somewhere else (for example in line 14 of the <a href="2.2:\ ProxySpace\ -\ My\ Foundation\ For\ Live\ Coding\ In\ SuperCollider/Proxyspace\ ii.scd">second ProxySpace tutorial</a> by specifying the relative filepath to the setup file and using the <code>.loadRelative</code> method on it. I can (and have) performed without this setup file, but for the most part I run this setup file before any performance I do.</p>
-<p>The <code>Setup.scd</code> file does the following things:</p>
-<ul>
-<li>Increase the number of buffers available for SuperCollider to load</li>
-<li>Increase the amount of memory size available to the Server, to allow for more CPU-heavy work</li>
-<li>Boot the server
- Display the server Oscilloscope (Which I regularly use as visuals in my set)</li>
-<li>Start ProxySpace, and make a 60BPM proxy tempo clock</li>
-<li>Lines 20-27:<ul>
-<li>Creates a <code>Dictionary</code>, <code>d</code>, to hold samples</li>
-<li>Recursively loads all samples of the correct set in the <a href="../../../samples"><code>samples</code></a> folder. These samples are organised into folders which contain the samples. The name of the folder will be added as an entry to the dictionary, and the samples will be added as sub-entries. <ul>
-<li>For example, if you wanted to reference the second sample in the kick drum folder you would use <code>d["k"][1]</code> (<code>d</code> for the dictionary, <code>"k"</code> as kickdrums are held in directory <code>k</code>, and <code>1</code> as you are referencing the second sample)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Loads the <a href="../../Setup/SynthDefs.scd"><code>SynthDefs.scd</code></a> file, containing some custom SynthDefs which I use inside of patterns. Notably the necessary synthdef for playing samples <code>bplay</code>, and some instruments such as <code>sinfb</code> and <code>ring1</code>.</li>
-<li>Loads the <a href="../../Setup/Snippets.scd"><code>Snippets.scd</code></a> file, which contains some snippets to be loaded into the <a href="https://github.com/jamshark70/ddwSnippets">ddwSnippets Quark</a>, for easy access during performance, which include basic percussion patterns, some functions and some patterns that have a lot of default arguments I might not remember while performing</li>
-<li>Starts <code>StageLimiter</code> from the BatLib quark, to protect everyone's ears</li>
-<li>Posts a message to show all the above have been completed</li>
-</ul>
+<p>The <code>Setup.scd</code> file does the following things:
+- Increase the number of buffers available for SuperCollider to load
+- Increase the amount of memory size available to the Server, to allow for more CPU-heavy work
+- Boot the server
+ Display the server Oscilloscope (Which I regularly use as visuals in my set)
+- Start ProxySpace, and make a 60BPM proxy tempo clock
+- Lines 20-27:
+    - Creates a <code>Dictionary</code>, <code>d</code>, to hold samples
+    - Recursively loads all samples of the correct set in the <a href="../../../samples"><code>samples</code></a> folder. These samples are organised into folders which contain the samples. The name of the folder will be added as an entry to the dictionary, and the samples will be added as sub-entries. 
+        - For example, if you wanted to reference the second sample in the kick drum folder you would use <code>d["k"][1]</code> (<code>d</code> for the dictionary, <code>"k"</code> as kickdrums are held in directory <code>"k"</code>, and <code>1</code> as you are referencing the second sample)
+- Loads the <a href="../../Setup/SynthDefs.scd"><code>SynthDefs.scd</code></a> file, containing some custom SynthDefs which I use inside of patterns. Notably the necessary synthdef for playing samples <code>bplay</code>, and some instruments such as <code>sinfb</code> and <code>ring1</code>.
+8. Loads the <a href="../../Setup/Snippets.scd"><code>Snippets.scd</code></a> file, which contains some snippets to be loaded into the <a href="https://github.com/jamshark70/ddwSnippets">ddwSnippets Quark</a>, for easy access during performance, which include basic percussion patterns, some functions and some patterns that have a lot of default arguments I might not remember while performing
+9. Starts <code>StageLimiter</code> from the BatLib quark, to protect everyone's ears
+10. Posts a message to show all the above have been completed</p>
 <p>Once this setup file has been run, everything is set up to perform, all in one evaluation. The <code>.loadRelative</code>s in the Setup file also means if any SynthDefs or Snippets are added and saved, they will be loaded next time the setup file is loaded.</p>
 <p>If you're following any examples/etc from this repo, and it doesn't work and I haven't said anything about the setup file, assume that you need to run it for the code to work!</p></div>
         
