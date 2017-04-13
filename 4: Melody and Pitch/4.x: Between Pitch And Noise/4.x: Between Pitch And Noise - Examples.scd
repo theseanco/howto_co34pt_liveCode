@@ -1,24 +1,13 @@
-# Between Pitch and Noise
+//load the setup file
+("../../Setup/Setup.scd").loadRelative
 
-TODO: example of pitch/noise/dichotomy/unification - Holden perhaps? Put this in the preamble
+//SinOscFB - A sine wave that can move between pitch and noise and noisy pitch
+(
+//polling the modulation of the 'feedback' argument, to show the way in which SinOscFB degrades sine waves
+~sinfbstatic = {SinOscFB.ar([330,440],XLine.kr(0.1,500,60).poll(10),0.6)};
+~sinfbstatic.play;
+)
 
-------
-
-### Preamble
-
-An important corollary when talking about pitch is to talk about unpitched sound or noise. In periods of music dominated by pitched sounds, disintegration or erosion of pitch into noise can be an important technique to drive a set forward, or just provide sonic interest. Here are some techniques to achieve this.
-
-### SinOscFB
-
-A Ugen I use a lot (read: far too much) is [SinOscFB](http://doc.sccode.org/Classes/SinOscFB.html), a 'sine oscillator that has phase modulation feedback'. I've always been a big fan of bare sine waves, and SinOscFB's `feedback` argument allows a sine wave to be modulated into noise and back very easily, with extreme modulations creating a strange-sounding degraded sine wave.
-
-```supercollider
-TODO: Demonstrate SinOscFB, going through the end of the modulation curve and back out of the end of it
-```
-
-A stalwart of my SynthDef arsenal is `sinfb`, a `SinOscFB` Ugen inside of an `Env.perc` which is used to control its amplitude curve. This SynthDef is very flexible -  great for basses, melodies and chords, but also great for flexibly turning melodic riffs into textural noise, as well as blending the two. Notice that from values `0.0` to `20.0` there is a full spectrum from clean sine wave to noise feedback, any values above `30.0` will blend the two and are what I would consider 'extreme modulation'. In general usage during sets I tend to use the range 0.0 to 3.0, as anything above tends to be too noisy and interferes with the percussion i'm using.
-
-```supercollider
 //a pattern I use regularly with its feedback being modulated from 0 to 20. Notice the difference in sound across the spectrum
 (
 ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\octave,[3,4,5],\degree,Pseq([0,0,4,5],inf),\dur,Pbjorklund2(3,8)/4,\amp,0.3,\fb,0.1,\rel,0.3);
@@ -26,19 +15,10 @@ A stalwart of my SynthDef arsenal is `sinfb`, a `SinOscFB` Ugen inside of an `En
 ~sinfb.set(\fb,~feedback);
 ~sinfb.play;
 )
-```
 
-### Harmonic series and extreme pitch values
-
-In 4.2 I talked about the Harmonic Series. An interesting quality of using a fundamental frequency to determine the pitch of various NodeProxies by multiplying that fundamental frequency to create a scale structure.
-
-Some interesting techniques for distorting this harmonic series technique into the territory of noise are extreme modulation, which pushes the frequency into supersonics (and sometimes back again):
-
-```supercollider
 //Extreme modulation of fundamental frequency
 //taking the up-down scale given in the 'riffs' section
 (
-//up
 p.clock.tempo = 2.4;
 ~r = {75};
 ~sinfb1 = Pbind(\instrument,\sinfb,\freq,Pseq((1..10),inf)*Pkr(~r),\dur,0.25,\amp,0.3,\fb,Pwhite(0.1,1.4),\rel,0.1);
@@ -58,11 +38,7 @@ p.clock.tempo = 2.4;
 (
 ~r = {LFNoise1.kr(0.2).range(30000,90000).poll(10)};
 )
-```
 
-And extreme pitch values - which appear to rise continually into supersonic frequencies and aliasing, and then looping back to the bottom of the pitch scale:
-
-```supercollider
 //extreme multiplaction of fundamental frequency
 //using the previous example, a NodeProxy holding a second multiplier is added onto the \freq argument of each Pbind
 (
@@ -77,18 +53,8 @@ And extreme pitch values - which appear to rise continually into supersonic freq
 (
 ~mult = {Line.kr(1,60,60).round(1).poll(5)}
 )
-```
 
-### Chaos UGens
-
-SuperCollider has support for UGens that use [Chaos Theory](https://en.wikipedia.org/wiki/Chaos_theory) for synthesis - the [Chaos UGens](http://doc.sccode.org/Classes/ChaosGen.html) (note that there are also a number of additional Chaos UGens in [sc3-plugins](https://github.com/supercollider/sc3-plugins) which are worth having).
-
-While (at the time of writing) I don't know a whole lot about the particularities of chaos theory works, but the Chaos UGens are great for creating musical structures that move freely between pitched sound and noise, and these are usually handled both in the equation variables of the UGens as well as the initial conditions.
-
-I'll use HenonN as an example of the use of chaos theory to move between melody, noise and percussion:
-
-```supercollider
-//HenonN - Chaos synths and moving between pitch and noise
+//Henon2DN - Chaos synths and moving between pitch and noise
 (
 //henon using a minor pentatonic scale at a high octave.
 //The chaos Ugens will need some experimentations if you want subtle variance in sound
@@ -124,11 +90,8 @@ I'll use HenonN as an example of the use of chaos theory to move between melody,
 ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,1);
 ~k.play;
 )
-```
 
-A thing to note about the Chaos synths is the type of interpolation used - taking Henon as an example; HenonC, HenonL and HenonN stand for Cubic, Linear and None respectively. The sonic effect of the type of interpolation used is in the 'smoothness' of the sound, with Cubic being the most smooth and None being the least.
 
-```supercollider
 //sound of different types of interpolation
 //the default in my SynthDefs.scd file is currently to use none:
 (
@@ -172,5 +135,3 @@ SynthDef(\henon,
 		Out.ar(out,Pan2.ar(sig,pan));
 }).add;
 );
-```
-

@@ -1,23 +1,6 @@
-# Riffs
+//load setup file
+("../../Setup/Setup.scd").loadRelative
 
-TODO: finish this.
----------
-
-### Examples in music
-
-A [riff](https://en.oxforddictionaries.com/definition/riff) is a short, repeated musical phrase that is used as an anchor or a refrain in a piece of music.
-
-I've always been drawn to guitar music with [riffs](https://www.youtube.com/watch?v=WgF4ZuXVcIo), and riff-heavy electronic music [is](https://www.youtube.com/watch?v=YDZ9HYCAknc) [no](https://www.youtube.com/watch?v=P8JEm4d6Wu4&feature=youtu.be&t=2m16s) [exception](https://www.youtube.com/watch?v=2FmFXQSIzCo). A _great_ example of riff-heavy live coding is the music of [Belisha Beacon's](https://fractalmeat.bandcamp.com/album/this-is-fine), who makes a network of shifting riffs using [ixi lang](http://www.ixi-audio.net/ixilang/).
-
-Here are a few ways I use riffs
-
-### The 'up-down' riff
-
-A technique I've probably ended up using an awful lot is an 'up-down' riff, which is a way of producing a set of interlocking riffs very quickly on the spot. It can be used with any form of pitch organisation, but more common scales and the harmonic series tend to work the best.
-
-The 'up-down' riff uses SuperCollider's `range` method to generate a sequential set of degrees of a scale playing on a SynthDef and running it alongside the same set of degrees `.reverse`-d, creating a palindrome which runs continuously. A third layer, which uses SuperCollider's `.scramble` method to create a random riff to play against the 'up-down' riff, all played in a uniform rhythm:
-
-```supercollider
 //up-down riff
 //harmonic series version
 //re-evaluate individual directions to create a different riff
@@ -59,13 +42,6 @@ p.clock.tempo = 1.5;
 ~sinfb3.play;
 )
 
-```
-
-An important part of this technique is that by re-evaluating individual riffs the overall structure of the riffs as a whole can be changed, giving the resulting sound a different character each time.
-
-It can also be combined with some `Pwrand` based probabilistic rhythmic change to automatically shift the character of the riff:
-
-```supercollider
 //replacing duration of 0.25 with a Pwrand which will automatically shift the riffs
 (
 p.clock.tempo = 1.5;
@@ -77,15 +53,7 @@ p.clock.tempo = 1.5;
 ~sinfb2.play;
 ~sinfb3.play;
 
-```
 
-### 'Phasing'
-
-'Phasing' was used extensively by [Steve](https://www.youtube.com/watch?v=7P_9hDzG1i0) [Reich](https://www.youtube.com/watch?v=g0WVh1D0N50) in his early works, and refers to two or more similar or identical musical forms which are played at slightly differing tempi so that they shift and begin to interfere with each other ([more information](https://en.wikipedia.org/wiki/Phase_music)).
-
-There are a few ways to emulate this during sets, both through subtle interference with playing riffs, rhythmic disturbances and omitting notes. Another example can be seen in the section on Euclidean Rhythms and Offsets.
-
-```supercollider
 //Phasing
 //Using the riff from Reich's Piano Phase
 //inspired by https://ccrma.stanford.edu/courses/tu/cm2008/topics/piano_phase/index.shtml
@@ -111,15 +79,7 @@ p.clock.tempo = 1.8;
 )
 //play riff 2
 ~sinfb2.play;
-```
 
-### Sample stabs
-
-Another way to make riffs is to use pitched samples, and define the pitch of the riff using the `\rate` argument of `bplay`. 
-
-A version of this I use quite a lot is derived from '90s rave music:
-
-```supercollider
 //synth stabs - try this with both stab 0 and 1.
 (
 //stab 1
@@ -145,12 +105,4 @@ p.clock.tempo = 2.4;
 ~fx = Pbind(\instrument,\bplay,\buf,d["fx"][0],\dur,Pwhite(1,6),\amp,1);
 ~k.play;~sn.play;~fx.play;~k2.play;
 )
-
-```
-
-### Place and compound riffs
-
-```supercollider
-TODO: Write an example of Place and compound riffs and reverse-engineer a description out of the way that Place works
-```
 
