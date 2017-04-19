@@ -1,6 +1,9 @@
 //load setup
 ("../../Setup/Setup.scd").loadRelative
 
+//run this to smooth out transitions
+p.fadeTime=5
+
 //Using SuperCollider as a Modular synth
 //snippets help with building these sets a LOT, as standard elements such as modulation signals can be called upon very quickly
 //NOTE: this will get !!! L O U D !!! - there's protection from StageLimiter of course, but be aware.
@@ -58,6 +61,8 @@
 ~noiseDelay = {CombC.ar(Mix.ar([~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs)]),1,0.4,7,1)}
 //modulating the delay time too will make things get a bit wild
 ~noiseDelay = {CombC.ar(Mix.ar([~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs)]),1,LFNoise1.kr(0.1).range(0.01,0.6),7,1)}
+//~noiseDelay seems to be glitching a bit and throwing DC bias - add a LeakDC around it
+~noiseDelay = {LeakDC.ar(CombC.ar(Mix.ar([~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs)]),1,LFNoise1.kr(0.1).range(0.01,0.6),7,1))}
 //let's cut the original pulse/sine waves over a few seconds
 ~delay.stop(20)
 ~sinpulse.stop(20)
@@ -100,9 +105,45 @@
 )
 //add some reverb which will work in parallel
 //if you want to change the parameters of any effect without re-evaluating it - set up that value as another NodeProxy
-~room = {300};
+~room = {30};
 ~time = {3};
 ~verb = {GVerb.ar(~chaosEnv,~room,~time)}
 ~verb.play
-//increase the room size
-//TODO: finish this
+//increase the reverb time
+~time = {40};
+//this needs some melody - add two melodies in stereo, slightly out of phase:
+~saws = {LFSaw.ar([LFSaw.kr(0.1).range(100,1000).round(50),LFSaw.kr(0.11).range(100,1000).round(50)],0,0.3)}
+~saws.play
+//too harsh, needs filtering
+~saws = {RLPFD.ar(LFSaw.ar([LFSaw.kr(0.1).range(100,1000).round(50),LFSaw.kr(0.101).range(100,1000).round(50)],0,0.8),1000,0.8,0.6,10)};
+//another delay would be nice
+~sawDelay = {CombC.ar(~saws.ar,1,0.5,10)};
+~sawDelay.play;
+//some heavy decimation on the delay
+~sawDelay = {Decimator.ar(CombC.ar(~saws.ar,1,0.5,10),2200,10)};
+//further bit reduction
+~sawDelay = {Decimator.ar(CombC.ar(~saws.ar,1,0.5,10),2200,5)};
+//even further
+~sawDelay = {Decimator.ar(CombC.ar(~saws.ar,1,0.5,10),2020,3)};
+//plugging the ~sawDelay into the original for more noise
+~noiseDelay = {LeakDC.ar(CombC.ar(Mix.ar([~sawDelay.ar,~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs)]),1,LFNoise1.kr(0.1).range(0.01,0.6),7,1))}
+//plugging ChaosEnv into ~noiseDelay too
+~noiseDelay = {LeakDC.ar(CombC.ar(Mix.ar([~chaosEnv.ar,~sawDelay.ar,~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs)]),1,LFNoise1.kr(0.1).range(0.01,0.6),7,1))};
+//then plugging it also into a more intense ~noiseDelayAdd for more mad effects
+~noiseDelayAdd = {DFM1.ar(Mix.ar([~delay.ar,~sinpulse.ar,~noiseDelay]),LFNoise1.kr(100).range(100,10000),SinOsc.kr(0.1).range(0.5,100),1,0,0.03)}
+~noiseDelayAdd.play
+//it doesn't appear to be playing, probablt because ~noiseDelay is SO loud. Multiply it by half
+~noiseDelay = {LeakDC.ar(CombC.ar(Mix.ar([~chaosEnv.ar,~sawDelay.ar,~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs)]),1,LFNoise1.kr(0.1).range(0.01,0.6),7,1)) * 0.3};
+//then plug ~noiseDelayAdd into ~noiseDelay and roll off the multiplication for maximum damage
+~noiseDelay = {LeakDC.ar(CombC.ar(Mix.ar([~chaosEnv.ar,~sawDelay.ar,~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs),~noiseDelayAdd.ar]),1,LFNoise1.kr(0.1).range(0.01,0.6),7,1))};
+//increase the ridiculousness of the modulation of the delaytime
+~noiseDelay = {LeakDC.ar(CombC.ar(Mix.ar([~chaosEnv.ar,~sawDelay.ar,~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs),~noiseDelayAdd.ar]),1,LFNoise1.kr(1).range(0.001,4),7,1))};
+//put another delay on top of that?
+~delay2 = {CombC.ar(~noiseDelay.ar,1,0.4,30)}
+~delay2.play
+//then plug that back into ~noiseDelay (which by now contains most things that are playing.
+~noiseDelay = {LeakDC.ar(CombC.ar(Mix.ar([~chaosEnv.ar,~sawDelay.ar,~totalNoise.ar,(~pitchShift.ar*LFNoise1.kr(0.01,0.2).abs),~noiseDelayAdd.ar,~delay2.ar]),1,LFNoise1.kr(1).range(0.001,4),7,1))};
+//also modulate ~delay2, really slowly
+~delay2 = {LeakDC.ar(CombC.ar(~noiseDelay.ar,1,SinOsc.kr(0.01).range(0.0001,0.2),80))}
+//things broke up for me here and I have no idea why, there's multiple things feeding back through each other here.
+//and you have noise music!

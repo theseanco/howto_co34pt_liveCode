@@ -40,6 +40,20 @@ SynthDef(\wtabl,
 		Out.ar(out,sig);
 }).add;
 
+(
+//SynthDef based on an overdriven DFM1 - this is very CPU intensive
+//Using resonance values of >1 only will sound the freq value and detune it.
+//good for stabs, but is buggy
+SynthDef(\dfm1, {
+	arg out = 0, freq = 440,mul = 0.5, res = 1,type = 0, noise = 0.0003, atk = 0.01, rel = 1;
+	var sig, env;
+	env = EnvGen.ar(Env.perc(atk,rel),doneAction:2);
+	sig = DFM1.ar(SinOsc.ar,freq,res,1,type,noise,mul);
+	sig = sig*env;
+	Out.ar(out,Splay.ar([sig]));
+}).add;
+);
+
 
 //basic buffer player
 //TODO: Look at this, equal power panning etc.
@@ -219,4 +233,17 @@ SynthDef(\ring4,
 		Out.ar(out,Pan2.ar(sig.tanh,pan) * amp)
 	};
 ).add;
+
+//this needs to be re-evaluated every time there is a note played - so it needs work.
+SynthDef(\randomChaos,
+	{ arg out = 0, atk = 0, rel = 0.1, sus = 0;
+		var sig, env, chaosUgen, chaosUgenPick;
+		env = EnvGen.ar(Env.linen(atk,sus,rel),doneAction:2);
+		chaosUgen = ChaosGen.allSubclasses;
+		sig = chaosUgen[rrand(0,10)].ar;
+		sig = sig*env;
+		Out.ar(out,Pan2.ar(sig));
+}).add;
+
+
 )

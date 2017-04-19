@@ -24,30 +24,63 @@ DDWSnippets.put("LFN1","LFNoise1.kr(0.1).range(##100,3000##).round(100)");
 DDWSnippets.put("SinOsc","{SinOsc.kr(0.1).range(##0.01,1.01##)}");
 
 //instrument generators
+//DFM1 drone
 DDWSnippets.put("DFMDrone","{DFM1.ar(SinOsc.ar([##100,101##],0,0.1),200,SinOsc.kr(0.05).range(0.9,1.1),1,0,0.0003,0.5)};");
+//'ring' acid bass sound
 DDWSnippets.put("ring1","Pbind(\\instrument,\\ring1,\\f,Pkey(\\freq),\\scale,d[\\scale],\\root,Pkr(~r),\\degree,0,\\octave,4,\\dur,##1##,\\d,0.6,\\a,1,\\pan,0,\\amp,0.5);");
+//ring sound with no scale
 DDWSnippets.put("ring1f","Pbind(\\instrument,\\ring1,\\f,Pkr(~r2),\\dur,##1##,\\d,0.6,\\a,1,\\pan,0,\\amp,0.5);");
+//sinfb Pbind - no scale
 DDWSnippets.put("sinfb","Pbind(\\instrument,\\sinfb,\\freq,Pseq([##1,2,3,4,5##],inf)*Pkr(~r2),\\dur,0.25,\\amp,0.3,\\fb,0.1,\\rel,0.3);");
+//sinfb Pbind - using a scale
 DDWSnippets.put("sinfbscale","Pbind(\\instrument,\\sinfb,\\scale,d[\\scale],\\root,Pkr(~r),\\octave,4,\\degree,##0##,\\dur,0.25,\\amp,0.3,\\fb,0.1,\\rel,0.3);");
+//henon Pbind
 DDWSnippets.put("henon","Pbind(\\instrument,\\henon,\\freq,44100,\\dur,0.25,\\a,Pexprand(1.3,1.3),\\b,Pexprand(0.3,0.3),\\atk,0,\\sus,0,\\rel,Pexprand(##0.01,0.1##),\\amp,1);");
+//RLPFD instrument - a drone using LFSaws. 'speed' argument is for quickness when setting up harmonic series sweeps
+DDWSnippets.put("rlpfd","~rlpfd = {arg speed = 0.5; RLPFD.ar(Mix(LFSaw.ar([120, 180], 0, 0.33)), LinExp.kr(LFCub.kr(0.1, 0.5*pi), -1, 1, 280, 1500), 0.6, 0.5, mul:3).dup }");
+//Streson instrument - a drone using LFSaws. 'speed' argument controls speed of sweep and min/max. res controls strength of the effect.
+DDWSnippets.put("stresondrone","~streson = {arg speed = 0.0001, min = 0.0001, max = 0.001, res = 0.9; Streson.ar(LFSaw.ar([220, 180], 0, mul:EnvGen.kr(Env.asr(0.5, 1, 0.02), 1.0) * 0.2), SinOsc.kr(speed).range(min,max), res, 0.3) }");
+//rave stabs
+DDWSnippets.put("ravestabs","~ravestab = Pbind(\\instrument,\\bplay,\\buf,d[\"stab\"][0],\\euclidNum,##3##,\\dur,Pbjorklund2(Pkey(\\euclidNum),8),\\rate,Pseq([1,1,1,1,1,1,0.9,1.1],inf).stutter(Pkey(\\euclidNum).asStream),\\amp,1)");
+//warp1 - scrolls a buffer
+DDWSnippets.put("warp1","~warp1 = {arg speed = 0.1, winsize = 0.1, rate = 1; Warp1.ar(2,##d[\"lfx\"][0]##,SinOsc.kr(speed),1,winsize,-1,16,0,4,1)}");
 
 //effects
+//Low Pass Filter
 DDWSnippets.put("LPF","
 //Low Pass
-~lpfSend = {NumChannels.ar(Splay.ar([##Silent.ar(2)##]),2)};
-~lpf = {RLPF.ar(~lpfSend,SinOsc.kr(0.1).range(440,440),0.1)};
+~lpfSend = {Mix.ar([##~one##])};
+~lpf = {RLPF.ar(NumChannels.ar([~lpfSend]),SinOsc.kr(0.1).range(440,440),0.1)};
 ~lpf.play;");
+//Hi-Pass Filter
 DDWSnippets.put("HPF","
 //High Pass
-~hpfSend = {NumChannels.ar(Splay.ar([##Silent.ar(2)##]),2)};
-~hpf = {RHPF.ar(~lpfSend,SinOsc.kr(0.1).range(440,440),0.1)};
+~hpfSend = {Mix.ar([##~one##])};
+~hpf = {RHPF.ar(NumChannels.ar([~lpfSend]),SinOsc.kr(0.1).range(440,440),0.1)};
 ~lpf.play;");
+//Delay - CombC
 DDWSnippets.put("Delay","
 //delay
-~delaySend = {NumChannels.ar(Mix.ar([##Silent.ar(2)##]),2)};
-~delay = {CombN.ar(Splay.ar([~delaySend]),p.clock.tempo*4,p.clock.tempo/16,1)};
+~delaySend = {Mix.ar([##~one##])};
+~delay = {CombC.ar(NumChannels.ar([~delaySend]),p.clock.tempo*4,p.clock.tempo/16,1)};
 ~delay.play;");
-
+//Streson - speed controls speed of sweep and min/max control minimum and maximum values. Keep them low and with not a lot between for sensible effects and don't for silly ones. res controls the severity of the effect
+DDWSnippets.put("stresonsend","
+//streson
+~stresonSend = {Mix.ar([##~one##])};
+~streson = {arg speed = 0.01, min = 0.00001, max = 0.0001, res = 0.99; Streson.ar(NumChannels.ar([~stresonSend.ar]),SinOsc.kr(speed).range(min,max),res)};
+~streson.play;");
+//rlpfd filter
+DDWSnippets.put("rlpfdFilter","
+//rlpfd
+~rlpfdSend = {Mix.ar([##~one##])};
+~rlpfd = {arg speed = 0, min = 200, max = 500, res = 0.5, dist = 0.5; RLPFD.ar(NumChannels.ar([~rlpfdSend]),SinOsc.kr(speed).range(min,max),res,dist,3)};
+~rlpfd.play;");
+//DFM1 filter - freq, res, noise self-explanatory. type 0 = LPF 1 = HPF
+DDWSnippets.put("dfm1Filter","
+~dfm1Send = {Mix.ar([##~one##])};
+~dfm1Filt = {arg freq = 1000, res = 0.7, noise = 0.0003, type = 0; DFM1.ar(NumChannels.ar([~dfm1Send]),freq,res,1,type,noise,1)};
+~dfm1Filt.play;");
 
 
 
