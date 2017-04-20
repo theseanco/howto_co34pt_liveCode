@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>Readme - Howto_co34pt_LiveCode</title>
+    <title>Pitch and Patterns - Howto_co34pt_LiveCode</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="./">Howto_co34pt_LiveCode</a>
+            <a class="navbar-brand" href="../README/">Howto_co34pt_LiveCode</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -64,13 +64,13 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">home <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li class="active">
-    <a href="./">Readme</a>
+<li >
+    <a href="../README/">Readme</a>
 </li>
 
                         
@@ -190,13 +190,13 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">\4 \- Melody and Pitch <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li >
-    <a href="../4.1:-Pitch-And-Patterns/">Pitch and Patterns</a>
+<li class="active">
+    <a href="./">Pitch and Patterns</a>
 </li>
 
                         
@@ -289,13 +289,13 @@
                     </a>
                 </li>
                 
-                    <li class="disabled">
-                        <a rel="next" >
+                    <li >
+                        <a rel="next" href="../3.6:-L-Systems-For-Rhythm/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../0:-Todo-List/">
+                        <a rel="prev" href="../4.2:-Types-of-Pitch-Arrangement/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -311,9 +311,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#howto_co34pt_livecode">howto_co34pt_liveCode</a></li>
+        <li class="first-level active"><a href="#pitch-and-patterns">Pitch and Patterns</a></li>
         
-            <li class="second-level"><a href="#contents">CONTENTS</a></li>
+            <li class="second-level"><a href="#a-preamble-how-is-pitch-handled">A preamble - How is pitch handled?</a></li>
+            
+        
+            <li class="second-level"><a href="#how-patterns-handle-pitch">How Patterns handle pitch</a></li>
             
         
     
@@ -321,26 +324,55 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="howto_co34pt_livecode">howto_co34pt_liveCode</h1>
-<p>A repository of readmes, techniques, notes and other materials about how i live code in SuperCollider. A (sorta) companion repository to co34pt_livecode </p>
-<p>This repository is in heavy development (as of April 2017), and will be changing a lot in the coming weeks/months</p>
-<h2 id="contents">CONTENTS</h2>
-<ol>
-<li>Introduction<ol>
-<li>What this repo is</li>
-<li>Why I Live code</li>
-<li>Why I use SuperCollider </li>
-</ol>
-</li>
-<li>Basics<ol>
-<li>My Recommended Addons</li>
-<li>Proxyspace - My foundation for live coding in SuperCollider</li>
-<li>Setup code - Making Performance Easier</li>
-<li>Pbinds and Patterns - The basics</li>
-</ol>
-</li>
-</ol>
-<p>If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.04 only thus far.</p></div>
+<h1 id="pitch-and-patterns">Pitch and Patterns</h1>
+<p>TODO: proofread
+TODO: add examples</p>
+<hr />
+<h3 id="a-preamble-how-is-pitch-handled">A preamble - How is pitch handled?</h3>
+<p>There are a number of different ways to arrange pitch - a brief history of pitch.</p>
+<p>For some context, my musical background is in the western classical music tradition, but I regularly use non-'standard' pitch arrangement techniques in my music.</p>
+<h3 id="how-patterns-handle-pitch">How Patterns handle pitch</h3>
+<p>Most times I'm specifying pitch for a synth or sound I will be specifying it as part of a Pbind. Pbinds are set up to handle pitch using the <code>freq</code> argument of a SynthDef, with various Pbind arguments designed to 'plug in' to create various kinds of pitch structures:</p>
+<p><code>freq</code> can be used to specify a raw frequency value, and <code>detune</code> is added to it:</p>
+<pre><code class="supercollider">//freq specifying a raw pitch value
+(
+~sinfb = Pbind(\instrument,\sinfb,\freq,Pwhite(100,800),\dur,0.1,\amp,0.3,\fb,0.1,\rel,0.3);
+~sinfb.play;
+)
+//frequency being detuned gradually
+(
+~sinfb = Pbind(\instrument,\sinfb,\freq,Pseq((1..8),inf)*100,\dur,0.1,\amp,0.3,\fb,0.4,\rel,1,\detune,Pseq((1..400),inf));
+)
+</code></pre>
+
+<p><code>scale</code>, <code>octave</code> and <code>degree</code> work together to easily give the ability to use a speific scale/tuning pitch arrangement inside of a Pbind, for example:</p>
+<pre><code class="supercollider">//using scales inside of Pbinds
+//Minor scale in Just intonation, octave varying between 4 and 6, root note varying between 0 and 4 each scale repetition.
+//\detune can also be used on top of this to detune scale degrees
+(
+~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor(\just),\root,Pwhite(0,4).stutter(8),\octave,Pwhite(4,6).stutter(8),\degree,Pseq((0..7),inf),\dur,0.25,\amp,0.3,\fb,1,\rel,0.2);
+~sinfb.play;
+)
+</code></pre>
+
+<p>Arrays can also be used to create chords:</p>
+<pre><code class="supercollider">//Chords used by specifying a 2-dimensional array in \degree argument.
+//same can be done for the \octave argument
+(
+~sinfb = Pbind(\instrument,\sinfb,
+    \scale,Scale.major,
+    \root,0,
+    \octave,Pwrand([4,[3,4],[2,3,4]],[0.9,0.08,0.02],inf),
+    \degree,Prand([[0,2,4],[2,4,6],[7,2,4],[1,2,3],[0,-2,-4]],inf),
+    \dur,Pwhite(5,10),
+    \atk,2,\sus,1,\rel,3,\amp,0.3,\fb,0.1);
+~modulation = {SinOsc.kr(0.1).range(0.01,1.41)};
+~sinfb.play;
+~sinfb.set(\fb,~modulation);
+)
+</code></pre>
+
+<p>It's important to note that the degrees of a scale start from <code>0</code> when using patterns, with <code>(0..7)</code> being a full octave of a major or minor scale.</p></div>
         
     </div>
 
