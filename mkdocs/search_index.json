@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "howto_co34pt_liveCode\n\n\nA repository of readmes, techniques, notes and other materials about how i live code in SuperCollider. A (sorta) companion repository to co34pt_livecode \n\n\nThis repository is in heavy development (as of April 2017), and will be changing a lot in the coming weeks/months\n\n\nCONTENTS\n\n\n\n\nIntroduction\n\n\nWhat this repo is\n\n\nWhy I Live code\n\n\nWhy I use SuperCollider \n\n\n\n\n\n\nBasics\n\n\nMy Recommended Addons\n\n\nProxyspace - My foundation for live coding in SuperCollider\n\n\nSetup code - Making Performance Easier\n\n\nPbinds and Patterns - The basics\n\n\n\n\n\n\n\n\nIf any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.04 only thus far.", 
+            "text": "howto_co34pt_liveCode\n\n\nA repository of readmes, techniques, notes and other materials about how i live code in SuperCollider. A (sorta) companion repository to co34pt_livecode \n\n\nThis repository is in heavy development (as of April 2017), and will be changing a lot in the coming weeks/months\n\n\nCONTENTS\n\n\n\n\nIntroduction:\n\n\nWhat this Repo Is\n\n\nWhy I live Code\n\n\nWhy SuperCollider?\n\n\n\n\n\n\nBasics:\n\n\nRecommended Addons\n\n\nProxySpace - Live Coding in SuperCollider\n\n\nSetup Code: Making Performance Easier\n\n\nPbinds and Patterns: The Basics\n\n\n\n\n\n\nRhythm:\n\n\nRhythmic Construction for Algorave Sets\n\n\nBasic Rhythms\n\n\nTechniques for Modifying Rhythm\n\n\nEuclidean Rhythms\n\n\nStageLimiter Abuse\n\n\nL-Systems for Rhythm\n\n\n\n\n\n\nMelody and Pitch:\n\n\nPitch and Patterns\n\n\nTypes of Pitch Arrangement\n\n\nRiffs\n\n\nPitch and Static Synths\n\n\nBetween Pitch and Noise\n\n\n\n\n\n\nNon-Pattern Techniques:\n\n\nDrones\n\n\nSuperCollider as a Modular Synth\n\n\n\n\n\n\nVisuals:\n\n\nFreqScope and Visuals\n\n\n\n\n\n\n\n\nIf any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.04 only thus far.", 
             "title": "Readme"
         }, 
         {
@@ -12,7 +12,7 @@
         }, 
         {
             "location": "/#contents", 
-            "text": "Introduction  What this repo is  Why I Live code  Why I use SuperCollider     Basics  My Recommended Addons  Proxyspace - My foundation for live coding in SuperCollider  Setup code - Making Performance Easier  Pbinds and Patterns - The basics     If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.04 only thus far.", 
+            "text": "Introduction:  What this Repo Is  Why I live Code  Why SuperCollider?    Basics:  Recommended Addons  ProxySpace - Live Coding in SuperCollider  Setup Code: Making Performance Easier  Pbinds and Patterns: The Basics    Rhythm:  Rhythmic Construction for Algorave Sets  Basic Rhythms  Techniques for Modifying Rhythm  Euclidean Rhythms  StageLimiter Abuse  L-Systems for Rhythm    Melody and Pitch:  Pitch and Patterns  Types of Pitch Arrangement  Riffs  Pitch and Static Synths  Between Pitch and Noise    Non-Pattern Techniques:  Drones  SuperCollider as a Modular Synth    Visuals:  FreqScope and Visuals     If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.04 only thus far.", 
             "title": "CONTENTS"
         }, 
         {
