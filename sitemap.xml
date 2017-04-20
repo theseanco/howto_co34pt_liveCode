@@ -4,36 +4,14 @@
     
         
     <url>
-     <loc>/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/README/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/0-1/</loc>
-     <lastmod>2017-04-04</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>/1-1/</loc>
-     <lastmod>2017-04-04</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/1-2/</loc>
-     <lastmod>2017-04-04</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/1-3/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/0:-Todo-List/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -42,26 +20,20 @@
     
         
     <url>
-     <loc>/2-1/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/1.1:-What-This-Repo-Is/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/2-2-1/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/1.2:-Why-I-Live-Code/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/2-3/</loc>
-     <lastmod>2017-04-04</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/2-4/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/1.3:-Why-SuperCollider/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -70,38 +42,26 @@
     
         
     <url>
-     <loc>/3-1/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/2.1:-Recommended-Addons/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/3-2/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/2.2.1:-Why-ProxySpace/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/3-3/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/2.3:-Setup-Code---Making-Performance-Easier/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/3-5/</loc>
-     <lastmod>2017-04-04</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/3-6/</loc>
-     <lastmod>2017-04-04</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/3-7/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/2.4:-Pbinds-and-Patterns/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -110,8 +70,48 @@
     
         
     <url>
-     <loc>/license/</loc>
-     <lastmod>2017-04-04</lastmod>
+     <loc>/3.1:-Rhythmic-Construction-For-Algorave-Sets/</loc>
+     <lastmod>2017-04-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/3.2:-Basic-Rhythms/</loc>
+     <lastmod>2017-04-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/3.3:-Techniques-For-Modifying-Rhythm/</loc>
+     <lastmod>2017-04-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/3.4:-Euclidean-Rhythms/</loc>
+     <lastmod>2017-04-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/3.5:-StageLimiter-Abuse/</loc>
+     <lastmod>2017-04-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/3.6:-L-Systems-For-Rhythm/</loc>
+     <lastmod>2017-04-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/legalcode/</loc>
+     <lastmod>2017-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
