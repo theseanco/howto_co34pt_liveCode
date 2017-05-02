@@ -1,21 +1,6 @@
-# Pitch and 'Static Synths'
+//load the setup file
+("../../Setup/Setup.scd").loadRelative
 
-TODO: do we need this
-
--------
-
-Outside of patterns, pitch is handled primarily using the `freq` argument of UGens - for example:
-
-```supercollider
-~sin = {SinOsc.ar(440,0,0.1)};
-~sin.play;
-```
-
-With `440` being the frequency.
-
-This `freq` argument can easily be fitted to the harmonic series by using multiplication and the .range and .round methods applied to various Ugens:
-
-```
 //set a fundamental frequency
 ~f = {70}
 //a fixed pitch sine wave, using a fundamental frequency
@@ -64,15 +49,11 @@ s.scope
 )
 //and more kicks because i really liked this one
 (
-~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(Pwhite(1,15),16)/6,\amp,2,\rate,Pwrand([1,1.2,1.4,2],[0.6,0.2,0.1,0.1],inf)*1.5);
+~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(Pwhite(1,15),16)/6,\amp,2,\rate,Pwrand([1,1.2,1.4,2,4],[0.55,0.2,0.1,1,0.05],inf)*1.5);
 ~k2 = Pbind(\instrument,\bplay,\buf,d["sk"][0],\dur,1,\amp,2);
 ~k2.play;
 )
-```
 
-Scales are a bit of a pain to use outside of patterns, but it's possible using the [Scale](http://doc.sccode.org/Classes/Scale.html#-degreeToFreq) class and its degreeToFreq method, although it is quite inflexible
-
-```supercollider
 //Scale and DegreeToFreq
 //using the Demand example again
 //a fifth
@@ -82,13 +63,7 @@ Scales are a bit of a pain to use outside of patterns, but it's possible using t
 )
 //Note that the above does not allow scale notes to be changed once the synth is initiated
 ~scale = {SinOscFB.ar(Scale.minor(\just).degreeToFreq(TRand.kr(1,10,Impulse.kr(1)),48.midicps,1),0.7,0.2)};
-```
 
-.midicps can also be used, if you know the MIDI note numbers of a scale that you want to play
-
-```supercollider
 //using .midicps to determine pitch
 ~scale = {SinOscFB.ar(TRand.kr(50,80,Impulse.kr([3,3.01])).midicps,0.7,0.5)};
 ~scale.play
-```
-
