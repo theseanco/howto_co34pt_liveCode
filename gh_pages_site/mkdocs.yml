@@ -8,6 +8,7 @@ pages:
         - 'What this Repo Is': '1-1-What-This-Repo-Is.md'
         - 'Why I live Code': '1-2-Why-I-Live-Code.md'
         - 'Why SuperCollider?': '1-3-Why-SuperCollider.md'
+        - 'How To Use This Repo': '1-4-how-to-use-this-repo.md'
     - Basics:
         - 'Recommended Addons': '2-1-Recommended-Addons.md'
         - 'ProxySpace - Live Coding in SuperCollider': '2-2-1-Why-ProxySpace.md'
