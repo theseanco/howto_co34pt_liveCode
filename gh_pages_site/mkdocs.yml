@@ -26,6 +26,7 @@ pages:
         - 'Riffs': '4-3-Riffs.md'
         - 'Pitch and Static Synths': '4-4-Pitch-and-Static-Synths.md'
         - 'Between Pitch and Noise': '4-5-Between-Pitch-And-Noise.md'
+        - 'Good SynthDef Writing for co34pt_LiveCode': '4-6-Good-SynthDef-Writing-for-co34pt-LiveCode.md'
     - Non-Pattern Techniques:
         - 'Drones': '5-1-Drones.md'
         - 'SuperCollider as a Modular Synth': '5-2-SuperCollider-as-a-Modular-Synth.md'

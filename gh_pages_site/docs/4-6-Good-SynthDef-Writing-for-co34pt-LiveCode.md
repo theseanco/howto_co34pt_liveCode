@@ -1,0 +1,1 @@
+../../4: Melody and Pitch/4.6: Good SynthDef Writing for co34pt_LiveCode/4.6: Good SynthDef Writing for co34pt_LiveCode.md
