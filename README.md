@@ -1,13 +1,19 @@
 # howto_co34pt_liveCode
-A repository of readmes, techniques, notes and other materials about how i live code in SuperCollider. A (sorta) companion repository to co34pt_livecode 
 
-This repository is in heavy development (as of April 2017), and will be changing a lot in the coming weeks/months
+-----------------
+
+A repository of readmes, techniques, samples, files notes and other materials about how I live code in SuperCollider. A (sorta) companion repository to co34pt_livecode.
+
+This is currently mostly finished, but does need proofreading, which I will be doing soon.
+
+If you are reading this online, there is also a GitHub repository [here](github.com/theseanco/howto_co34pt_liveCode)
 
 ## CONTENTS
 1. Introduction:
     1. What this Repo Is
     1. Why I live Code
     1. Why SuperCollider?
+    1. How To Use This Repo
 1. Basics:
     1. Recommended Addons
     1. ProxySpace - Live Coding in SuperCollider
@@ -32,5 +38,4 @@ This repository is in heavy development (as of April 2017), and will be changing
 1. Visuals:
     1. FreqScope and Visuals
 
-
-If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.04 only thus far.
+If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.10 only thus far.
