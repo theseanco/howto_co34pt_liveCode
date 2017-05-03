@@ -10,3 +10,4 @@
 - Some of the examples on the gh-pages site have bizarre or incorrect syntax highlighting, figure out why this is
 - suggestion from datamads - talk about .asStream in Euclidean Rhythms
 - talk about proxymixer
+- RE-MAKE ALL SYMLINKS
