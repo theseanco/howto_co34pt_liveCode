@@ -8,12 +8,12 @@ cd ~/src
 
 sudo apt-get install git
 
-git clone -b 3.8 https://github.com/supercollider/supercollider.git
+git clone --recursive -b 3.8 https://github.com/supercollider/supercollider.git
 
 cd supercollider
 
 # install dependencies
-sudo apt-get install build-essential libjack-jackd2-dev libsndfile1-dev libasound2-dev libavahi-client-dev libicu-dev libreadline6-dev libfftw3-dev libxt-dev libudev-dev pkg-config git cmake qt5-default qt5-qmake qttools5-dev qttools5-dev-tools qtdeclarative5-dev libqt5webkit5-dev qtpositioning5-dev libqt5sensors5-dev libqt5opengl5-dev
+sudo apt-get install build-essential libjack-jackd2-dev libsndfile1-dev libasound2-dev libavahi-client-dev libicu-dev libreadline6-dev libfftw3-dev libxt-dev libudev-dev pkg-config git cmake qt5-default qt5-qmake qttools5-dev qttools5-dev-tools qtdeclarative5-dev libqt5webkit5-dev qtpositioning5-dev libqt5sensors5-dev libqt5opengl5-dev vim emacs jackd2
 
 mkdir build
 
@@ -35,7 +35,7 @@ cd ~/src
 
 # install sc3-plugins
 
-git clone https://github.com/supercollider/sc3-plugins.git
+git clone --recursive https://github.com/supercollider/sc3-plugins.git
 
 cd sc3-plugins
 
