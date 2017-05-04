@@ -15,6 +15,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>/legalcode/</loc>
+     <lastmod>2017-05-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
@@ -173,16 +179,6 @@
         
     <url>
      <loc>/6-1-FreqScope-and-Visuals/</loc>
-     <lastmod>2017-05-04</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>/legalcode/</loc>
      <lastmod>2017-05-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
