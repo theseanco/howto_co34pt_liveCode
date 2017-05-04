@@ -316,17 +316,19 @@
     
         <li class="first-level active"><a href="#riffs">Riffs</a></li>
         
-            <li class="second-level"><a href="#todo-finish-this">TODO: finish this.</a></li>
+            <li class="second-level"><a href="#examples-in-music">Examples in music</a></li>
             
-                <li class="third-level"><a href="#examples-in-music">Examples in music</a></li>
+        
+            <li class="second-level"><a href="#the-up-down-riff">The 'up-down' riff</a></li>
             
-                <li class="third-level"><a href="#the-up-down-riff">The 'up-down' riff</a></li>
+        
+            <li class="second-level"><a href="#phasing">'Phasing'</a></li>
             
-                <li class="third-level"><a href="#phasing">'Phasing'</a></li>
+        
+            <li class="second-level"><a href="#sample-stabs">Sample stabs</a></li>
             
-                <li class="third-level"><a href="#sample-stabs">Sample stabs</a></li>
-            
-                <li class="third-level"><a href="#place-and-compound-riffs">Place and compound riffs</a></li>
+        
+            <li class="second-level"><a href="#place-and-compound-riffs">Place and compound riffs</a></li>
             
         
     
@@ -335,7 +337,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="riffs">Riffs</h1>
-<h2 id="todo-finish-this">TODO: finish this.</h2>
+<hr />
 <h3 id="examples-in-music">Examples in music</h3>
 <p>A <a href="https://en.oxforddictionaries.com/definition/riff">riff</a> is a short, repeated musical phrase that is used as an anchor or a refrain in a piece of music.</p>
 <p>I've always been drawn to guitar music with <a href="https://www.youtube.com/watch?v=WgF4ZuXVcIo">riffs</a>, and riff-heavy electronic music <a href="https://www.youtube.com/watch?v=YDZ9HYCAknc">is</a> <a href="https://www.youtube.com/watch?v=P8JEm4d6Wu4&amp;feature=youtu.be&amp;t=2m16s">no</a> <a href="https://www.youtube.com/watch?v=2FmFXQSIzCo">exception</a>. A <em>great</em> example of riff-heavy live coding is the music of <a href="https://fractalmeat.bandcamp.com/album/this-is-fine">Belisha Beacon's</a>, who makes a network of shifting riffs using <a href="http://www.ixi-audio.net/ixilang/">ixi lang</a>.</p>
@@ -432,7 +434,7 @@ p.clock.tempo = 1.8;
 </code></pre>
 
 <h3 id="sample-stabs">Sample stabs</h3>
-<p>Another way to make riffs is to use pitched samples, and define the pitch of the riff using the <code>\rate</code> argument of <code>bplay</code>. </p>
+<p>Another way to make riffs is to use pitched samples, and define the pitch of the riff using the <code>\rate</code> argument of <code>bplay</code>.</p>
 <p>A version of this I use quite a lot is derived from '90s rave music:</p>
 <pre><code class="supercollider">//synth stabs - try this with both stab 0 and 1.
 (
@@ -463,7 +465,27 @@ p.clock.tempo = 2.4;
 </code></pre>
 
 <h3 id="place-and-compound-riffs">Place and compound riffs</h3>
-<pre><code class="supercollider">TODO: Write an example of Place and compound riffs and reverse-engineer a description out of the way that Place works
+<p><a href="http://doc.sccode.org/Classes/Place.html">Place</a> is 'interlaced embedding of subarrays'. Simply put, if you put a riff inside of another riff (or an array inside of another array), the first level of the array will be played over, and each subsequent value of the subarrays will be iterated over once every time the first level is played. This is really difficult to explain, so have a look at the first numerical example of the Place documentation for this one. Here is an example of how two riffs can be layered together using Place:</p>
+<pre><code class="supercollider">//Place - riffs that contain riffs
+(
+//first riff
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Place([0,7],inf),\octave,3,\dur,0.25,\d,0.6,\a,Pseq((1..40),inf),\pan,0,\amp,0.5);
+~ring1.play;
+)
+//stop
+~ring1.stop;
+(
+//second riff
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Place([2,4,3,5,4,6,8,11],inf),\octave,3,\dur,0.25,\d,0.6,\a,Pseq((1..40),inf),\pan,0,\amp,0.5);
+~ring1.play;
+)
+//stop
+~ring1.stop;
+(
+//two riffs laced together with the longer one on the inner level, playing the first riff and then a note of the second
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Place([0,7,[2,4,3,5,4,6,8,11]],inf),\octave,3,\dur,0.25,\d,0.6,\a,Pseq((1..40),inf),\pan,0,\amp,0.5);
+~ring1.play
+)
 </code></pre></div>
         
     </div>

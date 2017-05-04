@@ -346,7 +346,7 @@
 <p>======</p>
 <p>In 3.2 I went over a few basic rhythmic units for some simple dance music rhythms, here I will elaborate on a few of the more simple techniques I use to get a bit of complexity in my rhythms.</p>
 <h3 id="why-i-dont-use-total-randomness">Why I don't use (total) randomness</h3>
-<p>The <a href="../TODO">Pwhite</a> class is a great way to incorporate randomness into patterns, and one of the first things I tried to do when adding complexity to rhythms was to simply randomise them, however the results were often quite disappointing, especially with multiple random rhythms played at once for sounds that are played regularly (i.e. snares, hats):</p>
+<p>The <a href="http://doc.sccode.org/Classes/Pwhite.html">Pwhite</a> class is a great way to incorporate randomness into patterns, and one of the first things I tried to do when adding complexity to rhythms was to simply randomise them, however the results were often quite disappointing, especially with multiple random rhythms played at once for sounds that are played regularly (i.e. snares, hats):</p>
 <pre><code class="supercollider">//Random rhythm with Pwhite
 (
 ~sn = Pbind(\instrument,\bplay,\buf,d[&quot;s&quot;][0],\dur,Pwhite(1,5.0),\amp,1);
@@ -362,7 +362,7 @@
 )
 </code></pre>
 
-<p>With rhythms that use random floating point numbers, the durations that are used have no relationship to any central pulse, and will end up cutting across the beat a lot of the time in a way that I feel does not make sense in dance music. Instead, randomness can be incorporated within various techniques (for a great example see the way that Pwhite is used in the section on Euclidean Rhythms), or constrained to fit within a more regular pattern by using methods (which can be found in the <a href="../TODO">Pattern Documentation</a>).</p>
+<p>With rhythms that use random floating point numbers, the durations that are used have no relationship to any central pulse, and will end up cutting across the beat a lot of the time in a way that I feel does not make sense in dance music. Instead, randomness can be incorporated within various techniques (for a great example see the way that Pwhite is used in the section on Euclidean Rhythms), or constrained to fit within a more regular pattern by using methods such as .round (which can be found in the <a href="http://doc.sccode.org/Classes/Pattern.html">Pattern Documentation</a>).</p>
 <p>Here is an example of using methods to constrain Pwhite into a form that is more palatable:</p>
 <pre><code class="supercollider">//same example but with all rhythms constrained
 (
@@ -399,7 +399,7 @@
 </code></pre>
 
 <h3 id="layering">Layering</h3>
-<p>Some great advice I received from a lecturer was 'if one of them is good, lots of them will be great' (paraphrased), when talking about the work of <a href="TODO: Who is this again?">an artist</a>. This works really well when applied to rhythmic percussion, particularly if each layer of similar percussion serves to re-contextualise the last.</p>
+<p>Some great advice I received from a lecturer was 'if one of them is good, lots of them will be great' (paraphrased), when talking about the work of <a href="http://zimoun.net/works.html">zimoun</a>. This works really well when applied to rhythmic percussion, particularly if each layer of similar percussion serves to re-contextualise the last.</p>
 <p>When I'm layering rhythms, there are generally a few techniques I employ to make doing so 'work', or just to sound better:</p>
 <ul>
 <li>Layer at different pitches:</li>
@@ -485,16 +485,15 @@ l = Prewrite(1, // start with 0
 ~ding = Pbind(\instrument,\bplay,\buf,d[&quot;ding&quot;][0],\dur,Pwhite(1,5),\amp,1,\rate,0.2);
 ~h.play;~c.play;~t.play;~ding.play;~sn.play;
 )
-//extremely loud kick throttles everything elese
+//extremely loud kick throttles everything else
 (
 ~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][2],\dur,4,\amp,100,\rate,0.5);
 ~k.play;
 )
 </code></pre>
 
-<p>TODO: is there any more of these?</p>
 <h3 id="pwrand-weighted-distribution-and-hassle-free-controlled-randomness">Pwrand - Weighted distribution and hassle-free controlled randomness</h3>
-<p>A technique that I started using after being inspired by Trap instrumentals (such as Ace Hood's <a href="https://www.youtube.com/watch?v=-2KF2JbrQ94">Bugatti</a>) was hi-hats that snapped between 1/4, 1/8, 1/6 and 1/16th note patterns. The best way I found to do this was to use <a href="TODO: this">Pwrand</a>. Pwrand takes an array of items, and will select those items randomly within a weighted distribution, allowing control over the frequency of occurrence of particular elements.</p>
+<p>A technique that I started using after being inspired by Trap instrumentals (such as Ace Hood's <a href="https://www.youtube.com/watch?v=-2KF2JbrQ94">Bugatti</a>) was hi-hats that snapped between 1/4, 1/8, 1/6 and 1/16th note patterns. The best way I found to do this was to use <a href="http://doc.sccode.org/Classes/Pwrand.html">Pwrand</a>. Pwrand takes an array of items, and will select those items randomly within a weighted distribution, allowing control over the frequency of occurrence of particular elements.</p>
 <p>The trap hi-hats looked like this:</p>
 <pre><code class="supercollider">//trap(ish) hi-hats
 //Has a choice of four rhythmic patterns with lesser chance for each, results in a mostly 0.25-duration hat which can potentially go quite quickly
@@ -545,11 +544,11 @@ p.clock.tempo = 2.3;
 </code></pre>
 
 <h3 id="back-and-forth-pkey-and-linking-values">Back-and-forth - Pkey and linking values</h3>
-<p><a href="TODO: this">Pkey</a> is a pattern class used to embed the same value multiple times in the same pattern - for example if the release value of a SynthDef needed to be the same as the duration of the note:</p>
+<p><a href="http://doc.sccode.org/Classes/Pkey.html">Pkey</a> is a pattern class used to embed the same value multiple times in the same pattern - for example if the release value of a SynthDef needed to be the same as the duration of the note:</p>
 <pre><code class="supercollider">Pbind(\instrument,\something,\dur,Pseq([2,3,4,5],inf),\rel,Pkey(\dur))
 </code></pre>
 
-<p>One way to use this in rhythm is to create sample playback that flips back and forth. Due to how the <a href="TODO: This"><code>bplay</code></a> SynthDef works, if a buffer is to be played backwards it will need to be started just before the end of the sample as the Synth will release once the sample is finished (for more information see <a href="TODO: this">Ugen done-actions</a>). Using the <code>.linlin</code> linear scaling method this value can then be scaled into the rate of playback to create a back-and-forth pattern in percussion, shown here on a snare:</p>
+<p>One way to use this in rhythm is to create sample playback that flips back and forth. Due to how the <code>bplay</code> SynthDef works, if a buffer is to be played backwards it will need to be started just before the end of the sample as the Synth will release once the sample is finished (for more information see <a href="http://danielnouri.org/docs/SuperColliderHelp/UGens/Synth%20control/Envelopes/UGen-doneActions.html">Ugen done-actions</a>). Using the <code>.linlin</code> linear scaling method this value can then be scaled into the rate of playback to create a back-and-forth pattern in percussion, shown here on a snare:</p>
 <pre><code class="supercollider">//back-and-forth snare
 (
 ~sn = Pbind(\instrument,\vplay,\buf,d[&quot;s&quot;][0],\dur,Pbjorklund2(Pwhite(1,6),16)/4,\amp,1,\rate,Prand([-1,1],inf),\pos,Pkey(\rate).linlin(-1,1,0.99,0));
