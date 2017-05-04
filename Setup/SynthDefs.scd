@@ -58,7 +58,7 @@ SynthDef(\vplay,
 	{arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, atk=0.0, sus=1, rel= 0, pos=0;
 		var sig, env;
 		sig = Pan2.ar(PlayBuf.ar(2,buf,BufRateScale.ir(buf) * rate,1,BufDur.kr(buf)*pos*44100,doneAction:2),pan);
-		env = EnvGen.ar(Env.linen(atk,sus,rel2,1));
+		env = EnvGen.ar(Env.linen(atk,sus,rel,1));
 		sig = sig * env;
 		sig = sig * amp;
 		Out.ar(out,sig);
@@ -235,7 +235,7 @@ Contains a LeakDC Ugen to stop any DC bias in the signal from disturbing the res
 Arguments for a, b, x0 and x1 are at their default values which gives a periodic signal, and only slight deviation will change the properties of the signal a LOT.
 The non-interpolated version gives the most 'harsh' signal
 
-it uses the equation x(n+2) = 1 - a * x(n+1)^2 + b * x(n) 
+it uses the equation x(n+2) = 1 - a * x(n+1)^2 + b * x(n)
 
 freq = frequency
 a = a
@@ -256,7 +256,7 @@ amp = volume
 SynthDef(\henon,
 	{arg freq=440,a=1.3,b=0.3,x0=0.30501993062401,x1=0.20938865431933,atk=0.01,sus=1,rel=1,ts=1,out=0,pan=0,amp=0.3;
 		var sig,env;
-		sig = HenonN.ar(freq,a,b,x0,y0,amp);
+		sig = HenonN.ar(freq,a,b,x0,x1,amp);
 		env = EnvGen.ar(Env.linen(atk,sus,rel),1,1,0,ts,2);
 		sig = LeakDC.ar(sig);
 		sig = sig*env;
@@ -271,7 +271,7 @@ Contains a LeakDC Ugen to stop any DC bias in the signal from disturbing the res
 Arguments for a, b, x0 and x1 are at their default values which gives a periodic signal, and only slight deviation will change the properties of the signal a LOT.
 The cubic-interpolated version gives the most 'soft' signal
 
-it uses the equation x(n+2) = 1 - a * x(n+1)^2 + b * x(n) 
+it uses the equation x(n+2) = 1 - a * x(n+1)^2 + b * x(n)
 
 freq = frequency
 a = a
@@ -290,9 +290,9 @@ amp = volume
 
 (
 SynthDef(\henonc,
-	{arg freq=440,a=1.3,b=0.3,x0=0.30501993062401,y0=0.20938865431933,atk=0.01,sus=1,rel=1,ts=1,out=0,pan=0,amp=0.3;
+	{arg freq=440,a=1.3,b=0.3,x0=0.30501993062401,x1=0.20938865431933,atk=0.01,sus=1,rel=1,ts=1,out=0,pan=0,amp=0.3;
 		var sig,env;
-		sig = HenonC.ar(freq,a,b,x0,y0,amp);
+		sig = HenonC.ar(freq,a,b,x0,x1,amp);
 		sig = LeakDC.ar(sig);
 		Out.ar(out,Pan2.ar(sig,pan));
 }).add;
@@ -349,7 +349,7 @@ freq = frequency of buffer player
 rq = Q of Band Pass Filter
 bpfmix = amount of band pass filter included in signal
 pan = pan in the stereo field
-amp = volume 
+amp = volume
 out = channels out
 
 */
@@ -398,7 +398,7 @@ SynthDef(\sinfb, {
 
 /*
 
-ring1: a Ringz-based synth which is inspired by this: http://sccode.org/1-1b 
+ring1: a Ringz-based synth which is inspired by this: http://sccode.org/1-1b
 ring2, ring3 and ring4 represent the other tones used in this example, but I don't use them. They have been left in in case I would like to use the original combination of frequencies
 the .tanh gives a wonderful squelch when driven very hard, and at low frequencies it resembles an acid bass
 

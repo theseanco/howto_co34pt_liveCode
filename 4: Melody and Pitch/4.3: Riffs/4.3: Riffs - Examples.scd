@@ -106,3 +106,23 @@ p.clock.tempo = 2.4;
 ~k.play;~sn.play;~fx.play;~k2.play;
 )
 
+//Place - riffs that contain riffs
+(
+//first riff
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Place([0,7],inf),\octave,3,\dur,0.25,\d,0.6,\a,Pseq((1..40),inf),\pan,0,\amp,0.5);
+~ring1.play;
+)
+//stop
+~ring1.stop;
+(
+//second riff
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Place([2,4,3,5,4,6,8,11],inf),\octave,3,\dur,0.25,\d,0.6,\a,Pseq((1..40),inf),\pan,0,\amp,0.5);
+~ring1.play;
+)
+//stop
+~ring1.stop;
+(
+//two riffs laced together with the longer one on the inner level, playing the first riff and then a note of the second
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,Scale.minor,\degree,Place([0,7,[2,4,3,5,4,6,8,11]],inf),\octave,3,\dur,0.25,\d,0.6,\a,Pseq((1..40),inf),\pan,0,\amp,0.5);
+~ring1.play
+)

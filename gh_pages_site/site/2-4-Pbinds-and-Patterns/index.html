@@ -348,7 +348,7 @@
 </blockquote>
 <p>A large part of my live coding performances involve using patterns, specifically <a href="http://doc.sccode.org/Classes/Pbind.html">Pbinds</a> as Proxies inside of ProxySpace (see section 2.2.1) to create rhythmic elements that are synchronised to ProxySpace's <a href="http://doc.sccode.org/Classes/TempoClock.html">TempoClock</a>. In this case, 'rhythmic elements' can mean percussion, melody, bass, pads, or generally anything that is played 'in tempo'.</p>
 <h3 id="synthdefs-arguments-and-pbinds">SynthDefs, Arguments and Pbinds</h3>
-<p>The Pbinds I perform with work in conjunction with a set of <a href="http://doc.sccode.org/Classes/SynthDef.html">SynthDefs</a> (these can be found in the <a href="TODO:LINK">SynthDefs.scd</a> file of the Setup folder) which serve various musical purposes, and plays them with specifies arguments at a given duration. This isn't a particularly intuitive concept to explain, but an example can help illustrate how this works. Take the SynthDef I use the most, <code>bplay</code>:</p>
+<p>The Pbinds I perform with work in conjunction with a set of <a href="http://doc.sccode.org/Classes/SynthDef.html">SynthDefs</a> (these can be found in the SynthDefs.scd file of the Setup folder) which serve various musical purposes, and plays them with specifies arguments at a given duration. This isn't a particularly intuitive concept to explain, but an example can help illustrate how this works. Take the SynthDef I use the most, <code>bplay</code>:</p>
 <pre><code class="supercollider">SynthDef(\bplay,
     {arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, pos = 0, rel=15;
         var sig,env ;

@@ -322,7 +322,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="setup-code-making-performance-easier">Setup Code - Making Performance Easier</h1>
-<p>TODO: Proofread this</p>
+<hr />
 <p>In the root directory of this repo, there is a <a href="../../Setup">Setup</a> folder, which contains some files, including <a href="../../Setup/Setup.scd"><code>Setup.scd</code></a>, <a href="../../Setup/SynthDefs.scd"><code>SynthDefs.scd</code></a> and <a href="../../Setup/Snippets.scd"><code>Snippets.scd</code></a>. </p>
 <p>As I mentioned in 'Why SuperCollider', one of my big gripes with SuperCollider and performing with it is the amount of pre-building that needs to be done in order to incorporate any higher level structures, such as playing samples, triggering instruments, and suchlike. This setup folder addresses that problem, and contains my personal SuperCollider performance setup, and can be loaded entirely by either running the <code>Setup.scd</code> file, or calling it from somewhere else (for example in line 14 of the <a href="2.2:\ ProxySpace\ -\ My\ Foundation\ For\ Live\ Coding\ In\ SuperCollider/Proxyspace\ ii.scd">second ProxySpace tutorial</a> by specifying the relative filepath to the setup file and using the <code>.loadRelative</code> method on it. I can (and have) performed without this setup file, but for the most part I run this setup file before any performance I do.</p>
 <p>The <code>Setup.scd</code> file does the following things:

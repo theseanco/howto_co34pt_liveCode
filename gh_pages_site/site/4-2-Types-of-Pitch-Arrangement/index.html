@@ -340,11 +340,9 @@
         <div class="col-md-9" role="main">
 
 <h1 id="types-of-pitch-arrangement">Types of Pitch Arrangement</h1>
-<p>TODO: Finish This</p>
 <hr />
 <h3 id="majorminor-scales">Major/Minor scales</h3>
 <p>The bedrock of the western musical canon is major and minor scales. Generally it's taught in British music education that the major scale is a '<a href="https://www.youtube.com/watch?time_continue=49&amp;v=TAgresBrfcc">happy</a>' sound and the minor scale is a '<a href="https://www.youtube.com/watch?v=fOk8Tm815lE">serious</a>' or '<a href="https://www.youtube.com/watch?v=gIuotFZnBtk">sad</a>'. Generally though Minor tends to be used in most music I hear on a day-to-day basis, so if I'm going to be drawing on standard musical scale I will use that. For information on what they are from a music theory perspective check <a href="https://en.wikipedia.org/wiki/Major_and_minor">this article</a>.</p>
-<p>TODO: Pentatonic scales</p>
 <p>A few good chords to use that will work with the Major and Minor scale very well at any point will be the following:</p>
 <pre><code class="supercollider">//chords I, IV and V
 //in Major and Minor - re-evaluate for a different scale (using the .choose method)
@@ -392,6 +390,7 @@ d[\scale] = [Scale.major,Scale.minor].choose;
 );
 </code></pre>
 
+<p>The Major and Minor <a href="https://en.wikipedia.org/wiki/Pentatonic_scale">Pentatonic scales</a> are also good for 'sounding good', and are very popular on Guitar for easily creating solo lines.</p>
 <h3 id="chordsymbol-chord-notation-in-supercollider">ChordSymbol - chord notation in SuperCollider</h3>
 <p>If you have a specific set of chords you would like to play using Patterns, the <a href="https://github.com/triss/ChordSymbol">ChordSymbol addon</a> by triss is a great way to do this, with the chords in arrays I specified in the previous section replaced by a dictionary of chord names, which are automatically translated into their note values. This is very useful if you're working with an instrumentalist and you're not too quick in translating numbers to named chords (which I am not)</p>
 <pre><code class="supercollider">//ChordProg - house chords with chord names in an array to make a chord sequence...

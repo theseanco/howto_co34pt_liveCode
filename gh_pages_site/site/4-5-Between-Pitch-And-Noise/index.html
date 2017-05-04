@@ -334,13 +334,18 @@
         <div class="col-md-9" role="main">
 
 <h1 id="between-pitch-and-noise">Between Pitch and Noise</h1>
-<p>TODO: example of pitch/noise/dichotomy/unification - Holden perhaps? Put this in the preamble</p>
+<p>TODO: could do with an example of pitch-&gt;noise-&gt;pitch in some actual music.</p>
 <hr />
 <h3 id="preamble">Preamble</h3>
 <p>An important corollary when talking about pitch is to talk about unpitched sound or noise. In periods of music dominated by pitched sounds, disintegration or erosion of pitch into noise can be an important technique to drive a set forward, or just provide sonic interest. Here are some techniques to achieve this.</p>
 <h3 id="sinoscfb">SinOscFB</h3>
 <p>A Ugen I use a lot (read: far too much) is <a href="http://doc.sccode.org/Classes/SinOscFB.html">SinOscFB</a>, a 'sine oscillator that has phase modulation feedback'. I've always been a big fan of bare sine waves, and SinOscFB's <code>feedback</code> argument allows a sine wave to be modulated into noise and back very easily, with extreme modulations creating a strange-sounding degraded sine wave.</p>
-<pre><code class="supercollider">TODO: Demonstrate SinOscFB, going through the end of the modulation curve and back out of the end of it
+<pre><code class="supercollider">//SinOscFB - A sine wave that can move between pitch and noise and noisy pitch
+(
+//polling the modulation of the 'feedback' argument, to show the way in which SinOscFB degrades sine waves
+~sinfbstatic = {SinOscFB.ar([330,440],XLine.kr(0.1,500,60).poll(10),0.6)};
+~sinfbstatic.play;
+)
 </code></pre>
 
 <p>A stalwart of my SynthDef arsenal is <code>sinfb</code>, a <code>SinOscFB</code> Ugen inside of an <code>Env.perc</code> which is used to control its amplitude curve. This SynthDef is very flexible -  great for basses, melodies and chords, but also great for flexibly turning melodic riffs into textural noise, as well as blending the two. Notice that from values <code>0.0</code> to <code>20.0</code> there is a full spectrum from clean sine wave to noise feedback, any values above <code>30.0</code> will blend the two and are what I would consider 'extreme modulation'. In general usage during sets I tend to use the range 0.0 to 3.0, as anything above tends to be too noisy and interferes with the percussion i'm using.</p>
