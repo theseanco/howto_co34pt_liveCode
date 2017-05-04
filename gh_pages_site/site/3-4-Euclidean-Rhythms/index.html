@@ -109,7 +109,7 @@
                         
                             
 <li >
-    <a href="../1-4-how-to-use-this-repo/">How To Use This Repo</a>
+    <a href="../1-4-How-To-Use-This-Repo/">How To Use This Repo</a>
 </li>
 
                         
@@ -130,7 +130,7 @@
                         
                             
 <li >
-    <a href="../2-2-1-Why-ProxySpace/">ProxySpace - Live Coding in SuperCollider</a>
+    <a href="../2-2-Why-ProxySpace/">ProxySpace - Live Coding in SuperCollider</a>
 </li>
 
                         
@@ -232,7 +232,7 @@
                         
                             
 <li >
-    <a href="../4-6-Good-SynthDef-Writing-for-co34pt-LiveCode/">Good SynthDef Writing for co34pt_LiveCode</a>
+    <a href="../4-6-Good-SynthDef-Writing-for-co34pt_LiveCode/">Good SynthDef Writing for co34pt_LiveCode</a>
 </li>
 
                         
@@ -449,6 +449,8 @@ p.clock.tempo = 2.13;
 ~c = Pbind(\instrument,\bplay,\buf,d[&quot;t&quot;][0],\dur,Pbjorklund2(5,16)/4,\amp,0.7);
 )
 //offset both
+//Note: I am using .asStream here, because a standard Pwhite will not work in the offset argument of Pbjorklund2, as the values need to be embedded as a stream.
+//A general rule of mine is that if pattern classes don't work properly, use .asStream on the end of them and they likely will.
 (
 ~c = Pbind(\instrument,\bplay,\buf,d[&quot;t&quot;][0],\dur,Pbjorklund2(5,16,inf,Pwhite(1,10).asStream)/4,\amp,0.7);
 ~c2 = Pbind(\instrument,\bplay,\buf,d[&quot;t&quot;][0],\dur,Pbjorklund2(5,16,inf,Pwhite(1,15).asStream)/4,\amp,0.7,\rate,1.1);

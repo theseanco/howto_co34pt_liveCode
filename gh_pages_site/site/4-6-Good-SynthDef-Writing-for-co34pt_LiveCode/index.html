@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>How To Use This Repo - Howto_co34pt_LiveCode</title>
+    <title>Good SynthDef Writing for co34pt_LiveCode - Howto_co34pt_LiveCode</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -85,7 +85,7 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -108,8 +108,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">How To Use This Repo</a>
+<li >
+    <a href="../1-4-How-To-Use-This-Repo/">How To Use This Repo</a>
 </li>
 
                         
@@ -130,7 +130,7 @@
                         
                             
 <li >
-    <a href="../2-2-1-Why-ProxySpace/">ProxySpace - Live Coding in SuperCollider</a>
+    <a href="../2-2-Why-ProxySpace/">ProxySpace - Live Coding in SuperCollider</a>
 </li>
 
                         
@@ -196,7 +196,7 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Melody and Pitch <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -231,8 +231,8 @@
 
                         
                             
-<li >
-    <a href="../4-6-Good-SynthDef-Writing-for-co34pt-LiveCode/">Good SynthDef Writing for co34pt_LiveCode</a>
+<li class="active">
+    <a href="./">Good SynthDef Writing for co34pt_LiveCode</a>
 </li>
 
                         
@@ -302,12 +302,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../1-3-Why-SuperCollider/">
+                        <a rel="next" href="../4-5-Between-Pitch-And-Noise/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../2-1-Recommended-Addons/">
+                        <a rel="prev" href="../5-1-Drones/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -323,35 +323,49 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#how-to-use-this-repo">How to use this repo</a></li>
+        <li class="first-level active"><a href="#good-synthdef-writing-for-co34pt_livecode">Good SynthDef writing for co34pt_LiveCode</a></li>
+        
+            <li class="second-level"><a href="#freq-and-frequency">freq and frequency</a></li>
+            
+        
+            <li class="second-level"><a href="#out">out</a></li>
+            
+        
+            <li class="second-level"><a href="#envelopes">Envelopes</a></li>
+            
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="how-to-use-this-repo">How to use this repo</h1>
+<h1 id="good-synthdef-writing-for-co34pt_livecode">Good SynthDef writing for co34pt_LiveCode</h1>
 <hr />
-<p>This repo is designed to be an interactive and explorable set of guides, as well as being browsable online and outside of SuperCollider. It's also designed to be as platform-agnostic as possible, and easily accessible with GitHub's basic tools.</p>
-<p>If you are reading this online, and want to use any examples contained in these documents, or see any code I've written 'in the flesh', there's a few things you'll need to do.</p>
-<p>TODO: linux instructions </p>
-<ol>
-<li>Install <a href="https://supercollider.github.io/download">SuperCollider</a></li>
-<li>Install <a href="https://github.com/supercollider/sc3-plugins/releases">SC3-Plugins</a> (optional but recommended, reasons for this are documented in 2.1)</li>
-<li>Install the recommended Quarks by evaluating the following code in SuperCollider (optional but recommended, reasons for this are documented in 2.1)</li>
-</ol>
-<pre><code class="supercollider">(
-Quarks.install(&quot;Bjorklund&quot;);
-Quarks.install(&quot;BatLib&quot;);
-Quarks.install(&quot;ddwSnippets&quot;);
-)
+<p>I won't cover the fundamentals of <a href="http://sonicbloom.net/en/63-in-depth-synthesis-tutorials-by-sound-on-sound/">synthesis</a> or <a href="http://danielnouri.org/docs/SuperColliderHelp/Tutorials/Getting-Started/SynthDefs%20and%20Synths.html">synthdef</a> writing, as others have done so much better than I ever will.</p>
+<p>If you're going to be writing SynthDefs for Patterns in the format I use in these guides and in my sets, there's a few rules to ensure that things run reasonably smoothly.</p>
+<p>It's also worth reading the <a href="http://doc.sccode.org/Classes/SynthDef.html">SynthDef documentation</a> and <a href="http://doc.sccode.org/Classes/Pbind.html">Pbind documentation</a></p>
+<h3 id="freq-and-frequency"><code>freq</code> and frequency</h3>
+<p>The carrier of a main frequency of a SynthDef should have the argument name <code>freq</code> - this will allow for the use of scales, tunings and detuning within Pattern arguments, from the documentation:</p>
+<blockquote>
+<p>detunedFreq
+actual "pitch" of a synth, determined by:
+freq + detune;
+freq is determined by:
+(midinote + ctranspose).midicps * harmonic;
+midinote is determined by:
+(note + gtranspose + root)/stepsPerOctave * octave * 12;
+note is determined by:
+(degree + mtranspose).degreeToKey(scale, stepsPerOctave)</p>
+</blockquote>
+<p>There are a couple of instances where you can't use <code>freq</code> as the actual frequency, so in which case, use Pkey to reroute the frequency argument like this:</p>
+<pre><code class="supercollider">//where x is the frequency argument
+Pbind(\instrument,\foo,\x,Pkey(\freq),\scale,Scale.minor,\degree,Pseq([4,5,6],inf))
 </code></pre>
 
-<ol>
-<li>Clone this repo, which can be done from <a href="https://github.com/theseanco/howto_co34pt_liveCode">the repo page</a>, using the 'Clone or Download' page</li>
-</ol>
-<p>The articles in this repo are grouped into category folders, which are then contained in subfolders with the name of the article. Each subfolder will have in it a <code>.md</code> file, which contains the text of the article containing examples, and usually a separate <code>.scd</code> file, which will be the examples from the <code>.md</code> file extracted and packaged for direct use within SuperCollider. The <code>.scd</code> files are designed to be loaded and run directly, and will usually contain a <code>.loadRelative</code> which will Setup that you will need to get started. You should then be able to run all examples.</p>
-<p>If you want to read online while playing with examples in SuperCollider, run the <code>Setup.scd</code> file within this repository and then copy-paste the examples on the site into a file in SuperCollider and it <em>should</em> work. I need people to test these examples, so if it doesn't work, please raise an issue on GitHub with exactly what you've done and I'll look into it when I can, or get in touch with me.</p></div>
+<h3 id="out"><code>out</code></h3>
+<p>Each SynthDef should have an argument <code>out</code> in its <code>Out.ar</code>. I always leave it as 0, but it can be used to handle effects routing. I don't know why, but if it doesn't have it, it won't work inside of ProxySpace.</p>
+<h3 id="envelopes">Envelopes</h3>
+<p>Envelopes will be automatically triggered as part of patterns, on the assumption that the trigger of any envelope is set to <code>1</code>. It's also much easier to use envelopes where it does not need a release trigger. I generally use <code>Env.perc</code> and <code>Env.linen</code>. It's also important to use a <code>doneAction</code> which will free the synth once the envelope has completed.</p></div>
         
     </div>
 

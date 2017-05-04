@@ -1,17 +1,18 @@
 site_name: Howto_co34pt_LiveCode
 
 pages:
-    - home: 
-        - 'Readme': 'index.md'
+    - About: 
+        - 'Contents': 'index.md'
         - 'To-Do list': 'todo.md'
+        - 'License': 'legalcode.md'
     - Introduction:
         - 'What this Repo Is': '1-1-What-This-Repo-Is.md'
         - 'Why I live Code': '1-2-Why-I-Live-Code.md'
         - 'Why SuperCollider?': '1-3-Why-SuperCollider.md'
-        - 'How To Use This Repo': '1-4-how-to-use-this-repo.md'
+        - 'How To Use This Repo': '1-4-How-To-Use-This-Repo.md'
     - Basics:
         - 'Recommended Addons': '2-1-Recommended-Addons.md'
-        - 'ProxySpace - Live Coding in SuperCollider': '2-2-1-Why-ProxySpace.md'
+        - 'ProxySpace - Live Coding in SuperCollider': '2-2-Why-ProxySpace.md'
         - 'Setup Code: Making Performance Easier': '2-3-Setup-Code---Making-Performance-Easier.md'
         - 'Pbinds and Patterns: The Basics': '2-4-Pbinds-and-Patterns.md'
     - Rhythm:
@@ -27,13 +28,11 @@ pages:
         - 'Riffs': '4-3-Riffs.md'
         - 'Pitch and Static Synths': '4-4-Pitch-and-Static-Synths.md'
         - 'Between Pitch and Noise': '4-5-Between-Pitch-And-Noise.md'
-        - 'Good SynthDef Writing for co34pt_LiveCode': '4-6-Good-SynthDef-Writing-for-co34pt-LiveCode.md'
+        - 'Good SynthDef Writing for co34pt_LiveCode': '4-6-Good-SynthDef-Writing-for-co34pt_LiveCode.md'
     - Non-Pattern Techniques:
         - 'Drones': '5-1-Drones.md'
         - 'SuperCollider as a Modular Synth': '5-2-SuperCollider-as-a-Modular-Synth.md'
     - Visuals:
         - 'FreqScope and Visuals': '6-1-FreqScope-and-Visuals.md'
-    - About:
-        - 'License': 'legalcode.md'
 
 theme: cinder

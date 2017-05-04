@@ -109,7 +109,7 @@
                         
                             
 <li >
-    <a href="../1-4-how-to-use-this-repo/">How To Use This Repo</a>
+    <a href="../1-4-How-To-Use-This-Repo/">How To Use This Repo</a>
 </li>
 
                         
@@ -130,7 +130,7 @@
                         
                             
 <li >
-    <a href="../2-2-1-Why-ProxySpace/">ProxySpace - Live Coding in SuperCollider</a>
+    <a href="../2-2-Why-ProxySpace/">ProxySpace - Live Coding in SuperCollider</a>
 </li>
 
                         
@@ -232,7 +232,7 @@
                         
                             
 <li >
-    <a href="../4-6-Good-SynthDef-Writing-for-co34pt-LiveCode/">Good SynthDef Writing for co34pt_LiveCode</a>
+    <a href="../4-6-Good-SynthDef-Writing-for-co34pt_LiveCode/">Good SynthDef Writing for co34pt_LiveCode</a>
 </li>
 
                         
@@ -558,7 +558,7 @@ p.clock.tempo = 2.3;
 <pre><code class="supercollider">Pbind(\instrument,\something,\dur,Pseq([2,3,4,5],inf),\rel,Pkey(\dur))
 </code></pre>
 
-<p>One way to use this in rhythm is to create sample playback that flips back and forth. Due to how the <a href="TODO: This"><code>bplay</code></a> Ugen works, if a buffer is to be played backwards it will need to be started just before the end of the sample as the Synth will release once the sample is finished (for more information see <a href="TODO: this">Ugen done-actions</a>). Using the <code>.linlin</code> linear scaling method this value can then be scaled into the rate of playback to create a back-and-forth pattern in percussion, shown here on a snare:</p>
+<p>One way to use this in rhythm is to create sample playback that flips back and forth. Due to how the <a href="TODO: This"><code>bplay</code></a> SynthDef works, if a buffer is to be played backwards it will need to be started just before the end of the sample as the Synth will release once the sample is finished (for more information see <a href="TODO: this">Ugen done-actions</a>). Using the <code>.linlin</code> linear scaling method this value can then be scaled into the rate of playback to create a back-and-forth pattern in percussion, shown here on a snare:</p>
 <pre><code class="supercollider">//back-and-forth snare
 (
 ~sn = Pbind(\instrument,\vplay,\buf,d[&quot;s&quot;][0],\dur,Pbjorklund2(Pwhite(1,6),16)/4,\amp,1,\rate,Prand([-1,1],inf),\pos,Pkey(\rate).linlin(-1,1,0.99,0));
@@ -582,12 +582,11 @@ p.clock.tempo = 2.3;
 
 <h3 id="stretch">\stretch</h3>
 <p>Another option for rhythmic variation is to use the <code>\stretch</code> argument built in to <code>Pbind</code>. This argument will multiply the <code>\dur</code> argument by <code>\stretch</code> to create a final duration which will be used in the pattern. I don't use this too much as it stands (April 2017), but it can be used very effectively</p>
-<p>```supercollider
-//using the \stretch argument - each time a cycle completes change the stretch duration
+<pre><code class="supercollider">//using the \stretch argument - each time a cycle completes change the stretch duration
 //a fake argument is created here - \euclidNum is used to inform both \dur and \stretch to ensure both work with the same number of onsets
-~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\euclidNum,Pwhite(1,7),\dur,Pbjorklund2(Pkey(\euclidNum),8)/4,\amp,1,\rate,Pseq([3,4,5],inf),\stretch,Pseq([1,0.5,0.25,2],inf).stutter(Pkey(\euclidNum).asStream));
+~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][2],\euclidNum,Pwhite(1,7),\dur,Pbjorklund2(Pkey(\euclidNum),8)/4,\amp,1,\rate,Pseq([3,4,5],inf),\stretch,Pseq([1,0.5,0.25,2],inf).stutter(Pkey(\euclidNum).asStream));
 ~k.play;
-````</p></div>
+</code></pre></div>
         
     </div>
 

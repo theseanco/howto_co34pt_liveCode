@@ -11,7 +11,7 @@ for FILENAME in *.md; do mv "$FILENAME" "${FILENAME%.md}"; done
 rename 'y/./-/' *
 
 - replace  with -
-rename 'y/ /-' *
+rename 's/ /-/g'
 
 add .md back again
 for f in *; do mv "$f" "$f.md"; done
