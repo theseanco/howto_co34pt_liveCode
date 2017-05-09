@@ -10,6 +10,9 @@ This resource is hosted both [on GitHub](https://github.com/theseanco/howto_co34
 
 This repository is currently mostly finished, but does need proofreading, which I will be doing soon. It will be continually updated as my live coding practice develops.
 
+I'm always keen to know the ways in which this has been helpful to anyone, or any comments you have at all.
+Drop me a line on [Twitter](https://twitter.com/theseanco), [GitHub](https://github.com/theseanco/) or via [Email](mailto:theseancotterill atsign live period com)
+
 ### CONTENTS
 
 1. Introduction:
