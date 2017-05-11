@@ -5,6 +5,18 @@ DDWSnippets.put("snare","~sn = Pbind(\\instrument,\\bplay,\\buf,d[\"s\"][0],\\du
 DDWSnippets.put("clap","~c = Pbind(\\instrument,\\bplay,\\buf,d[\"c\"][0],\\dur,##0.75##,\\amp,1);");
 DDWSnippets.put("oh","~oh = Pbind(\\instrument,\\bplay,\\buf,d[\"oh\"][1],\\dur,##Pseq([0.5,Pseq([1],inf)],inf)##,\\amp,1);");
 DDWSnippets.put("backforth","~sn = Pbind(\\instrument,\\vplay,\\buf,d[\"s\"][0],\\dur,Pbjorklund2(Pwhite(1,6),16)/4,\\amp,1,\\rate,Prand([-1,1],inf),\\pos,Pkey(\\rate).linlin(-1,1,0.99,0));");
+//rave drums
+DDWSnippets.put("ravedrums","(
+~kbk = Pbind(\\instrument,\\bplay,\\buf,Prand(d[\"breaks175\"],inf),\\dur,16,\\amp,1);
+~kbk2 = Pbind(\\instrument,\\bplay,\\buf,Prand(d[\"breaks175\"],inf),\\dur,16,\\amp,1);
+)");
+//rave piano
+DDWSnippets.put("ravepiano","(
+~piano1 = Pbind(\\instrument,\\bplay,\\buf,d[\"piano\"][1],\\dur,16,\\amp,1)
+~piano2 = Pbind(\\instrument,\\bplay,\\buf,d[\"piano\"][1],\\dur,32,\\amp,1,\\rate,0.5)
+)");
+//quarter note Piano Chop
+DDWSnippets.put("pianochop","~pianoChop = Pbind(\\instrument,\\vplay,\\buf,d[\"piano\"][1],\\dur,0.25,\\atk,0,\\sus,0.04,\\rel,0,\\pos,Pexprand(0.2,0.5),\\amp,1,\\rate,2)")
 
 
 //Specific pattern generators
@@ -72,6 +84,8 @@ DDWSnippets.put("Reverb","
 ~reverbSend = {Mix.ar([##~one##])};
 ~reverb = {arg size = 10, time = 5, damping = 0.5, spread = 15, dry = 0, amp = 0.8, GVerb.ar(Mix.ar([~reverbSend.ar]),size,time,damping,0.5,spread,dry,mul:amp)}
 ~reverb.play;");
+//low shelf on rave drums
+DDWSnippets.put("lowshelf","~lsf = {LowShelf.ar(Mix.ar([~kbk.ar,~kbk2.ar]),200,1,##10##)}")
 
 //Streson - speed controls speed of sweep and min/max control minimum and maximum values. Keep them low and with not a lot between for sensible effects and don't for silly ones. res controls the severity of the effect
 DDWSnippets.put("stresonsend","
