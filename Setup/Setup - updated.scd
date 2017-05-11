@@ -6,7 +6,7 @@
 s.options.numBuffers = 1024 * 16;
 //increase the memory available to the server
 s.options.memSize = 8192 * 64;
-//boot the server, wait until it has booted, then execute the following - Thanks Till Bovermann!
+//boot the server, wait until it has booted, then execute the following
 s.waitForBoot({
 	//display the oscilloscope
 	s.scope;
@@ -30,7 +30,7 @@ s.waitForBoot({
 	("SynthDefs.scd").loadRelative;
 	//loads snippets from setup folder
 	("Snippets.scd").loadRelative;
-	//wait, for the server to sync - Thanks Till Bovermann!
+	//wait, for the server to sync
 	s.sync;
 	//activate StageLimiter - Part of the BatLib quark
 	StageLimiter.activate;
