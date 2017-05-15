@@ -12,11 +12,19 @@ DDWSnippets.put("ravedrums","(
 )");
 //rave piano
 DDWSnippets.put("ravepiano","(
-~piano1 = Pbind(\\instrument,\\bplay,\\buf,d[\"piano\"][1],\\dur,16,\\amp,1)
-~piano2 = Pbind(\\instrument,\\bplay,\\buf,d[\"piano\"][1],\\dur,32,\\amp,1,\\rate,0.5)
+~piano1 = Pbind(\\instrument,\\bplay,\\buf,d[\"piano\"][1],\\dur,16,\\amp,1);
+~piano2 = Pbind(\\instrument,\\bplay,\\buf,d[\"piano\"][1],\\dur,32,\\amp,1,\\rate,0.5);
 )");
 //quarter note Piano Chop
-DDWSnippets.put("pianochop","~pianoChop = Pbind(\\instrument,\\vplay,\\buf,d[\"piano\"][1],\\dur,0.25,\\atk,0,\\sus,0.04,\\rel,0,\\pos,Pexprand(0.2,0.5),\\amp,1,\\rate,2)")
+DDWSnippets.put("pianochop","~pianoChop = Pbind(\\instrument,\\vplay,\\buf,d[\"piano\"][1],\\dur,0.25,\\atk,0,\\sus,0.04,\\rel,0,\\pos,Pexprand(0.2,0.5),\\amp,1,\\rate,2)");
+//Rave piano stabs
+DDWSnippets.put("pianostab","~ravestab2 = Pbind(\\instrument,\\bplay,\\buf,d[\"stab\"][2],\\dur,Pbjorklund2(3,8)/4,\\rate,Pseq([50,52,55,57].midicps/120,inf).stutter(6),\\amp,1)");
+//strings
+DDWSnippets.put("strings","~strings = Pbind(\\instrument,\\bplay,\\buf,d[\"strings\"][0],\\dur,10,\\rate,3,\\amp,2)");
+
+
+//hi pass
+DDWSnippets.put("hipass","~hipass = {HPF.ar(Mix.ar([~kbk.ar,~kbk2.ar]),1200,0.6)}");
 
 
 //Specific pattern generators
@@ -82,10 +90,10 @@ DDWSnippets.put("Delay","
 DDWSnippets.put("Reverb","
 //delay
 ~reverbSend = {Mix.ar([##~one##])};
-~reverb = {arg size = 10, time = 5, damping = 0.5, spread = 15, dry = 0, amp = 0.8, GVerb.ar(Mix.ar([~reverbSend.ar]),size,time,damping,0.5,spread,dry,mul:amp)}
+~reverb = {arg size = 10, time = 5, damping = 0.5, spread = 15, dry = 0, amp = 0.8; GVerb.ar(Mix.ar([~reverbSend.ar]),size,time,damping,0.5,spread,dry,mul:amp)}
 ~reverb.play;");
 //low shelf on rave drums
-DDWSnippets.put("lowshelf","~lsf = {LowShelf.ar(Mix.ar([~kbk.ar,~kbk2.ar]),200,1,##10##)}")
+DDWSnippets.put("lowshelf","~lsf = {LowShelf.ar(Mix.ar([~kbk.ar,~kbk2.ar]),200,1,##10##)}");
 
 //Streson - speed controls speed of sweep and min/max control minimum and maximum values. Keep them low and with not a lot between for sensible effects and don't for silly ones. res controls the severity of the effect
 DDWSnippets.put("stresonsend","

@@ -58,7 +58,7 @@ SynthDef(\vplay,
 	{arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, atk=0.0, sus=1, rel= 0, pos=0;
 		var sig, env;
 		sig = Pan2.ar(PlayBuf.ar(2,buf,BufRateScale.ir(buf) * rate,1,BufDur.kr(buf)*pos*44100,doneAction:2),pan);
-		env = EnvGen.ar(Env.linen(atk,sus,rel,1));
+		env = EnvGen.ar(Env.linen(atk,sus,rel,1),doneAction:2);
 		sig = sig * env;
 		sig = sig * amp;
 		Out.ar(out,sig);

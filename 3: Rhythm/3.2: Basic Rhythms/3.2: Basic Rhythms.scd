@@ -17,7 +17,7 @@
 
 //basic hi-hat pattern
 (
-~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.25,1);
+~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.25,1));
 ~h.play
 )
 
