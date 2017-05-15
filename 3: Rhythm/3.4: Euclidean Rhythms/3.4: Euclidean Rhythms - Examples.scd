@@ -131,7 +131,7 @@ p.clock.tempo = 2.1;
 ~c2.play;
 ~c3.play;
 )
-//now individually execute (Shift+Enter) some of these lines to refresh the 'dur'. Listen for variations in rhythm.
+//now individually evaluate (Shift+Enter) some of these lines to refresh the 'dur'. Listen for variations in rhythm.
 ~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1,\rate,0.9);
 ~c3 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1,\rate,1.1);
 ~c2 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,l,\amp,1);
@@ -139,7 +139,7 @@ p.clock.tempo = 2.1;
 
 
 //A more fleshed-out example
-//Start with a random central rhythm, to keep all of the individual parts
+//Start with a random central rhythm, to keep all of the individual parts seperate
 //also using a scale as a one-letter variable for quickness
 (
 p.clock.tempo = 2.32;
@@ -155,7 +155,7 @@ e = Scale.chromatic(\et53);
 ~ring1.play;~ring2.play;~ring3.play;~ring4.play;~sn.play;~c.play;~h.play;
 )
 //unify all of these rhythms
-//sounds very different
+//sounds very different, with all elements sounding at the same time.
 //execute individual lines to make them diverge from this pattern
 (
 p.clock.tempo = 2.32;

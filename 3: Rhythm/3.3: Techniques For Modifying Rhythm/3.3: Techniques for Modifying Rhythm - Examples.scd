@@ -125,7 +125,7 @@ l = Prewrite(1, // start with 0
 //trap(ish) hi-hats
 //Has a choice of four rhythmic patterns with lesser chance for each, results in a mostly 0.25-duration hat which can potentially go quite quickly
 (
-p.clock.tempo = 75/60
+p.clock.tempo = 75/60;
 ~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,Pwrand([0.25,Pseq([0.125],4),Pseq([0.25]/3,3),Pseq([0.125]/2,4)],[0.6,0.3,0.09,0.01],inf),\amp,1,\rate,2);
 ~h.play;
 )
@@ -145,8 +145,8 @@ p.clock.tempo = 2.3;
 //cutoff percussion. This Pbind uses (0..100)/100 to split the sample into 100 sections of 0.03 and play over them
 (
 p.clock.tempo = 2.4;
-~perc = Pbind(\instrument,\vplay,\buf,d["fx"][1],\rel,0.03,\dur,0.25,\pos,Pseq((0..100)/100,inf))
-~perc.play
+~perc = Pbind(\instrument,\vplay,\buf,d["fx"][1],\rel,0.03,\dur,0.25,\pos,Pseq((0..100)/100,inf));
+~perc.play;
 )
 
 //sputtering rhythms based on long percussion sounds
@@ -159,7 +159,7 @@ p.clock.tempo = 2.3;
 //choose from literally every sample there is in d. Buggy because it'll also play anything else that is in there, but good for a laugh.
 (
 ~perc = Pbind(\instrument,\vplay,\buf,Prand(d.values,inf),\rel,0.1,\dur,0.25,\pos,Pwhite(0.0,0.9),\rate,Pwhite(1,3.0));
-~perc.play
+~perc.play;
 )
 
 //back-and-forth snare
@@ -182,6 +182,8 @@ p.clock.tempo = 2.3;
 
 
 //using the \stretch argument - each time a cycle completes change the stretch duration
-//a fake argument is created here - \euclidNum is used to inform both \dur and \stretch to ensure both work with the same number of onsets
+//a non-synthdef argument is created here - \euclidNum is used to inform both \dur and \stretch to ensure both work with the same number of onsets
+(
 ~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\euclidNum,Pwhite(1,7),\dur,Pbjorklund2(Pkey(\euclidNum),8)/4,\amp,1,\rate,Pseq([3,4,5],inf),\stretch,Pseq([1,0.5,0.25,2],inf).stutter(Pkey(\euclidNum).asStream));
 ~k.play;
+)
