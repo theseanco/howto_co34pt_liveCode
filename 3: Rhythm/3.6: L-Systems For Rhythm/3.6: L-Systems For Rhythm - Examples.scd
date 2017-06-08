@@ -3,7 +3,7 @@
 
 //use L-system as a duration value for a kickdrum
 (
-l = Prewrite(1, // start with 0
+l = Prewrite(1, // start with 1
         (    1: [0.25,2],
             0.25: [3,3,2]/4,
 		3/4: [0.25,1,0.125,0.125],

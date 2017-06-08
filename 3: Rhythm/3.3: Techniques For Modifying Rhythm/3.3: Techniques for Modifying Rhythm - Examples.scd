@@ -103,7 +103,7 @@ p.clock.tempo = 1.7;
 //StageLimiter throttling
 //a complex rhythm
 (
-l = Prewrite(1, // start with 0
+l = Prewrite(1, // start with 1
         (    1: [0.25,2],
 		0.25: [1,0.75,0.1,0.3,0.6,0.1],
 		0.1: [0.5,1,2],
