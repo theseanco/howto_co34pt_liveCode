@@ -131,7 +131,7 @@ SynthDef(\bplay,
 
 /*
 
-bplay: basic mono buffer player
+bplaym: basic mono buffer player
 Designed for simple repeated playback of mono buffers inside of a pattern
 
 out = channel out
@@ -156,7 +156,7 @@ SynthDef(\bplaym,
 
 /*
 
-bplay: basic reversed mono buffer player
+bplaymr: basic reversed mono buffer player
 plays back a mono sample in reverse. I designed this for a specific instance but kept it in the setupfile because why not. It takes away some of the extra work needed to schedule the playing of backward sample within my other SynthDefs
 
 out = channel out
