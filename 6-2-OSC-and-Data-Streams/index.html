@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../img/favicon.ico">
 
-    <title>ProxySpace - Live Coding in SuperCollider - Howto_co34pt_LiveCode</title>
+    <title>OSC and Data Streams - Howto_co34pt_LiveCode</title>
 
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -124,7 +124,7 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Basics <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -135,8 +135,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">ProxySpace - Live Coding in SuperCollider</a>
+<li >
+    <a href="../2-2-Why-ProxySpace/">ProxySpace - Live Coding in SuperCollider</a>
 </li>
 
                         
@@ -280,7 +280,7 @@
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Visuals and Data <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -291,8 +291,8 @@
 
                         
                             
-<li >
-    <a href="../6-2-OSC-and-Data-Streams/">OSC and Data Streams</a>
+<li class="active">
+    <a href="./">OSC and Data Streams</a>
 </li>
 
                         
@@ -311,12 +311,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../2-1-Recommended-Addons/">
+                        <a rel="next" href="../6-1-FreqScope-and-Visuals/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../2-3-Setup-Code---Making-Performance-Easier/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -332,44 +332,77 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#proxyspace-my-foundation-for-live-coding-in-supercollider">ProxySpace - My Foundation for Live Coding in SuperCollider</a></li>
-        
-            <li class="second-level"><a href="#why-proxyspace">Why ProxySpace?</a></li>
-            
+        <li class="first-level active"><a href="#osc-communication-and-data-streams">OSC Communication and Data Streams</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="proxyspace-my-foundation-for-live-coding-in-supercollider">ProxySpace - My Foundation for Live Coding in SuperCollider</h1>
-<p>============================</p>
-<h2 id="why-proxyspace">Why ProxySpace?</h2>
-<p>If you haven't heard of or used it before, <a href="http://doc.sccode.org/Classes/ProxySpace.html">ProxySpace</a> and it's associated <a href="http://doc.sccode.org/Overviews/JITLib.html">JITLib</a> are <em>well</em> worth knowing about, and are without exception what I use to live code in SuperCollider.</p>
-<p>According to the docs (see link above):</p>
-<blockquote>
-<p>Generally a proxy is a placeholder for something. A node proxy is a placeholder for something playing on a server that writes to a limited number of busses (e.g. a synth or an event stream). NodeProxy objects can be replaced and recombined while they play. Also they can be used to build a larger structure which is used and modified later on.</p>
-</blockquote>
-<p>In other words, ProxySpace opens up SuperCollider's language into a powerful performance tool by allowing individual functions/patterns/etc to become flexible and modifiable, as well as to make these patterns interact. When using ProxySpace, the traditional</p>
-<pre><code>{SinOsc.ar(440,0,0.2)!2}.play
+<h1 id="osc-communication-and-data-streams">OSC Communication and Data Streams</h1>
+<hr />
+<p>I have done a set of performances that revolve around live coding and using data streams in the past, particularly performances where I have a continuous stream of data to interpret during the performance. These performances involve negotiating my relationship with sensor data (e.g. movement data, temperature, light levels), live-coding my interpretation of this data to deliver a performance.</p>
+<p>For this type of performance I have used a particular set of technologies mutliple times, and have developed a reasonably quick way to work, which I will share here. Depending on the kind of data you want to use, some of the items described in this part of the guide may not apply to you directly, but using OSC to handle messages in SuperCollider is a really useful skill that can apply to many types of situation, so it's worth knowing if you want to work outside of SuperCollider at all.</p>
+<p><a href="http://opensoundcontrol.org/introduction-osc">Open Sound Control</a> (hereafter OSC) is an <em>absurdly</em> useful protocol for communicating between programs, and across networks.</p>
+<p>Before I learned how to use it I heard people refer to it a lot as 'modern MIDI', which I think is a bit of a misnomer and actually confused me quite a lot while learning it as someone used to MIDI a la DAWs and plugging cables into synthesizers. While MIDI is a set of commonly understood messages between programs (plug a MIDI cable into an interface and you can expect your DAW to react in a certain way), OSC is more of a 'common language' that enables programs to communicate effectively. OSC is very useful for getting multiple programs and machines to 'talk' to each other, and I have found it very useful for performances involving multiple programs and machines running together.</p>
+<p>For example:</p>
+<p><a href="https://www.youtube.com/watch?v=dY6oSwoRRho">sampler-sampler</a> uses OSC to communicate information about emulated stitching between two machines and multiple programs:</p>
+<p>MACHINE 1: Processing -&gt; MACHINE 2: SuperCollider -&gt; Processing</p>
+<p><a href="http://www.charliedearnley.com/portfolio/tome/">tome.</a> uses OSC to parse sensor data and manage lighting.</p>
+<p>Sensor array (serial data) -&gt; <a href="https://github.com/theseanco/python-SerialToOSC">Python Serial Parser</a> -&gt; SuperCollider -&gt; QLCPlus -&gt; OpenDMXUSB</p>
+<p>While the above setups might seem complex or convoluted, using OSC makes these connections very easy, and using OSC is very similar across platforms.</p>
+<p>It's first worth understanding a bit about how OSC sends its messages:</p>
+<p>OSC Messages are sent over a network, and that network can be internally within a machine (to sent messages between programs), or across machines in a network of any kind (commonly a local network). Messages are sent to a particular port of a particular network address (for example, 127.0.0.1, port 51720), with an address (for example /hello), and parameters that can be <a href="http://opensoundcontrol.org/spec-1_0">of various types</a> (for example 1, 32.32, 'message').</p>
+<p>Sending this message from SCLang to be received by SCLang internally would look like this (adapted from the <a href="http://doc.sccode.org/Guides/OSC_communication.html">OSC Communication tutorial</a>):</p>
+<pre><code class="supercollider">//monitor all incoming OSC Messages
+OSCFunc.trace;
+//set the relevant IP and port - both arbitrary, but these will be sent to SuperCollider internally (assuming that NetAddr.langPort == 57120)
+b = NetAddr.new(&quot;127.0.0.1&quot;, 57120);
+//send the above message, and it should be shown in the post window
+b.sendMsg(&quot;/hello&quot;, 1, 32.32, 'message')
+// If this doesn't work, evaluate:
+NetAddr.langPort
+// Then change the port of NetAddr.new accordingly
 </code></pre>
 
-<p>is turned into an 'instrument' when given an arbitrary name and edited on the fly. It can also be used within other 'instruments', for example:</p>
-<pre><code class="supercollider">(
-~sine1 = {SinOsc.ar(440,0,0.2)!2};
-~modulation = {Saw.ar(10,0,1)!2};
-~sine2 = {~sine1 * ~modulation};
-~sine2.play;
+<p>This is the basic way to send OSC Messages using SuperCollider. These messages can be sent to any IP and port, and the message will be sent regardless whether or not it is received. In order for the message to mean anything, a receiver will have to be built to interpret the message.</p>
+<p>Taking the above example, here is a simple setup that will make a sound every time a message is sent to address <code>/ding</code>, it uses a class called <code>OSCdef</code> which triggers a particular function when an OSC message is received:</p>
+<pre><code class="supercollider">// set address
+b = NetAddr.new(&quot;127.0.0.1&quot;,NetAddr.langPort);
+// create OSCdef (very similar syntax to SynthDef)
+(
+OSCdef(\dinger,
+    {
+    // a simple function that triggers an envelope
+        {Pulse.ar(1000,rrand(0.01,0.5),0.3)!2 * EnvGen.ar(Env.perc,doneAction:2)}.play
+}, '/ding')
 )
+// Send a message with no parameters. It'll trigger the function within the OSCdef.
+b.sendMsg(&quot;/ding&quot;)
 </code></pre>
 
-<p>ProxySpace can also be used for synchronising together <a href="http://danielnouri.org/docs/SuperColliderHelp/Streams-Patterns-Events/Pbind.html">patterns</a> (including percussion, melodies, basses etc) in a quick and easy way, while allowing them to be edited and combined on-the-fly. Most of my live sets revolve around the creation (and destruction) of patterns, and ProxySpace makes this really quite easy. With ProxySpace I can build a performance using multiple self-managing 'instruments' and play them as I build them. By doing this I can think reasonably laterally about the performance, building up and packing down individual 'instruments' as I need them, while all of the existing 'instruments' continue playing. It also has some functionality such as automatic crossfading which is very useful for creating smooth performances.</p>
-<p>In addition, while I don't use it very much, the <code>ProxyMixer</code> class uses SuperCollider's GUI to automatically create a visual mixer to change the levels of all 'instruments' created.</p>
-<p>I've written two extended examples of how I use ProxySpace which are in this folder. They are musical examples that I would use in live performances I deliver. Open them up in your SuperCollider IDE and follow along. If you are browsing via GitHub Pages, the tutorials can be found <a href="https://github.com/theseanco/howto_co34pt_liveCode/blob/master/2:%20Basics/2.2:%20ProxySpace%20-%20My%20Foundation%20For%20Live%20Coding%20In%20SuperCollider/2.2:%20ProxySpace%20Basics.scd">here for basics</a> and <a href="https://github.com/theseanco/howto_co34pt_liveCode/blob/master/2:%20Basics/2.2:%20ProxySpace%20-%20My%20Foundation%20For%20Live%20Coding%20In%20SuperCollider/2.2:%20ProxySpace%20Patterns.scd">here for patterns</a></p>
-<p>ProxySpace (and JITLib in general) also have <em>great</em> documentation, which i'd recommend:
-- <a href="http://doc.sccode.org/Tutorials/JITLib/proxyspace_examples.html">ProxySpace Examples</a>
-- The <a href="http://doc.sccode.org/Tutorials/JITLib/jitlib_basic_concepts_01.html">JITLib Basic Concepts</a> series
-- <a href="http://doc.sccode.org/Overviews/JITLib.html">JITLib Overview</a></p></div>
+<p>There are a few tools for diagnosing issues with OSC use in SuperCollider, and we have touched on both of them here. To check if messages from another application are being received correctly, evaluate <code>OSCFunc.trace(true)</code>, which will print all incoming OSC messages to the post window (incluing any internal communications within sclang). If you are expecting to recieve messages to SuperCollider and they're not coming through (the default port of 57120 is where I usually direct all my messages), evaluate <code>NetAddr.langPort</code> to check the internal server port, as it can be re-assigned through multiple instances of SClang.</p>
+<p>Messages sent over OSC can also be interpreted and passed into these functions, here is an elaboration on the above example, using a message to set the pitch of the sound:</p>
+<pre><code class="supercollider">//set address (if you've already done this no need to do it again)
+b = NetAddr.new(&quot;127.0.0.1&quot;,NetAddr.langPort);
+//msg will receive the OSC message as an array, with index 0 being the address and index 1 onwards being the message.
+//setting msg[1] as the frequency will give the first parameter of the OSC message as an argument
+//setting msg[2] as the pulse width would allow you to send the second message parameter as the pulse width, and so on...
+(
+OSCdef(\dinger,
+    {
+        |msg|
+        {Pulse.ar(msg[1],rrand(0.01,0.5),0.3)!2 * EnvGen.ar(Env.perc,doneAction:2)}.play
+}, '/ding')
+)
+//make a 900Hz ding
+b.sendMsg(&quot;/ding&quot;,900);
+//make a ding at a random pitch
+b.sendMsg(&quot;/ding&quot;,rrand(100,2000))
+</code></pre>
+
+<p>In terms of using live data, and live coding your response to the data, the OSCdef can be changed and re-evaluated on the fly, changing data mappings and using OSCdefs to send messages to various items running on the server, and this fits into ProxySpace very nicely. In order to use live data however, you need a live data source, which is not readily available from within SuperCollider - check the examples folder for a Python script which simulates a live data input to be used in a live coding context, covering inter-program communication and live-mapping of data.</p>
+<p>If you are wanting to use data from an Arduino to get data into SuperCollider, I wrote <a href="https://github.com/theseanco/python-SerialToOSC">this tool</a>, which generates Python scripts based on a specification you provide that parses Serial data and sends it as a high-speed OSC stream, for which you can build custom OSCdefs in SuperCollider.</p></div>
         
     </div>
 
