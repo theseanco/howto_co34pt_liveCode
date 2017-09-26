@@ -197,6 +197,12 @@
 </li>
 
                         
+                            
+<li >
+    <a href="../3-7-Looping/">Looping and using Looped Samples</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -239,6 +245,12 @@
                             
 <li >
     <a href="../4-6-Good-SynthDef-Writing-for-co34pt_LiveCode/">Good SynthDef Writing for co34pt_LiveCode</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../4-7-MIDI/">Using MIDI</a>
 </li>
 
                         
@@ -340,7 +352,7 @@
 <hr />
 <h3 id="introduction">Introduction</h3>
 <p>Euclidean Rhythms are described in a 2005 paper by Godfried Toussaint entitled <a href="http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf">'The Euclidean Algorithm Generates Traditional Musical Rhythms'</a>, which describes the organisation of rhythm by placing onsets as evenly as possible within a number of possible spaces using Bjorklund's algorithm. It's not the easiest thing to verbally describe, but <a href="https://reprimande.github.io/euclideansequencer/">this online tool</a> explains it much better, and the paper contains a bunch of illustrated examples.</p>
-<p>As mentioned in 3.1, When I was learning how to perform Live Coding I found creating compelling, complex rhythm in SuperCollider quite hard. Euclidean Rhythms and the <a href="https://github.com/supercollider-quarks/Bjorklund">Bjorklund quark</a> have ended up becoming major fixtures of my performance as a result as they handle a lot of the difficulties i have around developing rhythmic complexity in real-time as part of performance. I've always wanted to be able to make rhythms like <a href="https://www.youtube.com/watch?v=SWTsLnYO68U">DJ Rashad</a>, and using Euclidean Rhythms has got me some way n that quest.</p>
+<p>As mentioned in 3.1, When I was learning how to perform Live Coding I found creating compelling, complex rhythm in SuperCollider quite hard. Euclidean Rhythms and the <a href="https://github.com/supercollider-quarks/Bjorklund">Bjorklund quark</a> have ended up becoming major fixtures of my performance as a result as they handle a lot of the difficulties i have around developing rhythmic complexity in real-time as part of performance. I've always wanted to be able to make rhythms like <a href="https://www.youtube.com/watch?v=SWTsLnYO68U">DJ Rashad</a>, and using Euclidean Rhythms has got me some way on that quest.</p>
 <h3 id="effort-free-rhythmic-complexity">Effort-free rhythmic complexity</h3>
 <p>The problem I had with rhythm was in the fact that all rhythms for all proxies had to be specified as <code>dur</code> values, and each one had to be specified independently. Constructing TidalCycles-like 'riffs' containing multiple percussion samples is really quite hard in SuperCollider. As a result, most rhythms I ended up creating involved either using simple on-beat/off-beat patterns, or constraining a <code>Pwhite</code> or <code>Pexprand</code> into producing random rhythms in time with the ProxySpace tempo clock, and random rhythms with a uniform distribution generally sound quite boring.</p>
 <p>The Bjorklund quark contains a few classes that help in using Euclidean Rhythms. I particularly use <code>Pbjorklund2</code>, which takes arguments for:</p>
