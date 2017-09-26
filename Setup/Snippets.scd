@@ -127,3 +127,45 @@ Tdef(\\task,{
 )
 Tdef(\\task).play;");
 
+//added on 22nd September 2017
+
+//generic MIDI snippet
+DDWSnippets.put("MIDI","
+(
+~midiPattern = Pbind(
+    \\type, \\midi,
+    \\midicmd, \\noteOn,
+	\\midiout, d[\\m],
+    \\chan, 0,
+	\\scale,d[\\scale],
+	\\degree, ##0##,
+	\\octave, 3,
+	\\dur, 1,
+	\\legato, 0.1
+)
+)");
+
+//generic Pitch Bend snippet for microtonal patterns
+DDWSnippets.put("bend","
+(
+~midiBend = Pbind(
+\\type,\\midi,
+\\midicmd,\\bend,
+\\midiout,d[\\m],
+\\chan,0,
+\\dur,1,
+\\val,Pwhite(##8192,9182##)
+)
+)");
+
+//offbeat cymbal
+DDWSnippets.put("cym","~cym = Pbind(\\instrument,\\bplay,\\buf,d[\"cym\"][0],\\dur,Pseq([0.5,Pseq([1],inf)],inf),\\rel,##0.5##,\\amp,0.5)");
+
+//toms
+DDWSnippets.put("tom","~tom = Pbind(\\instrument,\\bplay,\\buf,d[\"t\"][0],\\dur,Pbjorklund2(3,16)/4,\\amp,1,\\rate,1)");
+
+//synth verb
+DDWSnippets.put("synthverb","~synth = {Pan2.ar(FreeVerb.ar(SoundIn.ar(0),0.33,##0.7##,0.5))}");
+
+//looped sound
+DDWSnippets.put("loop","~loop = Pbind(\\instrument,\\lplay,\\buf,d[\"breaks\"][0],\\dur,##8##,\amp,0.5)");

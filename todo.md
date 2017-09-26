@@ -2,10 +2,6 @@
 
 - Field recordings and longer samples, and how to use them
     - For this I need to put some field recordings inside of the repo
-- Write: lplay and Looping - done!
-- Snippet for lplay - done!
-- Snippets for MIDI - done!
-- Write about using MIDI - done!
 - Example for using MIDI
 - Write about using data
 - Need better tom samples
