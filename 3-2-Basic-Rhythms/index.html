@@ -197,6 +197,12 @@
 </li>
 
                         
+                            
+<li >
+    <a href="../3-7-Looping/">Looping and using Looped Samples</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -239,6 +245,12 @@
                             
 <li >
     <a href="../4-6-Good-SynthDef-Writing-for-co34pt_LiveCode/">Good SynthDef Writing for co34pt_LiveCode</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../4-7-MIDI/">Using MIDI</a>
 </li>
 
                         
@@ -363,43 +375,43 @@
 <li><code>pos</code>: the position from which the sample starts playing, normalised from <code>0</code> to <code>1</code>, e.g. a value of <code>0.5</code> will play the sample from the middle</li>
 <li><code>rel</code>: in this case specifies how long the server is allowed to keep the instance open before freeing it. Normally the instance will be freed when the sample is finished playing, but in the case of very long samples or samples played backwards this freeing may not occur, leading to server load building in the background due to dead running processes. This default value of 15</li>
 </ul>
-<p><code>bplay</code> is a general purpose sample player, which is designed for playing bak percussive sounds. It is by far my most used SynthDef, and will almost inevitably be used to build the percussion in my sets.</p>
+<p><code>bplay</code> is a general purpose sample player, which is designed for playing back percussive sounds. It is by far my most used SynthDef, and will almost inevitably be used to build the percussion in my sets.</p>
 <p><code>vplay</code> also takes another argument:</p>
 <ul>
 <li><code>rel1</code>: controls the amount of a sample played</li>
 </ul>
 <p>which is for playing specific sections of a sample, or to create particular effects by cutting the playing of percussive samples short.</p>
 <h3 id="the-kick">'The' kick</h3>
-<p>The iconic sound of a 4/4 kickdrum is probably a good starting point. A <code>dur</code> of 1 will play a kick on every beat of the clock
+<p>The iconic sound of a 4/4 kickdrum is probably a good starting point. A <code>dur</code> of 1 will play a kick on every beat of the clock<br />
 Stored as snippet <code>kick</code></p>
 <pre><code class="supercollider">~k = Pbind(\instrument,\bplay,\buf,d[&quot;k&quot;][0],\dur,1,\amp,1);
 ~k.play;
 </code></pre>
 
 <h3 id="alternate-beat-snare">Alternate-beat snare</h3>
-<p>Played alongside the 4/4 kick, a snare on every other beat
+<p>Played alongside the 4/4 kick, a snare on every other beat<br />
 Stored as snippet <code>snare</code></p>
 <pre><code class="supercollider">~sn = Pbind(\instrument,\bplay,\buf,d[&quot;s&quot;][0],\dur,2,\amp,1);
 ~sn.play;
 </code></pre>
 
 <h3 id="basic-hi-hat-pattern">basic hi-hat pattern</h3>
-<p>Quarter-note closed hi-hats with random amplitude, good for fleshing out basic rhythms
+<p>Quarter-note closed hi-hats with random amplitude, good for fleshing out basic rhythms<br />
 Stored as snippet <code>hat</code></p>
 <pre><code class="supercollider">~h = Pbind(\instrument,\bplay,\buf,d[&quot;ch&quot;][0],\dur,0.25,\amp,Pwhite(0.25,1);
 ~h.play
 </code></pre>
 
 <h3 id="34-note-clap">3/4 note clap</h3>
-<p>A clap every 0.75 beat. When played against the rhythms above will add a nice polyryhthmic feel
+<p>A clap every 0.75 beat. When played against the rhythms above will add a nice polyryhthmic feel<br />
 Stored as snippet <code>clap</code></p>
 <pre><code class="supercollider">~c = Pbind(\instrument,\bplay,\buf,d[&quot;c&quot;][0],\dur,0.75,\amp,1);
 ~c.play;
 </code></pre>
 
 <h3 id="off-beat-open-hi-hat">off-beat open hi-hat</h3>
-<p>An open hi-hat played every beat, offset every half. I use it alongside straight kicks for a kick-hat-kick-hat pattern. The sample here also sounds <em>really</em> good if it's switched out for some vocal chants. Note the <code>dur</code> uses an infinite Pbind inside of another Pbind to offset a regular pattern - this is a complexity of offsetting rhythms in SuperCollider, and is one of the only instances in which I currently do it.
-Stored as snippet <code>oh</code>.
+<p>An open hi-hat played every beat, offset every half. I use it alongside straight kicks for a kick-hat-kick-hat pattern. The sample here also sounds <em>really</em> good if it's switched out for some vocal chants. Note the <code>dur</code> uses an infinite Pbind inside of another Pbind to offset a regular pattern - this is a complexity of offsetting rhythms in SuperCollider, and is one of the only instances in which I currently do it.<br />
+Stored as snippet <code>oh</code>.<br />
 The offset <code>dur</code> is stored as snippet <code>offbeat</code></p>
 <pre><code class="supercollider">~oh = Pbind(\instrument,\bplay,\buf,d[&quot;oh&quot;][0],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,1);
 ~oh.play;
