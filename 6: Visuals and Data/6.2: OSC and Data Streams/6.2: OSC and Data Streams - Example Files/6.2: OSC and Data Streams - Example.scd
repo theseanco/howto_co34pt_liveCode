@@ -1,0 +1,1 @@
+//TODO: make an example using the /netInfo that controls a warp1 Ugen. Also make a Python OSC responder so that you can change the speed of the random number generation on Python side. 

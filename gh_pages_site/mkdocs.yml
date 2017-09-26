@@ -34,7 +34,8 @@ pages:
     - Non-Pattern Techniques:
         - 'Drones': '5-1-Drones.md'
         - 'SuperCollider as a Modular Synth': '5-2-SuperCollider-as-a-Modular-Synth.md'
-    - Visuals:
+    - Visuals and Data:
         - 'FreqScope and Visuals': '6-1-FreqScope-and-Visuals.md'
+        - 'OSC and Data Streams': '6-2-OSC-and-Data-Streams.md'
 
 theme: cinder
