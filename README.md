@@ -32,6 +32,7 @@ Drop me a line on [Twitter](https://twitter.com/theseanco), [GitHub](https://git
     1. [Euclidean Rhythms](https://theseanco.github.io/howto_co34pt_liveCode/3-4-Euclidean-Rhythms)
     1. [StageLimiter Abuse](https://theseanco.github.io/howto_co34pt_liveCode/3-5-StageLimiter-Abuse)
     1. [L-Systems for Rhythm](https://theseanco.github.io/howto_co34pt_liveCode/3-6-L-Systems-For-Rhythm)
+    1. [Looping](3-7-Looping)
 1. Melody and Pitch:
     1. [Pitch and Patterns](https://theseanco.github.io/howto_co34pt_liveCode/4-1-Pitch-And-Patterns)
     1. [Types of Pitch Arrangement](https://theseanco.github.io/howto_co34pt_liveCode/4-2-Types-of-Pitch-Arrangement)
@@ -39,10 +40,13 @@ Drop me a line on [Twitter](https://twitter.com/theseanco), [GitHub](https://git
     1. [Pitch and Static Synths](https://theseanco.github.io/howto_co34pt_liveCode/4-4-Pitch-and-Static-Synths)
     1. [Between Pitch and Noise](https://theseanco.github.io/howto_co34pt_liveCode/4-5-Between-Pitch-And-Noise)
     1. [Good SynthDef Writing for co34pt_livecode](https://theseanco.github.io/howto_co34pt_liveCode/4-6-Good-SynthDef-Writing-for-co34pt_LiveCode)
+    1. [Using MIDI](4-7-Looping)
 1. Non-Pattern Techniques:
     1. [Drones](https://theseanco.github.io/howto_co34pt_liveCode/5-1-Drones)
     1. [SuperCollider as a Modular Synth](https://theseanco.github.io/howto_co34pt_liveCode/5-2-SuperCollider-as-a-Modular-Synth)
 1. Visuals:
     1. [FreqScope and Visuals](6-1-FreqScope-and-Visuals)
+    1. [OSC and Data Streams](6-2-OSC-and-Data-Streams)
+    1. [Using Datasets](6-3-Using-Dataset)
 
 If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.10 only thus far.

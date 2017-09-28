@@ -14,11 +14,11 @@ For example:
 
 [sampler-sampler](https://www.youtube.com/watch?v=dY6oSwoRRho) uses OSC to communicate information about emulated stitching between two machines and multiple programs:
 
-MACHINE 1: Processing -> MACHINE 2: SuperCollider -> Processing
+`MACHINE 1: Processing -> MACHINE 2: SuperCollider -> Processing`
 
 [tome.](http://www.charliedearnley.com/portfolio/tome/) uses OSC to parse sensor data and manage lighting.
 
-Sensor array (serial data) -> [Python Serial Parser](https://github.com/theseanco/python-SerialToOSC) -> SuperCollider -> QLCPlus -> OpenDMXUSB
+`Sensor array (serial data) -> [Python Serial Parser](https://github.com/theseanco/python-SerialToOSC) -> SuperCollider -> QLCPlus -> OpenDMXUSB`
 
 While the above setups might seem complex or convoluted, using OSC makes these connections very easy, and using OSC is very similar across platforms.
 

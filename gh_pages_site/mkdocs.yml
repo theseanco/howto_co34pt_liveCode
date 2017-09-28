@@ -37,5 +37,6 @@ pages:
     - Visuals and Data:
         - 'FreqScope and Visuals': '6-1-FreqScope-and-Visuals.md'
         - 'OSC and Data Streams': '6-2-OSC-and-Data-Streams.md'
+        - 'Using Datasets': '6-3-Using-Datasets.md'
 
 theme: cinder
