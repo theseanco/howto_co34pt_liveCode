@@ -353,9 +353,9 @@
 <p>Before I learned how to use it I heard people refer to it a lot as 'modern MIDI', which I think is a bit of a misnomer and actually confused me quite a lot while learning it as someone used to MIDI a la DAWs and plugging cables into synthesizers. While MIDI is a set of commonly understood messages between programs (plug a MIDI cable into an interface and you can expect your DAW to react in a certain way), OSC is more of a 'common language' that enables programs to communicate effectively. OSC is very useful for getting multiple programs and machines to 'talk' to each other, and I have found it very useful for performances involving multiple programs and machines running together.</p>
 <p>For example:</p>
 <p><a href="https://www.youtube.com/watch?v=dY6oSwoRRho">sampler-sampler</a> uses OSC to communicate information about emulated stitching between two machines and multiple programs:</p>
-<p>MACHINE 1: Processing -&gt; MACHINE 2: SuperCollider -&gt; Processing</p>
+<p><code>MACHINE 1: Processing -&gt; MACHINE 2: SuperCollider -&gt; Processing</code></p>
 <p><a href="http://www.charliedearnley.com/portfolio/tome/">tome.</a> uses OSC to parse sensor data and manage lighting.</p>
-<p>Sensor array (serial data) -&gt; <a href="https://github.com/theseanco/python-SerialToOSC">Python Serial Parser</a> -&gt; SuperCollider -&gt; QLCPlus -&gt; OpenDMXUSB</p>
+<p><code>Sensor array (serial data) -&gt; [Python Serial Parser](https://github.com/theseanco/python-SerialToOSC) -&gt; SuperCollider -&gt; QLCPlus -&gt; OpenDMXUSB</code></p>
 <p>While the above setups might seem complex or convoluted, using OSC makes these connections very easy, and using OSC is very similar across platforms.</p>
 <p>It's first worth understanding a bit about how OSC sends its messages:</p>
 <p>OSC Messages are sent over a network, and that network can be internally within a machine (to sent messages between programs), or across machines in a network of any kind (commonly a local network). Messages are sent to a particular port of a particular network address (for example, 127.0.0.1, port 51720), with an address (for example /hello), and parameters that can be <a href="http://opensoundcontrol.org/spec-1_0">of various types</a> (for example 1, 32.32, 'message').</p>
