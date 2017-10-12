@@ -65,7 +65,7 @@ DDWSnippets.put("stresondrone","{ Streson.ar(LFSaw.ar([220, 180], 0, mul:EnvGen.
 //rave stabs
 DDWSnippets.put("ravestabs","~ravestab = Pbind(\\instrument,\\bplay,\\buf,d[\"stab\"][1],\\dur,Pbjorklund2(3,8)/4,\\rate,Pseq([1,1,1,1,1,1,0.9,1.1]##*1##,inf).stutter(3),\\amp,1)");
 //warp1 - scrolls a buffer
-DDWSnippets.put("warp1","~warp1 = {arg speed = 0.1, winsize = 0.1, rate = 1; Warp1.ar(2,##d[\"lfx\"][0]##,SinOsc.kr(speed),1,winsize,-1,16,0,4,1)}");
+DDWSnippets.put("warp1","~warp1 = {arg speed = 0.01, winsize = 0.2, rate = 1; Warp1.ar(2,##d[\"rhodes\"][0]##,LFTri.kr(speed),rate,winsize,-1,16,0.02,4,0.5)}");
 
 //effects
 //Low Pass Filter
@@ -138,6 +138,7 @@ DDWSnippets.put("MIDI","
 	\\midiout, d[\\m],
     \\chan, 0,
 	\\scale,d[\\scale],
+    \\root,Pkr(~r),
 	\\degree, ##0##,
 	\\octave, 3,
 	\\dur, 1,
@@ -169,3 +170,17 @@ DDWSnippets.put("synthverb","~synth = {Pan2.ar(FreeVerb.ar(SoundIn.ar(0),0.33,##
 
 //looped sound
 DDWSnippets.put("loop","~loop = Pbind(\\instrument,\\lplay,\\buf,d[\"breaks\"][0],\\dur,##8##,\amp,0.5)");
+
+//enveloped warp1
+DDWSnippets.put("warpenv","(
+~warpEnv = {var env = EnvGen.ar(Env.perc(0.01,0.5,0.1),Impulse.kr(LFNoise1.kr(0.1).range(0.5,4)),1,0,1,0);
+	Warp1.ar(2,##d[\"rhodes\"][0]##,LFTri.kr(0.01)+env,2,0.2,-1,32,0.01,4,env*4)}
+)");
+
+//Reverb send for external effects
+DDWSnippets.put("reverbsend","(
+~verbSend = {
+	var array = [##~none.ar##];
+	FreeVerb.ar(Mix.ar(array),0.33,0.5,0.5,1.5)
+}
+)");
