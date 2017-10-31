@@ -65,6 +65,6 @@ p.clock.tempo = 150/60;
 
 //run up and down chromatic scale one degree at a time
 (
-~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.chromatic(\et12),\degree,Pseq((0..12).pyramid.mirror,inf),\octave,6,\dur,0.125/2,\amp,0.3,\fb,0.8,\rel,0.1)
+~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.chromatic(\et12),\degree,Pseq((0..12).pyramid.mirror,inf),\octave,6,\dur,0.125/2,\amp,0.3,\fb,0.8,\rel,0.1);
 ~sinfb.play;
 )
