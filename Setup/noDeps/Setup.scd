@@ -1,5 +1,5 @@
 //Boilerplate code for basic live coding functionality
-
+//Run this with Ctrl/Cmd + Enter
 (
 //increase number of buffers the server has access to for loading samples
 s.options.numBuffers = 1024 * 16;
@@ -34,4 +34,18 @@ Task({
 	//StageLimiter.activate;
 	"Setup done!".postln;
 }).start;
+)
+
+
+//WINDOWS USERS!
+//RUN THIS AFTERWARDS (Ctrl + Enter)
+(
+d = Dictionary.new;
+d.add(\foldernames -> PathName(thisProcess.nowExecutingPath.dirname +/+ "../../samples/set1").entries);
+for (0, d[\foldernames].size-1,
+	{arg i; d.add(d[\foldernames][i].folderName -> d[\foldernames][i].entries.collect({
+		arg sf;
+		Buffer.read(s,sf.fullPath);
+	});
+)});
 )
