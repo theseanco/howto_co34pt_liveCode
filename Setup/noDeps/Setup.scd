@@ -18,7 +18,7 @@ p.clock.tempo = 2;
 Task({
 	3.wait;
 	d = Dictionary.new;
-	d.add(\foldernames -> PathName(thisProcess.nowExecutingPath.dirname +/+ "../samples/set1").entries);
+	d.add(\foldernames -> PathName(thisProcess.nowExecutingPath.dirname +/+ "../../samples/set1").entries);
 	for (0, d[\foldernames].size-1,
 		{arg i; d.add(d[\foldernames][i].folderName -> d[\foldernames][i].entries.collect({
 			arg sf;
