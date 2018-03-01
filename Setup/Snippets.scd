@@ -177,10 +177,160 @@ DDWSnippets.put("warpenv","(
 	Warp1.ar(2,##d[\"rhodes\"][0]##,LFTri.kr(0.01)+env,2,0.2,-1,32,0.01,4,env*4)}
 )");
 
-//Reverb send for external effects
+//Reverb send
 DDWSnippets.put("reverbsend","(
 ~verbSend = {
 	var array = [##~none.ar##];
 	FreeVerb.ar(Mix.ar(array),0.33,0.5,0.5,1.5)
 }
 )");
+
+//Delay send
+DDWSnippets.put("delaysend","(
+~delaySend = {
+	var array = [##~none.ar##];
+    CombC.ar(Mix.ar(array),1,0.1,1,1)
+}
+)");
+
+//synth external reverb send
+DDWSnippets.put("synthexternal","
+(
+~synthExt = {Out.ar(2,Pan2.ar(SoundIn.ar(0)))};
+~synthDry = {Pan2.ar(SoundIn.ar(0),0)};
+~synthWet = {SoundIn.ar([2,3],1.4)};
+)
+");
+
+//generic external effects send
+DDWSnippets.put("external","
+(
+~extSend = {Out.ar(2,##Pan2.ar(SoundIn.ar(0))##)};
+~extDry = {Pan2.ar(SoundIn.ar(0),0)};
+~extWet = {SoundIn.ar([2,3],1.4)};
+)
+");
+
+//trap rhythm, designed for those crisp 808 hi hats
+DDWSnippets.put("trap","Pwrand([1,0.5,0.25,Pseq([0.125],2),Pseq([0.125/2],4)],[0.5,2,14,3,2].normalizeSum,inf)");
+
+//Chords, taken/adapted from Eli Fieldsteel's video on compositions in SuperCollider
+DDWSnippets.put("chords","
+(
+~chords = Pbind(\\instrument,\\bpfsaw,
+	\\dur,Pwhite(4.5,7.0,inf),
+	\\scale,Scale.chromatic,
+	\\root,Pkr(~r),
+	\\octave,4,
+	\\degree,Pseq(ChordProg.getMinorProg(\\c,\\sad),inf),
+	\\detune, Pexprand(0.05,0.2,inf),
+	\\cfmin,100,
+	\\cfmax,1500,
+	\\rqmin,Pexprand(0.02,0.15,inf),
+	\\atk,Pwhite(2.0,2.5,inf),
+	\\rel,Pwhite(6.5,10.0,inf),
+	\\ldb,6,
+	\\amp,Pwhite(0.8,2.0),
+	\\out,0)
+)
+");
+
+//a rhythmic l system
+DDWSnippets.put("lsysrhythm","
+(
+l = Prewrite(0.25,
+	(
+		0.25: #[0.25,0.25,0.25,0.5],
+		0.5: #[0.25,0.5,0.125,0.125,0.125,0.125],
+		0.125: #[0.375,0.125],
+		0.375: #[0.375,0.375],
+		1: #[1,0.25]
+),10)
+)
+");
+
+DDWSnippets.put("StabScaffolding",
+	"(
+(
+l = Prewrite(0.25,
+	(
+		0.25: #[0.25,0.25,0.25,0.5],
+		0.5: #[0.25,0.5,0.125,0.125,0.125,0.125],
+		0.125: #[0.375,0.125],
+		0.375: #[0.375,0.375,1],
+		1: #[0.75,0.25],
+		0.75: #[16]
+),60)
+);
+
+d[\\offk] = Pseq([0],1);
+d[\\offh] = Pseq([0],1);
+d[\\offsn] = Pseq([0],1);
+
+d[\\offstab] = Pseq([0],1);
+d[\\offstab2] = Pseq([0],1);
+d[\\offstab3] = Pseq([0],1);
+
+d[\\offtom] = Pseq([0],1);
+d[\\offtom2] = Pseq([0],1);
+d[\\offtom3] = Pseq([0],1);
+
+
+~multk = {1};
+~multh = {1};
+~multsn = {1};
+
+~multstab = {1};
+~multstab2 = {1};
+~multstab3 = {1};
+
+~multtom = {1};
+~multtom2 = {1};
+~multtom3 = {1};
+
+~stab1rate = 1;
+~stab2rate = 1;
+~stab3rate = 1;
+
+~tom1rate = 1;
+~tom2rate = 1;
+~tom3rate = 1;
+
+//kicks
+~k = Pbind(\\instrument,\\bplaym,\\buf,d[\"k\"][2],\\dur,Pseq([d[\\offk],(l * Pkr(~multk))],inf),\\amp,1);
+~h = Pbind(\\instrument,\\bplay,\\buf,d[\"ch\"][2],\\dur,Pseq([d[\\offh],(l * Pkr(~multh))],inf),\\amp,0.8,\\rate,2,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+~sn = Pbind(\\instrument,\\bplaym,\\buf,d[\"s\"][5],\\dur,Pseq([d[\\offsn],(l * Pkr(~multsn))],inf),\\amp,0.8,\\rel,1,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+
+
+/*
+//good stabs
+
+5 -
+25
+119 organ
+134
+145
+168
+175
+190
+201
+213 (ish)
+233 (just a beep)
+260
+
+*/
+
+//stabs
+~stab = Pbind(\\instrument,\\bplay,\\buf,d[\"stabs\"][5],\\dur,Pseq([d[\\offstab],(l * Pkr(~multstab))],inf),\\amp,0.7,\\rate,Pkr(~stab1rate),\\rel,0.1,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+~stab2 = Pbind(\\instrument,\\bplay,\\buf,d[\"stabs\"][5],\\dur,Pseq([d[\\offstab2],(l * Pkr(~multstab2))],inf),\\amp,0.7,\\rate,Pkr(~stab2rate),\\rel,0.1,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+~stab3 = Pbind(\\instrument,\\bplay,\\buf,d[\"stabs\"][5],\\dur,Pseq([d[\\offstab3],(l * Pkr(~multstab3))],inf),\\amp,0.7,\\rate,Pkr(~stab3rate),\\rel,0.1,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+
+//toms
+~tom = Pbind(\\instrument,\\bplaym,\\buf,d[\"t\"][2],\\dur,Pseq([d[\\offtom],(l * Pkr(~multtom))],inf),\\amp,0.7,\\rate,Pkr(~tom1rate),\\rel,0.1,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+~tom2 = Pbind(\\instrument,\\bplaym,\\buf,d[\"t\"][2],\\dur,Pseq([d[\\offtom2],(l * Pkr(~multtom2))],inf),\\amp,0.7,\\rate,Pkr(~tom2rate),\\rel,0.1,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+~tom3 = Pbind(\\instrument,\\bplaym,\\buf,d[\"t\"][2],\\dur,Pseq([d[\\offtom3],(l * Pkr(~multtom3))],inf),\\amp,0.7,\\rate,Pkr(~tom3rate),\\rel,0.1,\\pan,Pwhite(-0.8,0.8).stutter(Pwhite(40,100).asStream));
+)
+");
+
+//Streson string effect
+DDWSnippets.put("streson","~streson = {Streson.ar(##Silent.ar##,0.0003,1,1)}");
