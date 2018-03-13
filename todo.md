@@ -14,4 +14,7 @@
 - Write about ClockDivider, write snippets for these too
 - Add envelope options to vplay and other synthdefs of that nature
 - Add notes about Pindex and sequencing from dictionaries, add a snippet with that too
-- Add shamansir's .pdf version to a `Documents` folder.
+- shoutout shamansir in the main project readme
+- Re-do all effects snippets
+- Section of the repo on 'performance practice'
+
