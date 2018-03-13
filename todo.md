@@ -10,4 +10,8 @@
 - Update all SynthDefs with variable filters in them?
 - Add the '3' and variable SynthDefs
 - Do tutorial on editing synthdefs live
-- Write about effects
+- Write about effects and \filterIn, write snippets for these
+- Write about ClockDivider, write snippets for these too
+- Add envelope options to vplay and other synthdefs of that nature
+- Add notes about Pindex and sequencing from dictionaries, add a snippet with that too
+- Add shamansir's .pdf version to a `Documents` folder.
