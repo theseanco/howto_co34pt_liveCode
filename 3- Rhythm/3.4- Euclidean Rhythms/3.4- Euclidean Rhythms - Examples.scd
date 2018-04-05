@@ -65,7 +65,7 @@ p.clock.tempo = 1.45;
 //offbeat hat because cheesy rhythms are good fun
 (
 ~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf)/2,\amp,1);
-~oh.play
+~oh.play;
 )
 
 //working with offsets - doing a lot with a little
