@@ -11,19 +11,19 @@
 //4 saw waves that are modulated by LFNoise1 Ugens and arranged around the stereo field
 //the frequency of the saw waves is a LFNoise1 that is ranged between the fundamental and ten times the fundamental
 (
-~lfn1 = {Splay.ar(Saw.ar(Array.fill(4,{LFNoise1.kr(0.3).range(~f,~f*10)}),0.3))}
+~lfn1 = {Splay.ar(Saw.ar(Array.fill(4,{LFNoise1.kr(0.3).range(~f,~f*10)}),0.3))};
 ~lfn1.play;
 )
 //now round this LFNoise1 to the fundamental frequency to get the frequency to sweep the harmonic frequency
 (
-~lfn1 = {Splay.ar(Saw.ar(Array.fill(4,{LFNoise1.kr(0.3).range(~f,~f*10).round(~f)}),0.3))}
+~lfn1 = {Splay.ar(Saw.ar(Array.fill(4,{LFNoise1.kr(0.3).range(~f,~f*10).round(~f)}),0.3))};
 ~lfn1.play;
 )
 //the frequencies are now tuned and sound GREAT (an X/Y scope also looks amazing)
 s.scope
 //This .range and .round method can be applied to any signal UGen, and also at any multiplication level. Here's a silly extreme example that sounds like shrill bees
 (
-~lfn1 = {Splay.ar(Saw.ar(Array.fill(40,{SinOscFB.kr(rrand(0.1,0.3),rrand(0.1,2)).range(~f,~f*100).round(~f*4)}),0.4))}
+~lfn1 = {Splay.ar(Saw.ar(Array.fill(40,{SinOscFB.kr(rrand(0.1,0.3),rrand(0.1,2)).range(~f,~f*100).round(~f*4)}),0.4))};
 ~lfn1.play;
 )
 
