@@ -64,6 +64,9 @@ s.scope
 //Note that the above does not allow scale notes to be changed once the synth is initiated
 ~scale = {SinOscFB.ar(Scale.minor(\just).degreeToFreq(TRand.kr(1,10,Impulse.kr(1)),48.midicps,1),0.7,0.2)};
 
+(
 //using .midicps to determine pitch
 ~scale = {SinOscFB.ar(TRand.kr(50,80,Impulse.kr([3,3.01])).midicps,0.7,0.5)};
-~scale.play
+~scale.play;
+)
+
