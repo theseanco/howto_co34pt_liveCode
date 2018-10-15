@@ -1,1 +1,0 @@
-../../legalcode.txt
