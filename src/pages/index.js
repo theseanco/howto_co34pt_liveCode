@@ -1,8 +1,5 @@
 /*
 
-todo:
-
-Dynamically generate intro text by selectively querying the allMarkdownRemark html
 Here's a way to do multiple queries: https://github.com/gatsbyjs/gatsby/issues/4977
 
 */
@@ -11,6 +8,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
+
+require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
 const sectionNames = [
   'Introduction',
@@ -47,11 +46,6 @@ const IndexPage = ( {data} ) => (
     <h3>Contents</h3>
 
     {
-      /*
-      data.contentsPage.edges.map((data, i) => {
-        return(<div key={i}> <Link to={data.node.frontmatter.path}> {data.node.frontmatter.section} - {data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></div>)
-      })
-      */
       sortBySection(data.contentsPage.edges).map((data,i) => {
         data.map((data,i) => {
           return(<div key={i}> <Link to={data.node.frontmatter.path}> {data.node.frontmatter.section} - {data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></div>)
