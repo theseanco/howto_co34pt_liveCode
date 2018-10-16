@@ -1,106 +1,52 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# howto_co34pt_liveCode
 
-Kick off your project with this default boilerplate. This barebones starter ships with the main Gatsby configuration files you might need. 
+-----------------
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+### About
 
-## 🚀 Quick start
+howto_co34pt_liveCode is an attempt to extensively document my live-coding music practice. I live code as [coï¿¥ï¾¡pt](https://co34pt.bandcamp.com), mostly making dance music (including for [Algoraves](https://algorave.com/)), but I have also employed live coding as part of some [other projects](https://www.youtube.com/watch?v=dY6oSwoRRho). This repo contains a number of articles and essays listed in this contents page which cover various aspects of my live coding practice from the ground up, and also contains a number of files to support your use of SuperCollider in the way that I use it. More info about this in 'What This Repo Is'
 
-1.  **Install the Gatsby CLI.**
+This resource is hosted both [on GitHub](https://github.com/theseanco/howto_co34pt_liveCode) and [on GitHub Pages](https://theseanco.github.io/howto_co34pt_liveCode/) (you will likely already be on one of these). I'd recommend browsing articles on GitHub pages, and if you want to use any of the examples, see any SuperCollider code and use my setup I'd recommend downloading the repo, this will be covered in 'How To Use This Repo'. There is also e-book versions of the 'first edition' of this repo in the `Documents` folder in `epub`, `pdf` and `pages` format. Huge thanks to @shamansir for putting these together.
 
-    The Gatsby CLI helps you create new sites using Gatsby starters (like this one!)
+This repository is currently mostly finished, but does need proofreading, which I will be doing soon. It will be continually updated as my live coding practice develops.
 
-    ```sh
-    # install the Gatsby CLI globally
-    npm install -g gatsby-cli
-    ```
+I'm always keen to know the ways in which this has been helpful to anyone, or any comments you have at all.
+Drop me a line on [Twitter](https://twitter.com/theseanco), [GitHub](https://github.com/theseanco/) or via [Email](mailto:theseancotterill atsign live period com)
 
-2.  **Create a Gatsby site.**
+### CONTENTS
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+1. Introduction:
+    1. [What this Repo Is](https://theseanco.github.io/howto_co34pt_liveCode/1-1-What-This-Repo-Is)
+    1. [Why I live Code](https://theseanco.github.io/howto_co34pt_liveCode/1-2-Why-I-Live-Code)
+    1. [Why SuperCollider?](https://theseanco.github.io/howto_co34pt_liveCode/1-3-Why-SuperCollider)
+    1. [How To Use This Repo](https://theseanco.github.io/howto_co34pt_liveCode/1-4-How-To-Use-This-Repo)
+1. Basics:
+    1. [Recommended Addons](https://theseanco.github.io/howto_co34pt_liveCode/2-1-Recommended-Addons)
+    1. [ProxySpace - Live Coding in SuperCollider](https://theseanco.github.io/howto_co34pt_liveCode/2-2-Why-ProxySpace)
+    1. [Setup Code: Making Performance Easier](https://theseanco.github.io/howto_co34pt_liveCode/2-3-Setup-Code---Making-Performance-Easier)
+    1. [Pbinds and Patterns: The Basics](https://theseanco.github.io/howto_co34pt_liveCode/2-4-Pbinds-and-Patterns)
+1. Rhythm:
+    1. [Rhythmic Construction for Algorave Sets](https://theseanco.github.io/howto_co34pt_liveCode/3-1-Rhythmic-Construction-For-Algorave-Sets)
+    1. [Basic Rhythms](https://theseanco.github.io/howto_co34pt_liveCode/3-2-Basic-Rhythms)
+    1. [Techniques for Modifying Rhythm](https://theseanco.github.io/howto_co34pt_liveCode/3-3-Techniques-For-Modifying-Rhythm)
+    1. [Euclidean Rhythms](https://theseanco.github.io/howto_co34pt_liveCode/3-4-Euclidean-Rhythms)
+    1. [StageLimiter Abuse](https://theseanco.github.io/howto_co34pt_liveCode/3-5-StageLimiter-Abuse)
+    1. [L-Systems for Rhythm](https://theseanco.github.io/howto_co34pt_liveCode/3-6-L-Systems-For-Rhythm)
+    1. [Looping](3-7-Looping)
+1. Melody and Pitch:
+    1. [Pitch and Patterns](https://theseanco.github.io/howto_co34pt_liveCode/4-1-Pitch-And-Patterns)
+    1. [Types of Pitch Arrangement](https://theseanco.github.io/howto_co34pt_liveCode/4-2-Types-of-Pitch-Arrangement)
+    1. [Riffs](https://theseanco.github.io/howto_co34pt_liveCode/4-3-Riffs)
+    1. [Pitch and Static Synths](https://theseanco.github.io/howto_co34pt_liveCode/4-4-Pitch-and-Static-Synths)
+    1. [Between Pitch and Noise](https://theseanco.github.io/howto_co34pt_liveCode/4-5-Between-Pitch-And-Noise)
+    1. [Good SynthDef Writing for co34pt_livecode](https://theseanco.github.io/howto_co34pt_liveCode/4-6-Good-SynthDef-Writing-for-co34pt_LiveCode)
+    1. [Using MIDI](4-7-MIDI)
+1. Non-Pattern Techniques:
+    1. [Drones](https://theseanco.github.io/howto_co34pt_liveCode/5-1-Drones)
+    1. [SuperCollider as a Modular Synth](https://theseanco.github.io/howto_co34pt_liveCode/5-2-SuperCollider-as-a-Modular-Synth)
+1. Visuals:
+    1. [FreqScope and Visuals](6-1-FreqScope-and-Visuals)
+    1. [OSC and Data Streams](6-2-OSC-and-Data-Streams)
+    1. [Using Datasets](6-3-Using-Datasets)
 
-    ```sh
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter
-    ```
-
-3.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```sh
-    cd my-default-starter/
-    gatsby develop
-    ```
-
-4.  **Open the source code and start editing!**
-
-    Your site is now running at `http://localhost:8000`!
-    
-    *Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).*
-    
-    Open the the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
-    
-## 🧐 What's inside?
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
-
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    ├── README.md
-    └── yarn.lock
-
-  1.  **`/node_modules`**: The directory where all of the modules of code that your project depends on (npm packages) are automatically installed.  
-  
-  2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser), like your site header, or a page template. “Src” is a convention for “source code”.
-  
-  3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-  
-  4.  **`.prettierrc`**: This is a configuration file for a tool called [Prettier](https://prettier.io/), which is a tool to help keep the formatting of your code consistent.
-  
-  5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-  
-  6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-  
-  7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-  
-  8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-  
-  9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-  
-  10.  **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. (You won’t change this file directly).
-  
-  11.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-  
-  12.  **`README.md`**: A text file containing useful reference information about your project.
-  
-  13.  **`yarn.lock`**: [Yarn](https://yarnpkg.com/) is a package manager alternative to npm. You can use either yarn or npm, though all of the Gatsby docs reference npm.  This file serves essentially the same purpose as `package-lock.json`, just for a different package management system.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
--   **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
--   **To dive straight into code samples head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the “Guides”, API reference, and “Advanced Tutorials” sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+If any content does not work, please open an issue/pull request. These examples have been tested on *ubuntu 16.10 only thus far.
