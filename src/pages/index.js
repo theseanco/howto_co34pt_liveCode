@@ -15,15 +15,16 @@ import Intro from '../components/intro'
 
 const IndexPage = ( {data} ) => (
   <Layout>
-    <Intro />
+    <div dangerouslySetInnerHTML={{__html: data.readmeHTML.edges[0].node.html}} /> 
+
 
     <h3>Contents</h3>
     {
-      console.log(data)
+      console.log(data.readmeHTML.edges[0].node.html)
     }
 
     {
-      data.allMarkdownRemark.edges.map((data, i) => {
+      data.contentsPage.edges.map((data, i) => {
         return(<div key={i}> <Link to={data.node.frontmatter.path}> {data.node.frontmatter.section} - {data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></div>)
       })
     }
@@ -31,10 +32,9 @@ const IndexPage = ( {data} ) => (
 )
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
+  query indexQuery {
+    contentsPage:allMarkdownRemark(
       limit: 100
-      # filter: {frontmatter: {published: {eq: true}}}
     ) {
       edges {
         node {
@@ -44,6 +44,18 @@ export const pageQuery = graphql`
             section
             subsection
           }
+        }
+      }
+    }
+    readmeHTML:allMarkdownRemark(
+      filter: {
+        frontmatter: {section: {eq:0}}
+      }
+      limit:1
+    ) {
+      edges {
+        node {
+          html
         }
       }
     }

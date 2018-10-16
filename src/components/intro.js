@@ -4,6 +4,11 @@ import { Link, graphql } from 'gatsby';
 
 const Intro = ( {data} ) => (
   <div>
+
+    THIS IS DYNAMIC
+    {data}
+
+    THIS IS PRESET
     <h3>About</h3>
 
     <p>howto_co34pt_liveCode is an attempt to extensively document my live-coding music practice. I live code as <a href="https://co34pt.bandcamp.com">co34pt</a>, mostly making dance music (including for <a href="https://algorave.com/">Algoraves</a>), but I have also employed live coding as part of some <a href="https://www.youtube.com/watch?v=dY6oSwoRRho">other projects</a>. This repo contains a number of articles and essays listed in this contents page which cover various aspects of my live coding practice from the ground up, and also contains a number of files to support your use of SuperCollider in the way that I use it. More info about this in 'What This Repo Is'.</p>
