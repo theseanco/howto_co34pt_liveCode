@@ -629,3 +629,13 @@ pre tt:after {
   display: flex;
   justify-content: space-between;
 }
+
+.textBody {
+  margin: 1.4rem 1.4rem;
+  max-width: 960px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto minmax(auto, 25%)
+}

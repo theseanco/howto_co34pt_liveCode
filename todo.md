@@ -18,3 +18,13 @@
 - Re-do all effects snippets
 - Section of the repo on 'performance practice'
 
+# Gatsby rewrite
+
+### sidebar
+- Make sidebar disappear when on index page
+- Align sidebar text with title of page
+- Make sidebar scroll with page possibly
+- Make sidebar responsive
+
+### Styling
+- Change colour scheme

@@ -1,0 +1,48 @@
+import React from 'react'
+import { StaticQuery, Link, graphql } from 'gatsby'
+
+const Sidebar = ({ data }) => (
+
+  <StaticQuery
+    query={graphql`
+      query {
+        allMarkdownRemark(
+          limit: 100
+          sort: {fields: [frontmatter___section, frontmatter___subsection], order: ASC}
+          filter: {
+            frontmatter: {section: {ne: 0}}
+          }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                title
+                path
+                section
+                subsection
+              }
+            }
+          }
+        }
+      }
+      `
+    }
+    render={data => (
+      <div>
+        <ul>
+        {
+        data.allMarkdownRemark.edges.map((data, index) => {
+          // {path, section, subsection, title} = data.node.frontmatter;
+          console.log("bing");
+          return(
+            <li>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title}</li>
+          )
+        })
+        }
+      </ul>
+      </div>
+    )}
+  />
+)
+
+export default Sidebar
