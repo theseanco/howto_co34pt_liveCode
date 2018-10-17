@@ -1,5 +1,6 @@
 import React from 'react'
 import { StaticQuery, Link, graphql } from 'gatsby'
+import './sidebar.css'
 
 const Sidebar = ({ data }) => (
 
@@ -28,14 +29,15 @@ const Sidebar = ({ data }) => (
       `
     }
     render={data => (
-      <div>
+      <div className="sidebarContents">
+        <h4> Contents </h4>
         <ul>
         {
         data.allMarkdownRemark.edges.map((data, index) => {
           // {path, section, subsection, title} = data.node.frontmatter;
           console.log("bing");
           return(
-            <li>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title}</li>
+            <li><Link to={data.node.frontmatter.path}>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title}</Link></li>
           )
         })
         }

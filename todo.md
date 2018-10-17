@@ -21,10 +21,15 @@
 # Gatsby rewrite
 
 ### sidebar
+- Add sidebar headings
 - Make sidebar disappear when on index page
 - Align sidebar text with title of page
 - Make sidebar scroll with page possibly
-- Make sidebar responsive
+- Make sidebar responsive (MediaQuery)
+- Make sidebar categories expand and collapse with state
 
 ### Styling
 - Change colour scheme
+
+### Markdown File Changes
+- line-separate Pbinds, because they're actually hard to read.

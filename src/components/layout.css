@@ -637,5 +637,5 @@ pre tt:after {
 
 .gridContainer {
   display: grid;
-  grid-template-columns: auto minmax(auto, 25%)
+  grid-template-columns: 8fr 4fr;
 }
