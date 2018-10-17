@@ -54,11 +54,11 @@ const IndexPage = ( {data} ) => (
         })
         return(
           <div className="contents-section">
-          <h4 style={{margin: "5px auto"}}>{sectionNames[i]}</h4>
+          <h4 style={{margin: "5px auto"}}>{i+1} - {sectionNames[i]}</h4>
           <span>
             {
             data.map((data,i) => {
-          return(<div key={i}> <Link to={data.node.frontmatter.path}> {data.node.frontmatter.section} - {data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></div>)
+          return(<div key={i}> <Link to={data.node.frontmatter.path}> {data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></div>)
           })
             }
         </span>
@@ -112,38 +112,5 @@ export const pageQuery = graphql`
     }
   }
 `
-
-/*
-export const pageQuery = graphql`
-  query indexQuery {
-    contentsPage:allMarkdownRemark(
-      limit: 100
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            path
-            section
-            subsection
-          }
-        }
-      }
-    }
-    readmeHTML:allMarkdownRemark(
-      filter: {
-        frontmatter: {section: {eq:0}}
-      }
-      limit:1
-    ) {
-      edges {
-        node {
-          html
-        }
-      }
-    }
-  }
-`
-*/
 
 export default IndexPage
