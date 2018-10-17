@@ -2,6 +2,8 @@
 
 Here's a way to do multiple queries: https://github.com/gatsbyjs/gatsby/issues/4977
 
+Next and previous buttons: https://blog.bitsrc.io/build-your-own-blog-using-gatsby-and-react-a1255a5ab086
+
 */
 
 import React from 'react'

@@ -14,7 +14,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   const postTemplate = path.resolve(`src/templates/post.js`);
 
   return graphql(`{
-    allMarkdownRemark {
+    allMarkdownRemark (
+      sort: {fields: [frontmatter___section, frontmatter___subsection], order: ASC}
+    ){
       edges {
         node {
           html
@@ -22,6 +24,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           frontmatter {
             path
             title
+            section
+            subsection
           }
         }
       }
@@ -32,10 +36,18 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       return Promise.reject(res.errors)
     }
 
-    res.data.allMarkdownRemark.edges.forEach( ({node}) => {
+    const posts = res.data.allMarkdownRemark.edges;
+
+    //NOTE: context is used to pass previous and next pages to post
+    //This cannot be accessed from within the post.
+    posts.forEach( ({node}, index) => {
       createPage({
         path: node.frontmatter.path,
-        component: postTemplate
+        component: postTemplate,
+        context: {
+          prev: index === 0 ? null : posts[index - 1].node,
+          next: index === posts.length - 1 ? null : posts[index + 1].node
+        }
       })
     })
   })
