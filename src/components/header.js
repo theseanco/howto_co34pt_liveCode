@@ -1,6 +1,18 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+/*
+SIDEBAR SHOULD END UP LIKE THIS:
+
+    position: fixed;
+    width: 350px;
+    height: 100%;
+    overflow: scroll;
+    z-index: 400;
+    top: 0;
+
+*/
+
 const Header = ({ siteTitle }) => (
   <div
     className="headerItem"
