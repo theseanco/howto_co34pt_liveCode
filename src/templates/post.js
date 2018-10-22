@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import Layout from '../components/layout'
 import './post.css'
 
+
 export default function Template({ data, pathContext }) {
   const {markdownRemark: post} = data;
   //destructuring proprties from path context
