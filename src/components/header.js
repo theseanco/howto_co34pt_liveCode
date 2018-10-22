@@ -3,9 +3,10 @@ import { Link } from 'gatsby'
 
 const Header = ({ siteTitle }) => (
   <div
-    className="gridContainer"
+    className="headerItem"
     style={{
       background: 'rebeccapurple',
+      width: "100%"
     }}
   >
     <div className="textBody" >

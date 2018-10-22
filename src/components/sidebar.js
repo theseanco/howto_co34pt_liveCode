@@ -34,8 +34,6 @@ const Sidebar = ({ data }) => (
         <ul>
         {
         data.allMarkdownRemark.edges.map((data, index) => {
-          // {path, section, subsection, title} = data.node.frontmatter;
-          console.log("bing");
           return(
             <li><Link to={data.node.frontmatter.path}>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title}</Link></li>
           )

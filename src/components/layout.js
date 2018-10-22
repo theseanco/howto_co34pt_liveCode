@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
+import Media from "react-media";
 import Sidebar from './sidebar'
 import Header from './header'
 import './layout.css'
@@ -36,7 +37,16 @@ const Layout = ({ children, displaySidebar }) => (
         >
           {children}
         </div>
-        <Sidebar />
+        <Media query="(min-width: 768px)">
+          {matches => {
+          if(matches) {
+            return (
+          <Sidebar /> ) } else {
+            return null
+          }
+        }
+      }
+        </Media>
       </div>
       </>
     )}

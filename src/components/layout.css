@@ -633,11 +633,32 @@ pre tt:after {
 .textBody {
   margin: 1.4rem 1.4rem;
   max-width: 960px;
+  grid-area: content
 }
 
 .gridContainer {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: 350px 1fr;
+  grid-template-areas:
+    'header header'
+    'content content'
+}
+
+.headerItem {
+  grid-area: header;
+  width: 100%;
+  height: 100%;
+  padding-top: 1px
+}
+
+@media only screen and (min-width: 768px) {
+  .gridContainer {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-areas:
+    'header header'
+    'sidebar content'
+}
 }
 
 :not(pre) > code[class*="language-"] {
