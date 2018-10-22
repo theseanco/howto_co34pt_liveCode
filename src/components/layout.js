@@ -2,13 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-
 import Media from "react-media";
+import Waypoint from 'react-waypoint';
+
+//components and css
 import Sidebar from './sidebar'
 import Header from './header'
 import './layout.css'
 
+
+
+const enter = () => {
+    console.log("entered")
+  }
+
 const Layout = ({ children, displaySidebar }) => (
+
+
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -30,7 +40,11 @@ const Layout = ({ children, displaySidebar }) => (
         >
           <html lang="en" />
         </Helmet>
+        <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} debug={true}>
+          <div>
         <Header siteTitle={data.site.siteMetadata.title} />
+      </div>
+        </Waypoint>
         <div className="gridContainer">
         <div
           className="textBody"

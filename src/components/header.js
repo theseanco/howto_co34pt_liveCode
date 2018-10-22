@@ -11,6 +11,18 @@ SIDEBAR SHOULD END UP LIKE THIS:
     z-index: 400;
     top: 0;
 
+Sidebar should also have this property when stuck to the top of the screen:
+
+  height: 100vh
+  overflow: scroll
+
+So oncce the header is out of the way, you can then add:
+
+  position: fixed;
+  top: 0
+
+Add this using react-waypoint. 
+
 */
 
 const Header = ({ siteTitle }) => (
