@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, Link, graphql } from 'gatsby'
 import './sidebar.css'
 
-const Sidebar = ({ data, isHamburger }) => (
+const GridSidebar = ({ data, isHamburger }) => (
 
   <StaticQuery
     query={graphql`
@@ -45,4 +45,4 @@ const Sidebar = ({ data, isHamburger }) => (
   />
 )
 
-export default Sidebar
+export default GridSidebar

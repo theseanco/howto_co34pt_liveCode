@@ -5,21 +5,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarOpen: false
+      open: false
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
 
+  // this.setState({sidebarOpen: false});
+
   onSetSidebarOpen(open) {
     console.log("fired", open);
-    this.setState({ sidebarOpen: open });
+    this.setState({ open: open });
   }
 
   render() {
+
+    // this.onSetSidebarOpen(false);
+
     return (
       <Sidebar
         sidebar={<b>ddSidebar content</b>}
-        open={this.state.sidebarOpen}
+        open={this.state.open}
         onSetOpen={() => this.onSetSidebarOpen(false)}
         styles={{ sidebar: { background: "white" } }}
       >

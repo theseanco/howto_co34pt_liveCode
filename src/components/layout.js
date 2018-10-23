@@ -6,7 +6,7 @@ import Media from "react-media";
 import Waypoint from 'react-waypoint';
 
 //components and css
-import Sidebar from './sidebar'
+import GridSidebar from './GridSidebar'
 import DrawerSidebar from './DrawerSidebar'
 import Header from './header'
 import './layout.css'
@@ -41,7 +41,7 @@ const Layout = ({ children, displaySidebar }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} debug={true}>
+        <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} >
           <div>
         <Header siteTitle={data.site.siteMetadata.title} />
       </div>
@@ -57,8 +57,8 @@ const Layout = ({ children, displaySidebar }) => (
           {matches => {
           if(matches) {
             return (
-          <Sidebar /> ) } else {
-            return(<DrawerSidebar />)
+          <GridSidebar /> ) } else {
+            return(<DrawerSidebar isOpen={false}/>)
           }
         }
       }
