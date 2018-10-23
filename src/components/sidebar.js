@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, Link, graphql } from 'gatsby'
 import './sidebar.css'
 
-const Sidebar = ({ data }) => (
+const Sidebar = ({ data, isHamburger }) => (
 
   <StaticQuery
     query={graphql`
@@ -35,7 +35,7 @@ const Sidebar = ({ data }) => (
         {
         data.allMarkdownRemark.edges.map((data, index) => {
           return(
-            <li key={index}><Link   to={data.node.frontmatter.path}>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></li>
+            <li key={index}><Link to={data.node.frontmatter.path}>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></li>
           )
         })
         }

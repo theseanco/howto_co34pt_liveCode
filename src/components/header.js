@@ -21,7 +21,7 @@ So oncce the header is out of the way, you can then add:
   position: fixed;
   top: 0
 
-Add this using react-waypoint. 
+Add this using react-waypoint.
 
 */
 
@@ -34,7 +34,7 @@ const Header = ({ siteTitle }) => (
     }}
   >
     <div className="textBody" >
-      <h1 style={{ margin: 0 }}>
+      <h2 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
@@ -44,7 +44,7 @@ const Header = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
-      </h1>
+      </h2>
       <div />
     </div>
   </div>

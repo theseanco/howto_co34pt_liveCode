@@ -638,7 +638,7 @@ pre tt:after {
 
 .gridContainer {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 300px 1fr;
   grid-template-areas:
     'header header'
     'content content'
@@ -654,7 +654,7 @@ pre tt:after {
 @media only screen and (min-width: 768px) {
   .gridContainer {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 300px 1fr;
   grid-template-areas:
     'header header'
     'sidebar content'
