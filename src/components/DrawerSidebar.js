@@ -24,12 +24,13 @@ class App extends React.Component {
 
     return (
       <Sidebar
-        sidebar={<div>fdjskl</div>}
+        sidebar={<b>fdjdkhsjkfhsfdkj</b>}
         open={this.state.open}
         onSetOpen={() => this.onSetSidebarOpen(false)}
         styles={{ sidebar: { background: "white" } }}
         pullRight={true}
       >
+
         <a onClick={() => this.onSetSidebarOpen(true)} className="rightAlignButton">
           ☰
         </a>

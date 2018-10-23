@@ -1,8 +1,7 @@
 .rightAlignButton {
-  position: relative;
   float: right;
   color: white;
   font-size: 2em;
-  padding-right: .5em;
-  margin: .67em 0;
+  padding-right: .75em;
+  margin: .75em 0;
 }

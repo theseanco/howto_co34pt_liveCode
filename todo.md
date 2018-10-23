@@ -24,6 +24,7 @@
 - Add sidebar headings
 - Make sidebar scroll with page possibly: was trying to do this with react waypoints but it seems like they're broken
 - Make sidebar categories expand and collapse with state
+- Populate expanding sidebar
 
 ### Styling
 - Change colour scheme
