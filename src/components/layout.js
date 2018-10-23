@@ -40,7 +40,7 @@ const Layout = ({ children, displaySidebar }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} debug={true}>
+        <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} debug={true} scrollableAncestor={window}>
           <div>
         <Header siteTitle={data.site.siteMetadata.title} />
       </div>
