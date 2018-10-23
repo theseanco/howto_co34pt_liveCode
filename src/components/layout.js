@@ -52,7 +52,6 @@ const Layout = ({ children, displaySidebar }) => (
           className="textBody"
         >
           {children}
-        </div>
 
         <Media query="(min-width: 768px)">
           {matches => {
@@ -64,7 +63,6 @@ const Layout = ({ children, displaySidebar }) => (
         }
       }
         </Media>
-      </div>
       </>
     )}
   />
