@@ -22,14 +22,10 @@
 
 ### sidebar
 - Add sidebar headings
-- Make sidebar disappear when on index page
-- Align sidebar text with title of page
-- Make sidebar scroll with page possibly
-- Make sidebar responsive (MediaQuery)
+- Make sidebar scroll with page possibly: was trying to do this with react waypoints but it seems like they're broken
 - Make sidebar categories expand and collapse with state
 
 ### Styling
 - Change colour scheme
 
-### Markdown File Changes
-- line-separate Pbinds, because they're actually hard to read.
+Menu icon CC-BY by Timothy Miller https://www.iconfinder.com/icons/134216/hamburger_lines_menu_icon

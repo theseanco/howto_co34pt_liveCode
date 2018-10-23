@@ -1,11 +1,13 @@
 import React from "react";
 import Sidebar from "react-sidebar";
+import './DrawerSidebar.css'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      dummyText: "fshfdfj"
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
@@ -13,7 +15,6 @@ class App extends React.Component {
   // this.setState({sidebarOpen: false});
 
   onSetSidebarOpen(open) {
-    console.log("fired", open);
     this.setState({ open: open });
   }
 
@@ -23,14 +24,15 @@ class App extends React.Component {
 
     return (
       <Sidebar
-        sidebar={<b>ddSidebar content</b>}
+        sidebar={<div>fdjskl</div>}
         open={this.state.open}
         onSetOpen={() => this.onSetSidebarOpen(false)}
         styles={{ sidebar: { background: "white" } }}
+        pullRight={true}
       >
-        <button onClick={() => this.onSetSidebarOpen(true)}>
-          Open sidebar
-        </button>
+        <a onClick={() => this.onSetSidebarOpen(true)} className="rightAlignButton">
+          ☰
+        </a>
 
       </Sidebar>
     );
