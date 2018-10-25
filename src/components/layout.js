@@ -44,14 +44,13 @@ const Layout = ({ children, displaySidebar }) => (
 
         <div className="gridContainer">
         <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} debug={true} scrollableAncestor={window}>
-          <div className="headerItem">
         <Header siteTitle={data.site.siteMetadata.title} />
-        </div>
         </Waypoint>
         <div
           className="textBody"
         >
           {children}
+        </div>
 
         <Media query="(min-width: 768px)">
           {matches => {
@@ -63,6 +62,7 @@ const Layout = ({ children, displaySidebar }) => (
         }
       }
         </Media>
+      </div>
       </>
     )}
   />
