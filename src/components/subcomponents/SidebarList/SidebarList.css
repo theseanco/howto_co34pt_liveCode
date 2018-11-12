@@ -1,13 +1,8 @@
 .sidebarContents {
   background-color: rgba(0,0,0,0.2);
+  padding-top: 1rem;
   padding-left: 1rem;
   grid-area: sidebar;
-  height: 100vh;
-  overflow: scroll;
-  position: sticky;
-  /* position: fixed; */
-  width: 300px;
-  top: 0px;
 }
 
 .sidebarContents ul {
