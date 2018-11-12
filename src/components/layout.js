@@ -4,9 +4,10 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import Media from "react-media";
 import Waypoint from 'react-waypoint';
+import SidebarList from './subcomponents/SidebarList/SidebarList';
 
 //components and css
-import GridSidebar from './GridSidebar'
+// import GridSidebar from './GridSidebar'
 import DrawerSidebar from './DrawerSidebar'
 import Header from './header'
 import './layout.css'
@@ -44,8 +45,11 @@ const Layout = ({ children, displaySidebar }) => (
 
         <div className="gridContainer">
         <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} debug={true} scrollableAncestor={window}>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <div className="headerItem">
+        <Header />
+        </div>
         </Waypoint>
+
         <div
           className="textBody"
         >
@@ -56,7 +60,7 @@ const Layout = ({ children, displaySidebar }) => (
           {matches => {
           if(matches) {
             return (
-          <GridSidebar /> ) } else {
+          <SidebarList /> ) } else {
             return(<DrawerSidebar isOpen={false}/>)
           }
         }

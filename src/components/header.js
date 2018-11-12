@@ -42,7 +42,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: 'none',
           }}
         >
-          {siteTitle}
+          howto_&#8203;co34pt_&#8203;liveCode
         </Link>
       </h2>
       <div />

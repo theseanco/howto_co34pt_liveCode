@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'howto_co34pt_liveCode',
+    title: 'howto_&#8203;co34pt_&#8203;liveCode',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

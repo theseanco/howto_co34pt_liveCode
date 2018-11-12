@@ -1,0 +1,16 @@
+.sidebarContents {
+  padding-top: 1rem;
+  background-color: rgba(0,0,0,0.2);
+  padding-left: 1rem;
+  grid-area: sidebar
+}
+
+.sidebarContents ul {
+  color: black;
+  list-style: none;
+  margin: 0
+}
+
+.sidebarContents ul li {
+  margin-bottom: .5rem;
+}
