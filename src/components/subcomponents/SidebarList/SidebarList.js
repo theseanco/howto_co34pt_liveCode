@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticQuery, Link, graphql } from 'gatsby'
 import './SidebarList.css'
+import sectionNames from './SidebarNames'
 
 const SidebarList = ({ data }) => (
 
@@ -32,10 +33,20 @@ const SidebarList = ({ data }) => (
       <div className="sidebarContents">
         <h4> Contents </h4>
         <ul>
+
         {
         data.allMarkdownRemark.edges.map((data, index) => {
+          let title;
+          if (data.node.frontmatter.subsection === 1) {
+            title=<strong>{sectionNames[data.node.frontmatter.section-1]}</strong>
+          } else {
+            title = null
+          }
           return(
+            <div>
+            {title}
             <li key={index}><Link to={data.node.frontmatter.path}>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></li>
+            </div>
           )
         })
         }
