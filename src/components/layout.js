@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React, {ReactDOM} from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
 import Media from "react-media";
 import Waypoint from 'react-waypoint';
 import SidebarList from './subcomponents/SidebarList/SidebarList';
@@ -11,6 +11,8 @@ import SidebarList from './subcomponents/SidebarList/SidebarList';
 import DrawerSidebar from './DrawerSidebar'
 import Header from './header'
 import './layout.css'
+import './stickySidebar.css'
+import VisibilitySensor from 'react-visibility-sensor'
 
 
 
@@ -44,11 +46,11 @@ const Layout = ({ children, displaySidebar }) => (
         </Helmet>
 
         <div className="gridContainer">
-        <Waypoint onPositionChange={console.log("changed")} onEnter={console.log("enter")} onLeave={console.log("leave")} debug={true} scrollableAncestor={window}>
         <div className="headerItem">
+        <VisibilitySensor onChange={console.log("changed")} sctollCheck={true}>
         <Header />
+        </VisibilitySensor>
         </div>
-        </Waypoint>
 
         <div
           className="textBody"
@@ -60,7 +62,10 @@ const Layout = ({ children, displaySidebar }) => (
           {matches => {
           if(matches) {
             return (
-          <SidebarList /> ) } else {
+          <div className="sticky-sidebar">
+          <SidebarList />
+          </div>
+        ) } else {
             return(<DrawerSidebar isOpen={false}/>)
           }
         }
