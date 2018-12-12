@@ -53,7 +53,9 @@ const SidebarList = ({ data }) => (
            return(
              <AccordionItem>
               <AccordionItemTitle>
+              <div className="sectionTitle">
                 <strong>{sectionNames[sectionNumber]}</strong>
+                </div>
               </AccordionItemTitle>
               <AccordionItemBody>
               {
@@ -61,7 +63,7 @@ const SidebarList = ({ data }) => (
                 data.allMarkdownRemark.edges.map((data,index) => {
                   if (data.node.frontmatter.section === sectionNumber + 1) {
                     return(
-                      <div>
+                      <div className="pageLink">
                       <Link to={data.node.frontmatter.path}>
                       {data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title}
                       </Link>

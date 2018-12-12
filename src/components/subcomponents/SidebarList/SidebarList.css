@@ -3,6 +3,19 @@
   padding-top: 1rem;
   padding-left: 1rem;
   grid-area: sidebar;
+  height: 100%;
+  width: 100%;
+}
+
+.sectionTitle {
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  margin-left: -1rem;
+  min-width: 300px
+}
+
+.pageLink {
+  width: 250px
 }
 
 .sidebarContents ul {
