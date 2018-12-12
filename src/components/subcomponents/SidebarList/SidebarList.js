@@ -36,6 +36,7 @@ const SidebarList = ({ data }) => (
 
         {
         data.allMarkdownRemark.edges.map((data, index) => {
+          //See if we need a section title, if not, return null
           let title;
           if (data.node.frontmatter.subsection === 1) {
             title=<strong>{sectionNames[data.node.frontmatter.section-1]}</strong>
@@ -44,6 +45,9 @@ const SidebarList = ({ data }) => (
           }
           return(
             <div>
+            {
+            //return the title (if needed), and any page information
+            }
             {title}
             <li key={index}><Link to={data.node.frontmatter.path}>{data.node.frontmatter.section}.{data.node.frontmatter.subsection} - {data.node.frontmatter.title} </Link></li>
             </div>

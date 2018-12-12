@@ -14,3 +14,7 @@
 .sidebarContents ul li {
   margin-bottom: .5rem;
 }
+
+.activeSection {
+  font-weight: bold;
+}
