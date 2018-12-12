@@ -3,7 +3,7 @@
   padding-top: 1rem;
   padding-left: 1rem;
   grid-area: sidebar;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
 }
 
