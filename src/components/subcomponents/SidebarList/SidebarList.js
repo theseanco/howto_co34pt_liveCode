@@ -50,8 +50,10 @@ const SidebarList = ({ data }) => (
 
          //Creates an array from the final section and fills it with `undefined` so that it can be used.
          Array.from(Array(data.allMarkdownRemark.edges[data.allMarkdownRemark.edges.length-1].node.frontmatter.section)).map((placeholder, sectionNumber) => {
+           let isExpanded;
+           Number(window.location.pathname[1]-1) === sectionNumber ? isExpanded = true : isExpanded = false;
            return(
-             <AccordionItem >
+             <AccordionItem expanded={isExpanded}>
               <AccordionItemTitle>
               <div className="sectionTitle">
                 <strong>{sectionNames[sectionNumber]}</strong>
