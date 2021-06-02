@@ -8,7 +8,7 @@ howto_co34pt_liveCode is an attempt to extensively document my live-coding music
 
 This resource is hosted both [on GitHub](https://github.com/theseanco/howto_co34pt_liveCode) and [on GitHub Pages](https://theseanco.github.io/howto_co34pt_liveCode/) (you will likely already be on one of these). I'd recommend browsing articles on GitHub pages, and if you want to use any of the examples, see any SuperCollider code and use my setup I'd recommend downloading the repo, this will be covered in 'How To Use This Repo'. There is also e-book versions of the 'first edition' of this repo in the `Documents` folder in `epub`, `pdf` and `pages` format. Huge thanks to @shamansir for putting these together.
 
-This repository is currently mostly finished, but does need proofreading, which I will be doing soon. It will be continually updated as my live coding practice develops.
+This repository is in a 'finished' state. While i'm sure improvements could be made, I don't intend on changing or updating it!
 
 I'm always keen to know the ways in which this has been helpful to anyone, or any comments you have at all.
 Drop me a line on [Twitter](https://twitter.com/theseanco), [GitHub](https://github.com/theseanco/) or via [Email](mailto:theseancotterill atsign live period com)
